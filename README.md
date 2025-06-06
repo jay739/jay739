@@ -13,7 +13,7 @@
 
 - 💬 Ask me about **Python, Machine Learning and Docker**
 
-- 📫 How to reach me **kondajayakrishna@hotmail.com**
+- 📫 How to reach me **jayakrishnakonda@jay739.dev**
 
 - 📄 Know about my experiences [here](https://www.jay739.dev/resume)
 
