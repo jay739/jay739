@@ -7,8 +7,8 @@
 <a href="https://jay739.dev">
   <picture>
     <source media="(prefers-color-scheme: dark)"
-            srcset="https://capsule-render.vercel.app/api?type=waving&color=0:0F172A,100:F59E0B&height=170&section=header&text=Jayakrishna%20Konda&fontColor=ffffff&fontSize=44&fontAlignY=38&desc=ML%2FAI%20Engineer%20%C2%B7%20Data%20Scientist%20%C2%B7%20Self-Hosted%20AI%20Builder&descSize=16&descAlignY=62&animation=fadeIn" />
-    <img src="https://capsule-render.vercel.app/api?type=waving&color=0:F59E0B,100:fde68a&height=170&section=header&text=Jayakrishna%20Konda&fontColor=1f2937&fontSize=44&fontAlignY=38&desc=ML%2FAI%20Engineer%20%C2%B7%20Data%20Scientist%20%C2%B7%20Self-Hosted%20AI%20Builder&descSize=16&descAlignY=62&animation=fadeIn" alt="Jayakrishna Konda" />
+            srcset="https://capsule-render.vercel.app/api?type=waving&color=0:b45309,50:F59E0B,100:fde68a&height=170&section=header&text=Jayakrishna%20Konda&fontColor=1f2937&fontSize=44&fontAlignY=38&desc=ML%2FAI%20Engineer%20%C2%B7%20Data%20Scientist%20%C2%B7%20Self-Hosted%20AI%20Builder&descSize=16&descAlignY=62&animation=fadeIn" />
+    <img src="https://capsule-render.vercel.app/api?type=waving&color=0:fde68a,50:F59E0B,100:b45309&height=170&section=header&text=Jayakrishna%20Konda&fontColor=1f2937&fontSize=44&fontAlignY=38&desc=ML%2FAI%20Engineer%20%C2%B7%20Data%20Scientist%20%C2%B7%20Self-Hosted%20AI%20Builder&descSize=16&descAlignY=62&animation=fadeIn" alt="Jayakrishna Konda" />
   </picture>
 </a>
 
@@ -270,8 +270,8 @@ FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis
 <sub><i>"From model to deployment — and the homelab in between."</i></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=waving&color=0:F59E0B,100:0F172A&height=80&section=footer" />
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:fde68a,100:F59E0B&height=80&section=footer" alt="footer" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=waving&color=0:fde68a,50:F59E0B,100:b45309&height=80&section=footer&reversal=true" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:b45309,50:F59E0B,100:fde68a&height=80&section=footer&reversal=true" alt="footer" />
 </picture>
 
 </div>
