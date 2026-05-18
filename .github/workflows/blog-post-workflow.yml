@@ -24,8 +24,7 @@ jobs:
         with:
           feed_list: "https://jay739.dev/rss.xml"
           max_post_count: 5
-          template: |+
-            - [$title]($url) <sub><i>$date</i></sub>
+          template: "<br>&bull; <a href=\"$url\">$title</a> <sub><i>$date</i></sub>"
           date_format: "mmm dd, yyyy"
           comment_tag_name: "BLOG-POST-LIST"
           commit_message: "chore: refresh latest blog posts"
