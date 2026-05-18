@@ -1,44 +1,283 @@
-<h1 align="center">Hi 👋, I'm Jayakrishna Konda</h1>
-<h3 align="center">🚀 AI Engineer • 🧠 TTS + RAG Enthusiast • 🛠️ Self-Hosted Systems Builder</h3>
+<div align="center">
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=jay739&label=Profile%20views&color=0e75b6&style=flat" alt="jay739" /> </p>
+<!-- ────────────────────────────────────────────────────────────── -->
+<!--                            HEADER                              -->
+<!-- ────────────────────────────────────────────────────────────── -->
 
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=jay739" alt="jay739" /></a> </p>
+<a href="https://jay739.dev">
+  <picture>
+    <source media="(prefers-color-scheme: dark)"
+            srcset="https://capsule-render.vercel.app/api?type=waving&color=0:0F172A,100:F59E0B&height=170&section=header&text=Jayakrishna%20Konda&fontColor=ffffff&fontSize=44&fontAlignY=38&desc=ML%2FAI%20Engineer%20%C2%B7%20Data%20Scientist%20%C2%B7%20Self-Hosted%20AI%20Builder&descSize=16&descAlignY=62&animation=fadeIn" />
+    <img src="https://capsule-render.vercel.app/api?type=waving&color=0:F59E0B,100:fde68a&height=170&section=header&text=Jayakrishna%20Konda&fontColor=1f2937&fontSize=44&fontAlignY=38&desc=ML%2FAI%20Engineer%20%C2%B7%20Data%20Scientist%20%C2%B7%20Self-Hosted%20AI%20Builder&descSize=16&descAlignY=62&animation=fadeIn" alt="Jayakrishna Konda" />
+  </picture>
+</a>
 
-- 🔭 I’m currently working on [PodcastAI](https://github.com/jay739/PodcastAI)
+<a href="https://github.com/jay739">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&pause=900&color=F59E0B&center=true&vCenter=true&width=620&lines=ML%2FAI+Engineer;Data+Scientist;MLOps+%26+DevOps;Self-Hosted+AI+Builder;Batcave+Operator+%E2%80%94+56+containers%2C+99.9%25+uptime" alt="Typing animation" />
+</a>
 
-- 🌱 I’m currently learning **Apache Kafka, Tauri**
+<br/>
 
-- 👨‍💻 All of my projects are available at [https://www.jay739.dev](https://www.jay739.dev)
+**Building production RAG pipelines, LLM systems, and self-hosted AI infrastructure — from model to deployment.**
 
-- 💬 Ask me about **Python, Machine Learning and Docker**
+<br/>
 
-- 📫 How to reach me **contact@jay739.dev**
+<a href="https://jay739.dev"><img src="https://img.shields.io/badge/Portfolio-jay739.dev-F59E0B?style=for-the-badge&logo=vercel&logoColor=F59E0B&labelColor=0F172A" alt="Portfolio" /></a>
+<a href="https://www.linkedin.com/in/jaya-krishna-konda/"><img src="https://img.shields.io/badge/LinkedIn-Connect-F59E0B?style=for-the-badge&logo=linkedin&logoColor=F59E0B&labelColor=0F172A" alt="LinkedIn" /></a>
+<a href="mailto:contact@jay739.dev"><img src="https://img.shields.io/badge/Email-contact%40jay739.dev-F59E0B?style=for-the-badge&logo=maildotru&logoColor=F59E0B&labelColor=0F172A" alt="Email" /></a>
+<a href="https://jay739.dev/blog"><img src="https://img.shields.io/badge/Blog-Read-F59E0B?style=for-the-badge&logo=hashnode&logoColor=F59E0B&labelColor=0F172A" alt="Blog" /></a>
 
-- 📄 Know about my experiences [here](https://www.jay739.dev/resume)
+<br/>
 
-### 🚀 Featured Projects
+<!-- Live Batcave status — hits jay739.dev/api/badges/batcave -->
+<a href="https://jay739.dev"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fjay739.dev%2Fapi%2Fbadges%2Fbatcave&style=for-the-badge" alt="Batcave live status" /></a>
 
-- 🎙️ [PodcastAI](https://github.com/jay739/PodcastAI)  
-  AI-generated podcast system with local TTS, Bark/XTTS, PDF parsing, FAISS, and Flask.
+</div>
 
-- 🤖 [Dystonia Robotics Aid](https://github.com/jay739/Dystonia-Robotics)  
-  ESP32-based RC car navigates to ArUco-marked zones for assistive therapy.
+<br/>
 
-- 💬 [PortfolioAI Chatbot](https://github.com/jay739/PortfolioAI-Chat)  
-  Locally hosted RAG chatbot trained on resume and documents.
+<!-- ────────────────────────────────────────────────────────────── -->
+<!--                             NOW                                -->
+<!-- ────────────────────────────────────────────────────────────── -->
 
+> <img src="https://api.iconify.design/lucide/sparkles.svg?color=%23f59e0b&height=18" align="center" />&nbsp;**Now:** Fine-tuning local LLMs on Batcave · scaling the RAG podcast pipeline · writing the *Home Server Chronicles* Docker series.
 
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-<a href="https://linkedin.com/in/jaya-krishna-konda" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="jaya-krishna-konda" height="30" width="40" /></a>
-</p>
+<br/>
 
-<h3 align="left">Languages and Tools:</h3>
-<p align="left"> <a href="https://developer.android.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/android/android-original-wordmark.svg" alt="android" width="40" height="40"/> </a> <a href="https://angular.io" target="_blank" rel="noreferrer"> <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="angular" width="40" height="40"/> </a> <a href="https://angular.io" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original-wordmark.svg" alt="angularjs" width="40" height="40"/> </a> <a href="https://www.arduino.cc/" target="_blank" rel="noreferrer"> <img src="https://cdn.worldvectorlogo.com/logos/arduino-1.svg" alt="arduino" width="40" height="40"/> </a> <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" alt="bash" width="40" height="40"/> </a> <a href="https://www.blender.org/" target="_blank" rel="noreferrer"> <img src="https://download.blender.org/branding/community/blender_community_badge_white.svg" alt="blender" width="40" height="40"/> </a> <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40"/> </a> <a href="https://www.cprogramming.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="c" width="40" height="40"/> </a> <a href="https://www.chartjs.org" target="_blank" rel="noreferrer"> <img src="https://www.chartjs.org/media/logo-title.svg" alt="chartjs" width="40" height="40"/> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/> </a> <a href="https://www.electronjs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/electron/electron-original.svg" alt="electron" width="40" height="40"/> </a> <a href="https://flask.palletsprojects.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/pocoo_flask/pocoo_flask-icon.svg" alt="flask" width="40" height="40"/> </a> <a href="https://cloud.google.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg" alt="gcp" width="40" height="40"/> </a> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://hadoop.apache.org/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/apache_hadoop/apache_hadoop-icon.svg" alt="hadoop" width="40" height="40"/> </a> <a href="https://heroku.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://ifttt.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/ifttt/ifttt-ar21.svg" alt="ifttt" width="40" height="40"/> </a> <a href="https://www.adobe.com/in/products/illustrator.html" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/adobe_illustrator/adobe_illustrator-icon.svg" alt="illustrator" width="40" height="40"/> </a> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://kubernetes.io" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="kubernetes" width="40" height="40"/> </a> <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="40" height="40"/> </a> <a href="https://mariadb.org/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/mariadb/mariadb-icon.svg" alt="mariadb" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> <a href="https://www.nginx.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nginx/nginx-original.svg" alt="nginx" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> <a href="https://opencv.org/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/opencv/opencv-icon.svg" alt="opencv" width="40" height="40"/> </a> <a href="https://www.oracle.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/oracle/oracle-original.svg" alt="oracle" width="40" height="40"/> </a> <a href="https://pandas.pydata.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/pandas/pandas-original.svg" alt="pandas" width="40" height="40"/> </a> <a href="https://www.photoshop.com/en" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-line.svg" alt="photoshop" width="40" height="40"/> </a> <a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" alt="php" width="40" height="40"/> </a> <a href="https://postman.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> <a href="https://pytorch.org/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/pytorch/pytorch-icon.svg" alt="pytorch" width="40" height="40"/> </a> <a href="https://www.qt.io/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Qt_logo_2016.svg" alt="qt" width="40" height="40"/> </a> <a href="https://reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> </a> <a href="https://reactnative.dev/" target="_blank" rel="noreferrer"> <img src="https://reactnative.dev/img/header_logo.svg" alt="reactnative" width="40" height="40"/> </a> <a href="https://scikit-learn.org/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="scikit_learn" width="40" height="40"/> </a> <a href="https://seaborn.pydata.org/" target="_blank" rel="noreferrer"> <img src="https://seaborn.pydata.org/_images/logo-mark-lightbg.svg" alt="seaborn" width="40" height="40"/> </a> <a href="https://spring.io/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="40" height="40"/> </a> <a href="https://www.sqlite.org/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/sqlite/sqlite-icon.svg" alt="sqlite" width="40" height="40"/> </a> <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/> </a> <a href="https://www.tensorflow.org" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg" alt="tensorflow" width="40" height="40"/> </a> <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/> </a> <a href="https://vuejs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original-wordmark.svg" alt="vuejs" width="40" height="40"/> </a> <a href="https://www.adobe.com/products/xd.html" target="_blank" rel="noreferrer"> <img src="https://cdn.worldvectorlogo.com/logos/adobe-xd.svg" alt="xd" width="40" height="40"/> </a> </p>
+## <img src="https://api.iconify.design/lucide/diamond.svg?color=%23f59e0b&height=22" align="center" /> About
 
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=jay739&show_icons=true&locale=en&layout=compact" alt="jay739" /></p>
+I'm an ML/AI Engineer & Data Scientist with **5 years** building production ML systems, RAG pipelines, and self-hosted AI infrastructure. I design end-to-end solutions — from model training and LLM fine-tuning to cloud deployment and real-time monitoring.
 
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=jay739&show_icons=true&locale=en" alt="jay739" /></p>
+When I'm not shipping ML at work, I'm operating **Batcave** — my solo-built, 56-container private AI server running local LLMs, RAG, and ML inference at 99.9% uptime.
 
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=jay739&" alt="jay739" /></p>
+```yaml
+role:        Data Scientist — GenAI & ML  @  Enigma Technologies
+education:   M.S. Data Science, UMBC (GPA 3.91 / 4.0)
+focus:       LLMs · RAG · MLOps · Self-hosted infrastructure
+homelab:     56 containers · 36+ services · 99.9% uptime
+based_in:    Maryland, USA
+```
+
+<br/>
+
+## <img src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=22" align="center" /> Batcave — My Private AI Cloud
+
+> A solo-managed homelab on a Beelink mini-PC. Self-hosted from scratch. Live at [**jay739.dev**](https://jay739.dev).
+
+<div align="center">
+
+| Metric | Value | Metric | Value |
+| :---: | :---: | :---: | :---: |
+| Containers | `56` | Self-hosted Services | `36+` |
+| Uptime | `99.9%` | Local LLMs | `5+ models` |
+| Hybrid-cloud Latency | `−60%` | Multi-DB Layer | `177 GB` |
+
+</div>
+
+Stack: `Docker` · `Ollama` · `LangChain` · `Authentik SSO` · `Tailscale` · `Netdata` · `Nginx` · `PostgreSQL` · `MariaDB` · `Redis` · `Meilisearch`
+
+→ Read the full [5-part Batcave blog series](https://jay739.dev/blog)
+
+<br/>
+
+## <img src="https://api.iconify.design/lucide/cpu.svg?color=%23f59e0b&height=22" align="center" /> Tech Stack
+
+<div align="center">
+
+**ML / AI**
+
+![Python](https://img.shields.io/badge/Python-F59E0B?style=for-the-badge&logo=python&logoColor=F59E0B&labelColor=0F172A)
+![PyTorch](https://img.shields.io/badge/PyTorch-F59E0B?style=for-the-badge&logo=pytorch&logoColor=F59E0B&labelColor=0F172A)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-F59E0B?style=for-the-badge&logo=tensorflow&logoColor=F59E0B&labelColor=0F172A)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F59E0B?style=for-the-badge&logo=scikitlearn&logoColor=F59E0B&labelColor=0F172A)
+![LangChain](https://img.shields.io/badge/LangChain-F59E0B?style=for-the-badge&logo=langchain&logoColor=F59E0B&labelColor=0F172A)
+![Ollama](https://img.shields.io/badge/Ollama-F59E0B?style=for-the-badge&logo=ollama&logoColor=F59E0B&labelColor=0F172A)
+![HuggingFace](https://img.shields.io/badge/HuggingFace-F59E0B?style=for-the-badge&logo=huggingface&logoColor=F59E0B&labelColor=0F172A)
+![PySpark](https://img.shields.io/badge/PySpark-F59E0B?style=for-the-badge&logo=apachespark&logoColor=F59E0B&labelColor=0F172A)
+
+**MLOps · Infra · Cloud**
+
+![Docker](https://img.shields.io/badge/Docker-F59E0B?style=for-the-badge&logo=docker&logoColor=F59E0B&labelColor=0F172A)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-F59E0B?style=for-the-badge&logo=kubernetes&logoColor=F59E0B&labelColor=0F172A)
+![AWS](https://img.shields.io/badge/AWS-F59E0B?style=for-the-badge&logo=amazonwebservices&logoColor=F59E0B&labelColor=0F172A)
+![Oracle Cloud](https://img.shields.io/badge/OCI-F59E0B?style=for-the-badge&logo=oracle&logoColor=F59E0B&labelColor=0F172A)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-F59E0B?style=for-the-badge&logo=githubactions&logoColor=F59E0B&labelColor=0F172A)
+![MLflow](https://img.shields.io/badge/MLflow-F59E0B?style=for-the-badge&logo=mlflow&logoColor=F59E0B&labelColor=0F172A)
+![Tailscale](https://img.shields.io/badge/Tailscale-F59E0B?style=for-the-badge&logo=tailscale&logoColor=F59E0B&labelColor=0F172A)
+![Nginx](https://img.shields.io/badge/Nginx-F59E0B?style=for-the-badge&logo=nginx&logoColor=F59E0B&labelColor=0F172A)
+
+**Data**
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-F59E0B?style=for-the-badge&logo=postgresql&logoColor=F59E0B&labelColor=0F172A)
+![MariaDB](https://img.shields.io/badge/MariaDB-F59E0B?style=for-the-badge&logo=mariadb&logoColor=F59E0B&labelColor=0F172A)
+![Redis](https://img.shields.io/badge/Redis-F59E0B?style=for-the-badge&logo=redis&logoColor=F59E0B&labelColor=0F172A)
+![Pandas](https://img.shields.io/badge/Pandas-F59E0B?style=for-the-badge&logo=pandas&logoColor=F59E0B&labelColor=0F172A)
+![NumPy](https://img.shields.io/badge/NumPy-F59E0B?style=for-the-badge&logo=numpy&logoColor=F59E0B&labelColor=0F172A)
+![Plotly](https://img.shields.io/badge/Plotly-F59E0B?style=for-the-badge&logo=plotly&logoColor=F59E0B&labelColor=0F172A)
+
+**Frontend & Edge**
+
+![Next.js](https://img.shields.io/badge/Next.js-F59E0B?style=for-the-badge&logo=nextdotjs&logoColor=F59E0B&labelColor=0F172A)
+![TypeScript](https://img.shields.io/badge/TypeScript-F59E0B?style=for-the-badge&logo=typescript&logoColor=F59E0B&labelColor=0F172A)
+![Tailwind](https://img.shields.io/badge/Tailwind-F59E0B?style=for-the-badge&logo=tailwindcss&logoColor=F59E0B&labelColor=0F172A)
+![ESP32](https://img.shields.io/badge/ESP32-F59E0B?style=for-the-badge&logo=espressif&logoColor=F59E0B&labelColor=0F172A)
+![C++](https://img.shields.io/badge/C++-F59E0B?style=for-the-badge&logo=cplusplus&logoColor=F59E0B&labelColor=0F172A)
+
+</div>
+
+<br/>
+
+## <img src="https://api.iconify.design/lucide/rocket.svg?color=%23f59e0b&height=22" align="center" /> Featured Projects
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+#### <img src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Batcave — Personal AI Cloud](https://jay739.dev)
+Solo-built private AI infra on a Beelink mini-PC. 56 containers, 36+ services, local LLMs via Ollama, RAG pipelines, SSO, full observability.
+<br/><br/>
+`Docker` · `Ollama` · `LangChain` · `Authentik` · `Tailscale`
+
+</td>
+<td width="50%" valign="top">
+
+#### <img src="https://api.iconify.design/lucide/mic.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [RAG Podcast Generator](https://github.com/jay739/PodcastAI)
+PDF → LLM → TTS pipeline that converts books into character-voiced podcasts. 98% OCR accuracy, 4× throughput via LoRA fine-tuning.
+<br/><br/>
+`RAG` · `LangChain` · `Ollama` · `OCR` · `TTS`
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+#### <img src="https://api.iconify.design/lucide/landmark.svg?color=%23f59e0b&height=18" align="center" />&nbsp; Anti-Money Laundering Detection
+PySpark ML pipeline on IBM's 32M-row HI-Medium AML dataset. Temporal feature engineering, severe class imbalance (0.23%) — **0.998 F1**.
+<br/><br/>
+`PySpark` · `MLlib` · `Random Forest` · `Financial AI`
+
+</td>
+<td width="50%" valign="top">
+
+#### <img src="https://api.iconify.design/lucide/flame.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Wildfire Detection](https://github.com/jay739/forest-fire-detection)
+Benchmarked 8 CNN architectures on the FLAME dataset using RGB+IR dual-stream fusion. Best model: ResNet18 at **0.94 micro-F1**.
+<br/><br/>
+`CNN` · `Computer Vision` · `Satellite Imagery`
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+#### <img src="https://api.iconify.design/lucide/stethoscope.svg?color=%23f59e0b&height=18" align="center" />&nbsp; Histopathologic Cancer Detection
+Compared custom CNN vs ResNet18 / VGG16 / EfficientNet on 220k+ pathology patches. Transfer learning best at **0.94 AUC**.
+<br/><br/>
+`PyTorch` · `Transfer Learning` · `Medical AI`
+
+</td>
+<td width="50%" valign="top">
+
+#### <img src="https://api.iconify.design/lucide/trending-up.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Financial Crisis Analysis](https://github.com/jay739/financial-analysis)
+FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis periods (2008, COVID-19).
+<br/><br/>
+`FinBERT` · `Monte Carlo` · `yFinance` · `Plotly`
+
+</td>
+</tr>
+</table>
+
+→ See [more projects on jay739.dev](https://jay739.dev/projects)
+
+<br/>
+
+## <img src="https://api.iconify.design/lucide/activity.svg?color=%23f59e0b&height=22" align="center" /> GitHub Metrics
+
+<div align="center">
+
+<!-- Generated by .github/workflows/metrics.yml — committed to the `metrics-output` branch -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jay739/jay739/main/metrics.svg" />
+  <img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.svg" alt="Metrics" width="600" />
+</picture>
+
+<details>
+<summary><b>More: coding habits & topics</b></summary>
+<br/>
+<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.habits.svg" alt="Coding habits" width="600" />
+<br/><br/>
+<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.topics.svg" alt="Topics" width="600" />
+</details>
+
+</div>
+
+<br/>
+
+## <img src="https://api.iconify.design/lucide/git-branch.svg?color=%23f59e0b&height=22" align="center" /> Contribution Snake
+
+<div align="center">
+
+<!-- Generated by .github/workflows/snake.yml — pushed to the `output` branch -->
+<picture>
+  <source media="(prefers-color-scheme: dark)"
+          srcset="https://raw.githubusercontent.com/jay739/jay739/output/github-contribution-grid-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)"
+          srcset="https://raw.githubusercontent.com/jay739/jay739/output/github-contribution-grid-snake-light.svg" />
+  <img src="https://raw.githubusercontent.com/jay739/jay739/output/github-contribution-grid-snake.svg" alt="Contribution snake" />
+</picture>
+
+</div>
+
+<br/>
+
+## <img src="https://api.iconify.design/lucide/rss.svg?color=%23f59e0b&height=22" align="center" /> Latest from the Blog
+
+<!-- BLOG-POST-LIST:START -->
+- [The Docker Series — Part 5](https://jay739.dev/blog/docker-series-part5) <sub><i>Apr 06, 2026</i></sub>
+- [The Docker Series — Part 4](https://jay739.dev/blog/docker-series-part4) <sub><i>—</i></sub>
+- [AI-Powered PDF to Podcast](https://jay739.dev/blog/ai-pdf-to-podcast) <sub><i>—</i></sub>
+- [Homelab Lessons](https://jay739.dev/blog/homelab-lessons) <sub><i>—</i></sub>
+- [Migrating DigitalOcean → OCI](https://jay739.dev/blog/migrating-do-to-oci) <sub><i>—</i></sub>
+<!-- BLOG-POST-LIST:END -->
+
+→ More at [**jay739.dev/blog**](https://jay739.dev/blog) · auto-refreshed every 6 hours from `jay739.dev/rss.xml`
+
+<br/>
+
+## <img src="https://api.iconify.design/lucide/briefcase.svg?color=%23f59e0b&height=22" align="center" /> Experience Snapshot
+
+```text
+2025 → now    Data Scientist — GenAI & ML          @  Enigma Technologies
+2025          AI/ML Programming Intern              @  R/SEEK · UMBC
+2023 → 2025   M.S. Data Science (GPA 3.91)          @  UMBC
+2019 → 2023   Machine Learning Engineer             @  Cognizant
+2019          Software Engineering Intern           @  Infosys
+```
+
+<br/>
+
+## <img src="https://api.iconify.design/lucide/file-text.svg?color=%23f59e0b&height=22" align="center" /> Resume
+
+<div align="center">
+
+<a href="https://jay739.dev/documents/Jayakrishna_Konda_ML_AI_Engineer.docx"><img src="https://img.shields.io/badge/Download_Resume-ML%2FAI_Engineer-F59E0B?style=for-the-badge&logo=readdotcv&logoColor=F59E0B&labelColor=0F172A" alt="Download Resume" /></a>
+
+</div>
+
+<br/>
+
+<div align="center">
+
+### Let's build something.
+
+<a href="https://jay739.dev"><img src="https://img.shields.io/badge/Portfolio-jay739.dev-F59E0B?style=for-the-badge&labelColor=0F172A" /></a>
+<a href="mailto:contact@jay739.dev"><img src="https://img.shields.io/badge/Email-contact@jay739.dev-F59E0B?style=for-the-badge&labelColor=0F172A" /></a>
+<a href="https://www.linkedin.com/in/jaya-krishna-konda/"><img src="https://img.shields.io/badge/LinkedIn-jaya--krishna--konda-F59E0B?style=for-the-badge&labelColor=0F172A" /></a>
+
+<sub><i>"From model to deployment — and the homelab in between."</i></sub>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=waving&color=0:F59E0B,100:0F172A&height=80&section=footer" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:fde68a,100:F59E0B&height=80&section=footer" alt="footer" />
+</picture>
+
+</div>
