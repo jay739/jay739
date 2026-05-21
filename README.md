@@ -7,8 +7,8 @@
 <a href="https://jay739.dev">
   <picture>
     <source media="(prefers-color-scheme: dark)"
-            srcset="https://capsule-render.vercel.app/api?type=waving&color=0:F59E0B,100:fde68a&height=170&section=header&text=Jayakrishna%20Konda&fontColor=1f2937&fontSize=44&fontAlignY=38&desc=ML%2FAI%20Engineer%20%C2%B7%20Data%20Scientist%20%C2%B7%20Self-Hosted%20AI%20Builder&descSize=16&descAlignY=62&animation=fadeIn" />
-    <img src="https://capsule-render.vercel.app/api?type=waving&color=0:fde68a,100:F59E0B&height=170&section=header&text=Jayakrishna%20Konda&fontColor=1f2937&fontSize=44&fontAlignY=38&desc=ML%2FAI%20Engineer%20%C2%B7%20Data%20Scientist%20%C2%B7%20Self-Hosted%20AI%20Builder&descSize=16&descAlignY=62&animation=fadeIn" alt="Jayakrishna Konda" />
+            srcset="https://capsule-render.vercel.app/api?type=waving&color=0:F59E0B%2C100:fde68a&height=170&section=header&text=Jayakrishna%20Konda&fontColor=f8fafc&fontSize=44&fontAlignY=38&desc=ML%2FAI%20Engineer%20%C2%B7%20Data%20Scientist%20%C2%B7%20Self-Hosted%20AI%20Builder&descSize=16&descAlignY=62&animation=fadeIn" />
+    <img src="https://capsule-render.vercel.app/api?type=waving&color=0:fde68a%2C100:F59E0B&height=170&section=header&text=Jayakrishna%20Konda&fontColor=1f2937&fontSize=44&fontAlignY=38&desc=ML%2FAI%20Engineer%20%C2%B7%20Data%20Scientist%20%C2%B7%20Self-Hosted%20AI%20Builder&descSize=16&descAlignY=62&animation=fadeIn" alt="Jayakrishna Konda" />
   </picture>
 </a>
 
@@ -20,12 +20,15 @@
 
 **Building production RAG pipelines, LLM systems, and self-hosted AI infrastructure — from model to deployment.**
 
+<sub>Quick nav: <a href="#about">About</a> · <a href="#batcave">Batcave</a> · <a href="#featured-projects">Projects</a> · <a href="#github-highlights">Highlights</a> · <a href="#latest-from-the-blog">Blog</a> · <a href="#resume">Resume</a></sub>
+
 <br/>
 
 <a href="https://jay739.dev"><img src="https://img.shields.io/badge/Portfolio-jay739.dev-F59E0B?style=for-the-badge&logo=vercel&logoColor=F59E0B&labelColor=0F172A" alt="Portfolio" /></a>
 <a href="https://www.linkedin.com/in/jaya-krishna-konda/"><img src="https://img.shields.io/badge/LinkedIn-Connect-F59E0B?style=for-the-badge&logo=linkedin&logoColor=F59E0B&labelColor=0F172A" alt="LinkedIn" /></a>
 <a href="mailto:contact@jay739.dev"><img src="https://img.shields.io/badge/Email-contact%40jay739.dev-F59E0B?style=for-the-badge&logo=maildotru&logoColor=F59E0B&labelColor=0F172A" alt="Email" /></a>
 <a href="https://jay739.dev/blog"><img src="https://img.shields.io/badge/Blog-Read-F59E0B?style=for-the-badge&logo=hashnode&logoColor=F59E0B&labelColor=0F172A" alt="Blog" /></a>
+<a href="https://github.com/jay739"><img src="https://komarev.com/ghpvc/?username=jay739&style=for-the-badge&color=F59E0B&label=PROFILE+VIEWS" alt="Profile views" /></a>
 
 <br/>
 
@@ -44,11 +47,12 @@
 
 <br/>
 
+<a id="about"></a>
 ## <img src="https://api.iconify.design/lucide/diamond.svg?color=%23f59e0b&height=22" align="center" /> About
 
 I'm an ML/AI Engineer & Data Scientist with **5 years** building production ML systems, RAG pipelines, and self-hosted AI infrastructure. I design end-to-end solutions — from model training and LLM fine-tuning to cloud deployment and real-time monitoring.
 
-When I'm not shipping ML at work, I'm operating **Batcave** — my solo-built, 56-container private AI server running local LLMs, RAG, and ML inference at 99.9% uptime.
+When I'm not shipping ML at work, I'm operating **Batcave** — my solo-built, 56-container private AI server running local LLMs, RAG, and ML inference at 99.9% uptime ([live status](https://jay739.dev/api/badges/batcave)).
 
 ```yaml
 role:        Data Scientist — GenAI & ML  @  Enigma Technologies
@@ -60,6 +64,15 @@ based_in:    Maryland, USA
 
 <br/>
 
+## <img src="https://api.iconify.design/lucide/handshake.svg?color=%23f59e0b&height=22" align="center" /> Open to
+
+- Full-time ML/AI or MLOps engineering roles.
+- Contract and advisory work for production RAG/LLM systems.
+- Collaborations around self-hosted AI, homelab observability, and applied GenAI.
+
+<br/>
+
+<a id="batcave"></a>
 ## <img src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=22" align="center" /> Batcave — My Private AI Cloud
 
 > A solo-managed homelab on a Beelink mini-PC. Self-hosted from scratch. Live at [**jay739.dev**](https://jay739.dev).
@@ -76,6 +89,8 @@ based_in:    Maryland, USA
 
 Stack: `Docker` · `Ollama` · `LangChain` · `Authentik SSO` · `Tailscale` · `Netdata` · `Nginx` · `PostgreSQL` · `MariaDB` · `Redis` · `Meilisearch`
 
+Proof links: [Live Batcave status](https://jay739.dev/api/badges/batcave) · [Batcave architecture series](https://jay739.dev/blog/docker-series-part5) · [OCI migration + latency notes](https://jay739.dev/blog/migrating-do-to-oci)
+
 → Read the full [5-part Batcave blog series](https://jay739.dev/blog)
 
 <br/>
@@ -83,6 +98,12 @@ Stack: `Docker` · `Ollama` · `LangChain` · `Authentik SSO` · `Tailscale` · 
 ## <img src="https://api.iconify.design/lucide/cpu.svg?color=%23f59e0b&height=22" align="center" /> Tech Stack
 
 <div align="center">
+
+**Core:** `Python` · `PyTorch` · `LangChain` · `Ollama` · `Docker` · `AWS` · `PostgreSQL` · `Redis` · `Next.js` · `TypeScript`
+
+<details>
+<summary><b>Full badge stack</b></summary>
+<br/>
 
 **ML / AI**
 
@@ -123,10 +144,13 @@ Stack: `Docker` · `Ollama` · `LangChain` · `Authentik SSO` · `Tailscale` · 
 ![ESP32](https://img.shields.io/badge/ESP32-F59E0B?style=for-the-badge&logo=espressif&logoColor=F59E0B&labelColor=0F172A)
 ![C++](https://img.shields.io/badge/C++-F59E0B?style=for-the-badge&logo=cplusplus&logoColor=F59E0B&labelColor=0F172A)
 
+</details>
+
 </div>
 
 <br/>
 
+<a id="featured-projects"></a>
 ## <img src="https://api.iconify.design/lucide/rocket.svg?color=%23f59e0b&height=22" align="center" /> Featured Projects
 
 <table>
@@ -151,7 +175,7 @@ PDF → LLM → TTS pipeline that converts books into character-voiced podcasts.
 <tr>
 <td width="50%" valign="top">
 
-#### <img src="https://api.iconify.design/lucide/landmark.svg?color=%23f59e0b&height=18" align="center" />&nbsp; Anti-Money Laundering Detection
+#### <img src="https://api.iconify.design/lucide/landmark.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Anti-Money Laundering Detection](https://jay739.dev/projects)
 PySpark ML pipeline on IBM's 32M-row HI-Medium AML dataset. Temporal feature engineering, severe class imbalance (0.23%) — **0.998 F1**.
 <br/><br/>
 `PySpark` · `MLlib` · `Random Forest` · `Financial AI`
@@ -194,7 +218,7 @@ FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis
 
 <div align="center">
 
-<!-- Generated by .github/workflows/metrics.yml — committed to the `metrics-output` branch -->
+<!-- Generated by .github/workflows/metrics.yml — committed to the `main` branch -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jay739/jay739/main/metrics.svg" />
   <img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.svg" alt="Metrics" width="600" />
@@ -206,7 +230,41 @@ FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis
 <img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.habits.svg" alt="Coding habits" width="600" />
 <br/><br/>
 <img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.topics.svg" alt="Topics" width="600" />
+<br/><br/>
+<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.achievements.svg" alt="Achievements" width="600" />
+<br/><br/>
+<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.repositories.svg" alt="Featured repositories metrics" width="600" />
+<br/><br/>
+<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.notable.svg" alt="Notable contributions" width="600" />
 </details>
+
+</div>
+
+<br/>
+
+<a id="github-highlights"></a>
+## <img src="https://api.iconify.design/lucide/trending-up.svg?color=%23f59e0b&height=22" align="center" /> GitHub Highlights
+
+<div align="center">
+
+<img src="https://streak-stats.demolab.com?user=jay739&theme=dark&background=0F172A&ring=F59E0B&fire=F59E0B&currStreakLabel=F59E0B&sideNums=f8fafc&currStreakNum=f8fafc&dates=94a3b8&border=334155" alt="GitHub streak" width="600" />
+
+</div>
+
+<div align="center">
+
+<a href="https://github.com/jay739/PodcastAI">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=jay739&repo=PodcastAI&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A" alt="PodcastAI repository card" />
+</a>
+<a href="https://github.com/jay739/portfolio-site">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=jay739&repo=portfolio-site&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A" alt="portfolio-site repository card" />
+</a>
+<a href="https://github.com/jay739/omnifin">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=jay739&repo=omnifin&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A" alt="omnifin repository card" />
+</a>
+<a href="https://github.com/jay739/autonomous-robot-navigation-system">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=jay739&repo=autonomous-robot-navigation-system&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A" alt="autonomous-robot-navigation-system repository card" />
+</a>
 
 </div>
 
@@ -229,6 +287,7 @@ FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis
 
 <br/>
 
+<a id="latest-from-the-blog"></a>
 ## <img src="https://api.iconify.design/lucide/rss.svg?color=%23f59e0b&height=22" align="center" /> Latest from the Blog
 
 <!-- BLOG-POST-LIST:START --><br>&bull; <a href="https://jay739.dev/blog/lifetime-software-deals">The Quiet Math of Lifetime Software Deals</a> <sub><i>May 12, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/homelab-lessons">What Running a Homelab Actually Teaches You That Work Doesn&#39;t</a> <sub><i>Apr 24, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/docker-series-part5">🧱 Home Server Chronicles: My Docker-Powered Ecosystem — Part 5</a> <sub><i>Apr 06, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/optimizing-docker-arm64">⚡ Optimizing Docker on ARM64: From Emulation Hell to Native Performance</a> <sub><i>Apr 03, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/migrating-do-to-oci">🚀 Methodical Migration: DigitalOcean Droplet to Oracle Cloud &lpar;OCI&rpar;</a> <sub><i>Mar 31, 2026</i></sub><!-- BLOG-POST-LIST:END -->
@@ -249,6 +308,7 @@ FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis
 
 <br/>
 
+<a id="resume"></a>
 ## <img src="https://api.iconify.design/lucide/file-text.svg?color=%23f59e0b&height=22" align="center" /> Resume
 
 <div align="center">
@@ -270,8 +330,8 @@ FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis
 <sub><i>"From model to deployment — and the homelab in between."</i></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=waving&color=0:fde68a,100:F59E0B&height=80&section=footer&reversal=true" />
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:F59E0B,100:fde68a&height=80&section=footer&reversal=true" alt="footer" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=waving&color=0:fde68a%2C100:F59E0B&height=80&section=footer&reversal=true" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:F59E0B%2C100:fde68a&height=80&section=footer&reversal=true" alt="footer" />
 </picture>
 
 </div>
