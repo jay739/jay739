@@ -4,12 +4,13 @@ on:
   schedule:
     - cron: "0 */8 * * *"
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 permissions:
   contents: write
+
+concurrency:
+  group: metrics-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   github-metrics:
@@ -40,6 +41,7 @@ jobs:
 
   habits:
     name: Coding habits
+    needs: github-metrics
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -57,6 +59,7 @@ jobs:
 
   topics:
     name: Topics
+    needs: habits
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -73,6 +76,7 @@ jobs:
 
   achievements:
     name: Achievements
+    needs: topics
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -91,6 +95,7 @@ jobs:
 
   repositories:
     name: Featured repositories
+    needs: achievements
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -110,6 +115,7 @@ jobs:
 
   notable:
     name: Notable contributions
+    needs: repositories
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
