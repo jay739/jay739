@@ -328,7 +328,7 @@
                                     </svg>
                                     <div class="name">
                                         <span>jay739/claude-memory-checkpoint</span>
-                                        <span>created 5 days ago</span>
+                                        <span>created 6 days ago</span>
                                     </div>
                                 </div>
                                 <div class="field description">A Claude Code hook that summarizes a long chat into project memory every N tool calls, so parallel/future chats load the summary instead of re-deriving.</div>
@@ -381,7 +381,7 @@
                                     </svg>
                                     <div class="name">
                                         <span>jay739/claude-autoformat</span>
-                                        <span>created 5 days ago</span>
+                                        <span>created 6 days ago</span>
                                     </div>
                                 </div>
                                 <div class="field description">Auto-format files the moment Claude Code edits them, using whatever formatter your project already has (black/prettier/gofmt).</div>
