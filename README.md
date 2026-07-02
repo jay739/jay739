@@ -33,6 +33,7 @@
 <br/>
 
 <!-- Live Batcave status — hits jay739.dev/api/badges/batcave -->
+
 <a href="https://jay739.dev"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fjay739.dev%2Fapi%2Fbadges%2Fbatcave&style=for-the-badge" alt="Batcave live status" /></a>
 
 </div>
@@ -43,11 +44,12 @@
 <!--                             NOW                                -->
 <!-- ────────────────────────────────────────────────────────────── -->
 
-> <img src="https://api.iconify.design/lucide/sparkles.svg?color=%23f59e0b&height=18" align="center" />&nbsp;**Now:** Fine-tuning local LLMs on Batcave · scaling the RAG podcast pipeline · writing the *Home Server Chronicles* Docker series.
+> <img src="https://api.iconify.design/lucide/sparkles.svg?color=%23f59e0b&height=18" align="center" />&nbsp;**Now:** Fine-tuning local LLMs on Batcave · scaling the RAG podcast pipeline · writing the _Home Server Chronicles_ Docker series.
 
 <br/>
 
 <a id="about"></a>
+
 ## <img src="https://api.iconify.design/lucide/diamond.svg?color=%23f59e0b&height=22" align="center" /> About
 
 I'm an ML/AI Engineer & Data Scientist building production ML systems, RAG pipelines, and self-hosted AI infrastructure. I design end-to-end solutions — from model training and LLM fine-tuning to cloud deployment and real-time monitoring.
@@ -55,10 +57,10 @@ I'm an ML/AI Engineer & Data Scientist building production ML systems, RAG pipel
 I also operate **Batcave** — my solo-built, 56-container private AI server running local LLMs, RAG, and ML inference at 99.9% uptime ([live status](https://jay739.dev/api/badges/batcave)).
 
 ```yaml
-education:   M.S. Data Science, UMBC (GPA 3.91 / 4.0)
-focus:       LLMs · RAG · MLOps · Self-hosted infrastructure
-homelab:     56 containers · 36+ services · 99.9% uptime
-based_in:    Maryland, USA
+education: M.S. Data Science, UMBC (GPA 3.91 / 4.0)
+focus: LLMs · RAG · MLOps · Self-hosted infrastructure
+homelab: 56 containers · 36+ services · 99.9% uptime
+based_in: Maryland, USA
 ```
 
 <br/>
@@ -72,17 +74,18 @@ based_in:    Maryland, USA
 <br/>
 
 <a id="batcave"></a>
+
 ## <img src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=22" align="center" /> Batcave — My Private AI Cloud
 
 > A solo-managed homelab on a Beelink mini-PC. Self-hosted from scratch. Live at [**jay739.dev**](https://jay739.dev).
 
 <div align="center">
 
-| Metric | Value | Metric | Value |
-| :---: | :---: | :---: | :---: |
-| Containers | `56` | Self-hosted Services | `36+` |
-| Uptime | `99.9%` | Local LLMs | `5+ models` |
-| Hybrid-cloud Latency | `−60%` | Multi-DB Layer | `177 GB` |
+|        Metric        |  Value  |        Metric        |    Value    |
+| :------------------: | :-----: | :------------------: | :---------: |
+|      Containers      |  `56`   | Self-hosted Services |    `36+`    |
+|        Uptime        | `99.9%` |      Local LLMs      | `5+ models` |
+| Hybrid-cloud Latency | `−60%`  |    Multi-DB Layer    |  `177 GB`   |
 
 </div>
 
@@ -150,6 +153,7 @@ Proof links: [Live Batcave status](https://jay739.dev/api/badges/batcave) · [Ba
 <br/>
 
 <a id="featured-projects"></a>
+
 ## <img src="https://api.iconify.design/lucide/rocket.svg?color=%23f59e0b&height=22" align="center" /> Featured Projects
 
 <table>
@@ -157,6 +161,7 @@ Proof links: [Live Batcave status](https://jay739.dev/api/badges/batcave) · [Ba
 <td width="50%" valign="top">
 
 #### <img src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Batcave — Personal AI Cloud](https://jay739.dev)
+
 Solo-built private AI infra on a Beelink mini-PC. 56 containers, 36+ services, local LLMs via Ollama, RAG pipelines, SSO, full observability.
 <br/><br/>
 `Docker` · `Ollama` · `LangChain` · `Authentik` · `Tailscale`
@@ -165,6 +170,7 @@ Solo-built private AI infra on a Beelink mini-PC. 56 containers, 36+ services, l
 <td width="50%" valign="top">
 
 #### <img src="https://api.iconify.design/lucide/mic.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [RAG Podcast Generator](https://github.com/jay739/PodcastAI)
+
 PDF → LLM → TTS pipeline that converts books into character-voiced podcasts. 98% OCR accuracy, 4× throughput via LoRA fine-tuning.
 <br/><br/>
 `RAG` · `LangChain` · `Ollama` · `OCR` · `TTS`
@@ -175,6 +181,7 @@ PDF → LLM → TTS pipeline that converts books into character-voiced podcasts.
 <td width="50%" valign="top">
 
 #### <img src="https://api.iconify.design/lucide/landmark.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Anti-Money Laundering Detection](https://jay739.dev/projects)
+
 PySpark ML pipeline on IBM's 32M-row HI-Medium AML dataset. Temporal feature engineering, severe class imbalance (0.23%) — **0.998 F1**.
 <br/><br/>
 `PySpark` · `MLlib` · `Random Forest` · `Financial AI`
@@ -183,6 +190,7 @@ PySpark ML pipeline on IBM's 32M-row HI-Medium AML dataset. Temporal feature eng
 <td width="50%" valign="top">
 
 #### <img src="https://api.iconify.design/lucide/flame.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Wildfire Detection](https://github.com/jay739/forest-fire-detection)
+
 Benchmarked 8 CNN architectures on the FLAME dataset using RGB+IR dual-stream fusion. Best model: ResNet18 at **0.94 micro-F1**.
 <br/><br/>
 `CNN` · `Computer Vision` · `Satellite Imagery`
@@ -193,6 +201,7 @@ Benchmarked 8 CNN architectures on the FLAME dataset using RGB+IR dual-stream fu
 <td width="50%" valign="top">
 
 #### <img src="https://api.iconify.design/lucide/stethoscope.svg?color=%23f59e0b&height=18" align="center" />&nbsp; Histopathologic Cancer Detection
+
 Compared custom CNN vs ResNet18 / VGG16 / EfficientNet on 220k+ pathology patches. Transfer learning best at **0.94 AUC**.
 <br/><br/>
 `PyTorch` · `Transfer Learning` · `Medical AI`
@@ -201,6 +210,7 @@ Compared custom CNN vs ResNet18 / VGG16 / EfficientNet on 220k+ pathology patche
 <td width="50%" valign="top">
 
 #### <img src="https://api.iconify.design/lucide/trending-up.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Financial Crisis Analysis](https://github.com/jay739/financial-analysis)
+
 FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis periods (2008, COVID-19).
 <br/><br/>
 `FinBERT` · `Monte Carlo` · `yFinance` · `Plotly`
@@ -242,6 +252,7 @@ FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis
 <br/>
 
 <a id="github-highlights"></a>
+
 ## <img src="https://api.iconify.design/lucide/trending-up.svg?color=%23f59e0b&height=22" align="center" /> GitHub Highlights
 
 <div align="center">
@@ -253,16 +264,16 @@ FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis
 <div align="center">
 
 <a href="https://github.com/jay739/PodcastAI">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=jay739&repo=PodcastAI&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A" alt="PodcastAI repository card" />
+  <img src="https://raw.githubusercontent.com/jay739/jay739/main/profile/pin-PodcastAI.svg" alt="PodcastAI repository card" />
 </a>
 <a href="https://github.com/jay739/portfolio-site">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=jay739&repo=portfolio-site&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A" alt="portfolio-site repository card" />
+  <img src="https://raw.githubusercontent.com/jay739/jay739/main/profile/pin-portfolio-site.svg" alt="portfolio-site repository card" />
 </a>
 <a href="https://github.com/jay739/omnifin">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=jay739&repo=omnifin&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A" alt="omnifin repository card" />
+  <img src="https://raw.githubusercontent.com/jay739/jay739/main/profile/pin-omnifin.svg" alt="omnifin repository card" />
 </a>
 <a href="https://github.com/jay739/autonomous-robot-navigation-system">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=jay739&repo=autonomous-robot-navigation-system&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A" alt="autonomous-robot-navigation-system repository card" />
+  <img src="https://raw.githubusercontent.com/jay739/jay739/main/profile/pin-autonomous-robot-navigation-system.svg" alt="autonomous-robot-navigation-system repository card" />
 </a>
 
 </div>
@@ -287,6 +298,7 @@ FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis
 <br/>
 
 <a id="latest-from-the-blog"></a>
+
 ## <img src="https://api.iconify.design/lucide/rss.svg?color=%23f59e0b&height=22" align="center" /> Latest from the Blog
 
 <!-- BLOG-POST-LIST:START --><br>&bull; <a href="https://jay739.dev/blog/ai-quizzes-me-claude-code-hooks">I Made My AI Ambush Me With Pop Quizzes</a> <sub><i>May 29, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/lifetime-software-deals">The Quiet Math of Lifetime Software Deals</a> <sub><i>May 12, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/homelab-lessons">What Running a Homelab Actually Teaches You That Work Doesn&#39;t</a> <sub><i>Apr 24, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/docker-series-part5">Home Server Chronicles: My Docker-Powered Ecosystem — Part 5</a> <sub><i>Apr 06, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/optimizing-docker-arm64">Optimizing Docker on ARM64: From Emulation Hell to Native Performance</a> <sub><i>Apr 03, 2026</i></sub><!-- BLOG-POST-LIST:END -->
@@ -296,6 +308,7 @@ FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis
 <br/>
 
 <a id="resume"></a>
+
 ## <img src="https://api.iconify.design/lucide/file-text.svg?color=%23f59e0b&height=22" align="center" /> Resume
 
 <div align="center">

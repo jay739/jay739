@@ -1,0 +1,56 @@
+name: Update pin cards
+
+on:
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Generate PodcastAI pin card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: pin
+          options: username=jay739&repo=PodcastAI&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A
+          path: profile/pin-PodcastAI.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate portfolio-site pin card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: pin
+          options: username=jay739&repo=portfolio-site&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A
+          path: profile/pin-portfolio-site.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate omnifin pin card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: pin
+          options: username=jay739&repo=omnifin&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A
+          path: profile/pin-omnifin.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate autonomous-robot-navigation-system pin card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: pin
+          options: username=jay739&repo=autonomous-robot-navigation-system&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A
+          path: profile/pin-autonomous-robot-navigation-system.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit cards
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/*.svg
+          git commit -m "Update pin cards - [Skip GitHub Action]" || exit 0
+          git push
