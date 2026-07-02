@@ -27,8 +27,7 @@
                                         <span>created Mar 09 2025</span>
                                     </div>
                                 </div>
-                                <div class="field description">
-                                </div>
+                                <div class="field description">PDF-to-podcast pipeline using LLMs and TTS to convert books into character-voiced audio, with 98% OCR accuracy</div>
                                 <div class="field infos">
                                     <div class="language">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
@@ -81,7 +80,7 @@
                                         <span>created Jun 12 2025</span>
                                     </div>
                                 </div>
-                                <div class="field description">This repository contains my personal portfolio website and blog, built with Next.js, TypeScript, and modern web technologies. It showcases my projects, technical articles, and experiments in AI, automation, and DevOps.</div>
+                                <div class="field description">Personal portfolio and blog built with Next.js and TypeScript, showcasing AI, automation, and DevOps projects.</div>
                                 <div class="field infos">
                                     <div class="language">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
@@ -128,7 +127,7 @@
                                         <span>created Mar 29 2026</span>
                                     </div>
                                 </div>
-                                <div class="field description">Jellyfin user management — hard fork of hrfee/jfa-go with Jellyfin-powered announcements, redesigned emails, and security hardening</div>
+                                <div class="field description">Jellyfin user management — hard fork of hrfee/jfa-go, redesigned</div>
                                 <div class="field infos">
                                     <div class="language">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
