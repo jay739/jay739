@@ -1,8 +1,8 @@
 
       <svg
         width="400"
-        height="150"
-        viewBox="0 0 400 150"
+        height="140"
+        viewBox="0 0 400 140"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         role="img"
@@ -114,10 +114,10 @@
     
 
     <text class="description" x="25" y="-5"> 
-      <tspan dy="1.2em" x="25">Jellyfin user management &#8212; hard fork of hrfee/jfa-go with</tspan><tspan dy="1.2em" x="25">Jellyfin-powered announcements, redesigned emails, and</tspan><tspan dy="1.2em" x="25">security hardening</tspan>
+      <tspan dy="1.2em" x="25">Jellyfin user management &#8212; hard fork of hrfee/jfa-go,</tspan><tspan dy="1.2em" x="25">redesigned</tspan>
     </text>
 
-    <g transform="translate(30, 75)">
+    <g transform="translate(30, 65)">
       <g transform="translate(0, 0)">
     <g data-testid="primary-lang">
       <circle data-testid="lang-color" cx="0" cy="-5" r="6" fill="#00ADD8" />
@@ -126,7 +126,7 @@
     </g>
     </g>
     
-  <svg x="0" y="0"><g transform="translate(-3, 98)">
+  <svg x="0" y="0"><g transform="translate(-3, 88)">
       
     </g></svg>
     
