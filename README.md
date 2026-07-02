@@ -44,7 +44,7 @@
 <!--                             NOW                                -->
 <!-- ────────────────────────────────────────────────────────────── -->
 
-> <img src="https://api.iconify.design/lucide/sparkles.svg?color=%23f59e0b&height=18" align="center" />&nbsp;**Now:** Fine-tuning local LLMs on Batcave · scaling the RAG podcast pipeline · writing the _Home Server Chronicles_ Docker series.
+> <img src="https://api.iconify.design/lucide/sparkles.svg?color=%23f59e0b&height=18" align="center" />&nbsp;**Now:** Fine-tuning local LLMs on Batcave · scaling the RAG podcast pipeline · planning the next _Home Server Chronicles_ entry.
 
 <br/>
 
@@ -224,7 +224,9 @@ FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis
 
 <br/>
 
-## <img src="https://api.iconify.design/lucide/activity.svg?color=%23f59e0b&height=22" align="center" /> GitHub Metrics
+<a id="github-highlights"></a>
+
+## <img src="https://api.iconify.design/lucide/activity.svg?color=%23f59e0b&height=22" align="center" /> GitHub Activity
 
 <div align="center">
 
@@ -234,29 +236,7 @@ FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis
   <img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.svg" alt="Metrics" width="600" />
 </picture>
 
-<details>
-<summary><b>More: coding habits & topics</b></summary>
-<br/>
-<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.habits.svg" alt="Coding habits" width="600" />
 <br/><br/>
-<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.topics.svg" alt="Topics" width="600" />
-<br/><br/>
-<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.achievements.svg" alt="Achievements" width="600" />
-<br/><br/>
-<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.repositories.svg" alt="Featured repositories metrics" width="600" />
-<br/><br/>
-<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.notable.svg" alt="Notable contributions" width="600" />
-</details>
-
-</div>
-
-<br/>
-
-<a id="github-highlights"></a>
-
-## <img src="https://api.iconify.design/lucide/trending-up.svg?color=%23f59e0b&height=22" align="center" /> GitHub Highlights
-
-<div align="center">
 
 <img src="https://streak-stats.demolab.com?user=jay739&theme=dark&background=0F172A&ring=F59E0B&fire=F59E0B&currStreakLabel=F59E0B&sideNums=f8fafc&currStreakNum=f8fafc&dates=94a3b8&border=334155" alt="GitHub streak" width="600" />
 
@@ -276,6 +256,24 @@ FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis
 <a href="https://github.com/jay739/autonomous-robot-navigation-system">
   <img src="https://raw.githubusercontent.com/jay739/jay739/main/profile/pin-autonomous-robot-navigation-system.svg" alt="autonomous-robot-navigation-system repository card" />
 </a>
+
+</div>
+
+<div align="center">
+
+<details>
+<summary><b>More: coding habits & topics</b></summary>
+<br/>
+<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.habits.svg" alt="Coding habits" width="600" />
+<br/><br/>
+<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.topics.svg" alt="Topics" width="600" />
+<br/><br/>
+<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.achievements.svg" alt="Achievements" width="600" />
+<br/><br/>
+<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.repositories.svg" alt="Featured repositories metrics" width="600" />
+<br/><br/>
+<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.notable.svg" alt="Notable contributions" width="600" />
+</details>
 
 </div>
 
