@@ -327,7 +327,7 @@
                                     </svg>
                                     <div class="name">
                                         <span>jay739/openhaze</span>
-                                        <span>created 24 hours ago</span>
+                                        <span>created 1 day ago</span>
                                     </div>
                                 </div>
                                 <div class="field description">Native, dependency-free window-dimming utility for macOS and Windows, inspired by HazeOver</div>
@@ -428,7 +428,7 @@
                                     </svg>
                                     <div class="name">
                                         <span>jay739/claude-memory-checkpoint</span>
-                                        <span>created 28 days ago</span>
+                                        <span>created 29 days ago</span>
                                     </div>
                                 </div>
                                 <div class="field description">A Claude Code hook that summarizes a long chat into project memory every N tool calls, so parallel/future chats load the summary instead of re-deriving.</div>
