@@ -17,8 +17,8 @@
 
   <circle cx="300" cy="95" r="38" fill="none" stroke="#F59E0B" stroke-width="4" opacity="0.5" />
   <text class="label" x="300" y="40">Current Streak</text>
-  <text class="num" x="300" y="103" fill="#F59E0B">1</text>
-  <text class="date" x="300" y="150">Jul 10, 2026 - Jul 11, 2026</text>
+  <text class="num" x="300" y="103" fill="#F59E0B">0</text>
+  <text class="date" x="300" y="150">-</text>
 
   <line class="divider" x1="400" y1="30" x2="400" y2="170" />
 
