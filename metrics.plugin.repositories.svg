@@ -327,7 +327,7 @@
                                     </svg>
                                     <div class="name">
                                         <span>jay739/scribe</span>
-                                        <span>created 5 hours ago</span>
+                                        <span>created 12 hours ago</span>
                                     </div>
                                 </div>
                                 <div class="field description">Self-hosted, GPU-accelerated transcription with speaker labels. An open-source Otter.ai alternative: faster-whisper large-v3 + pyannote diarization, web UI, API and CLI.</div>
@@ -380,7 +380,7 @@
                                     </svg>
                                     <div class="name">
                                         <span>jay739/wakeharder</span>
-                                        <span>created 5 hours ago</span>
+                                        <span>created 12 hours ago</span>
                                     </div>
                                 </div>
                                 <div class="field description">Open-source Android alarm app that only disarms after you complete a task: solve a math problem or scan a pre-registered barcode/QR. Kotlin + Jetpack Compose.</div>
