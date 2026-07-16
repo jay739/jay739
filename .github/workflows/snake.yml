@@ -17,7 +17,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Generate github-contribution-grid-snake.svg
-        uses: Platane/snk/svg-only@v3
+        uses: jay739/snk/svg-only@d39036086dc949f26d50cfab2819bdad2430d606
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
