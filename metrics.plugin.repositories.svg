@@ -386,7 +386,7 @@
                                     </svg>
                                     <div class="name">
                                         <span>jay739/memory-rag-proxy</span>
-                                        <span>created 1 hour ago</span>
+                                        <span>created 8 hours ago</span>
                                     </div>
                                 </div>
                                 <div class="field description">Health-checked, failover-aware HTTP proxy for local Ollama/MLX inference across multiple hosts, with Markdown-note RAG injection</div>
@@ -439,7 +439,7 @@
                                     </svg>
                                     <div class="name">
                                         <span>jay739/scribe</span>
-                                        <span>created 3 days ago</span>
+                                        <span>created 4 days ago</span>
                                     </div>
                                 </div>
                                 <div class="field description">Self-hosted, GPU-accelerated transcription with speaker labels. An open-source Otter.ai alternative: faster-whisper large-v3 + pyannote diarization, web UI, API and CLI.</div>
