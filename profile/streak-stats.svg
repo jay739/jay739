@@ -10,19 +10,19 @@
   <rect class="bg" x="0.5" y="0.5" width="599" height="199" rx="10" />
 
   <text class="label" x="100" y="40">Total Contributions</text>
-  <text class="num" x="100" y="95">383</text>
+  <text class="num" x="100" y="95">398</text>
   <text class="date" x="100" y="150">Jan 1, 2016 - present</text>
 
   <line class="divider" x1="200" y1="30" x2="200" y2="170" />
 
   <circle cx="300" cy="95" r="38" fill="none" stroke="#F59E0B" stroke-width="4" opacity="0.5" />
   <text class="label" x="300" y="40">Current Streak</text>
-  <text class="num" x="300" y="103" fill="#F59E0B">6</text>
-  <text class="date" x="300" y="150">Jul 13, 2026 - Jul 19, 2026</text>
+  <text class="num" x="300" y="103" fill="#F59E0B">7</text>
+  <text class="date" x="300" y="150">Jul 13, 2026 - Jul 20, 2026</text>
 
   <line class="divider" x1="400" y1="30" x2="400" y2="170" />
 
   <text class="label" x="500" y="40">Longest Streak</text>
-  <text class="num" x="500" y="95">6</text>
-  <text class="date" x="500" y="150">Jun 6, 2026 - Jun 11, 2026</text>
+  <text class="num" x="500" y="95">7</text>
+  <text class="date" x="500" y="150">Jul 13, 2026 - Jul 19, 2026</text>
 </svg>
