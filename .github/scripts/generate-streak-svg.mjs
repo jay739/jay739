@@ -3,15 +3,28 @@ import { writeFile } from "node:fs/promises";
 const USERNAME = process.env.GITHUB_REPOSITORY_OWNER;
 const TOKEN = process.env.GITHUB_TOKEN;
 const OUT_PATH = process.env.OUT_PATH || "profile/streak-stats.svg";
+const OUT_PATH_LIGHT = process.env.OUT_PATH_LIGHT || "profile/streak-stats-light.svg";
 
-const COLORS = {
-  background: "#0F172A",
-  border: "#334155",
-  ring: "#F59E0B",
-  fire: "#F59E0B",
-  label: "#F59E0B",
-  nums: "#f8fafc",
-  dates: "#94a3b8",
+const THEMES = {
+  dark: {
+    background: "#0F172A",
+    border: "#334155",
+    ring: "#F59E0B",
+    fire: "#F59E0B",
+    label: "#F59E0B",
+    nums: "#f8fafc",
+    dates: "#94a3b8",
+  },
+  // Amber 700 instead of 500 so labels keep readable contrast on white.
+  light: {
+    background: "#ffffff",
+    border: "#e2e8f0",
+    ring: "#d97706",
+    fire: "#b45309",
+    label: "#b45309",
+    nums: "#0f172a",
+    dates: "#475569",
+  },
 };
 
 async function fetchContributionYears() {
@@ -137,9 +150,8 @@ function fmtRange(range) {
   return start === end ? fmtDate(start) : `${fmtDate(start)} - ${fmtDate(end)}`;
 }
 
-function renderSvg(stats) {
+function renderSvg(stats, c) {
   const { total, current, longest, currentRange, longestRange, firstDate, lastDate } = stats;
-  const c = COLORS;
 
   return `<svg width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
   <style>
@@ -181,10 +193,11 @@ async function main() {
   const days = calendars.flat();
 
   const stats = computeStreaks(days);
-  const svg = renderSvg(stats);
 
-  await writeFile(OUT_PATH, svg, "utf8");
+  await writeFile(OUT_PATH, renderSvg(stats, THEMES.dark), "utf8");
   console.log(`Wrote ${OUT_PATH}`);
+  await writeFile(OUT_PATH_LIGHT, renderSvg(stats, THEMES.light), "utf8");
+  console.log(`Wrote ${OUT_PATH_LIGHT}`);
   console.log(stats);
 }
 

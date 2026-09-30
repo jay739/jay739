@@ -8,6 +8,8 @@ on:
 permissions:
   contents: write
 
+# Each repo gets a dark card (pin-<repo>.svg) and a light card (pin-<repo>-light.svg);
+# README.md picks one per viewer theme with <picture>.
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,12 +25,28 @@ jobs:
           path: profile/pin-PodcastAI.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate PodcastAI pin card (light)
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: pin
+          options: username=jay739&repo=PodcastAI&theme=default&title_color=b45309&icon_color=b45309&text_color=1f2937&border_color=e2e8f0&bg_color=ffffff
+          path: profile/pin-PodcastAI-light.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Generate portfolio-site pin card
         uses: stats-organization/github-readme-stats-action@v2
         with:
           card: pin
           options: username=jay739&repo=portfolio-site&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A
           path: profile/pin-portfolio-site.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate portfolio-site pin card (light)
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: pin
+          options: username=jay739&repo=portfolio-site&theme=default&title_color=b45309&icon_color=b45309&text_color=1f2937&border_color=e2e8f0&bg_color=ffffff
+          path: profile/pin-portfolio-site-light.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate omnifin pin card
@@ -39,12 +57,28 @@ jobs:
           path: profile/pin-omnifin.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate omnifin pin card (light)
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: pin
+          options: username=jay739&repo=omnifin&theme=default&title_color=b45309&icon_color=b45309&text_color=1f2937&border_color=e2e8f0&bg_color=ffffff
+          path: profile/pin-omnifin-light.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Generate autonomous-robot-navigation-system pin card
         uses: stats-organization/github-readme-stats-action@v2
         with:
           card: pin
           options: username=jay739&repo=autonomous-robot-navigation-system&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A
           path: profile/pin-autonomous-robot-navigation-system.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate autonomous-robot-navigation-system pin card (light)
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: pin
+          options: username=jay739&repo=autonomous-robot-navigation-system&theme=default&title_color=b45309&icon_color=b45309&text_color=1f2937&border_color=e2e8f0&bg_color=ffffff
+          path: profile/pin-autonomous-robot-navigation-system-light.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit cards
