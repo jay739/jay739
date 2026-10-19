@@ -122,7 +122,7 @@
     
 
     <text class="description" x="25" y="-5"> 
-      <tspan dy="1.2em" x="25">PDF-to-podcast pipeline using LLMs and TTS to convert</tspan><tspan dy="1.2em" x="25">books into character-voiced audio, with 98% OCR accuracy</tspan>
+      <tspan dy="1.2em" x="25">PDF-to-podcast pipeline that turns books into</tspan><tspan dy="1.2em" x="25">character-voiced audio with LLMs and TTS</tspan>
     </text>
 
     <g transform="translate(30, 65)">
