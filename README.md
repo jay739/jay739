@@ -230,6 +230,7 @@ FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis
 <!-- RELEASES:START -->
 - [**openhaze** v0.2.1](https://github.com/jay739/openhaze/releases/tag/v0.2.1) · Native, dependency-free window-dimming utility for macOS and Windows, inspired by HazeOver <sub><i>Oct 19, 2026</i></sub>
 - [**sitrep** v0.1.0](https://github.com/jay739/sitrep/releases/tag/v0.1.0) · Self-hosted status page over Uptime Kuma: incidents, RSS, Telegram notifications <sub><i>Sep 30, 2026</i></sub>
+- [**cadence** v0.1.0](https://github.com/jay739/cadence/releases/tag/v0.1.0) · Per-song music request service: search, request, and auto-fulfil single tracks into a self-hosted library <sub><i>Sep 25, 2026</i></sub>
 - [**omnifin** v1.4.1](https://github.com/jay739/omnifin/releases/tag/v1.4.1) · Jellyfin user management, a redesigned hard fork of hrfee/jfa-go <sub><i>Sep 25, 2026</i></sub>
 - [**sitediff** v0.1.0](https://github.com/jay739/sitediff/releases/tag/v0.1.0) · Compare the visible content of two renderings of the same page, across environments. <sub><i>Aug 19, 2026</i></sub>
 - [**Omnifin-Windows** v1.0.0](https://github.com/jay739/Omnifin-Windows/releases/tag/v1.0.0) · Native Windows desktop client for Omnifin, the Jellyfin user management server <sub><i>Jul 3, 2026</i></sub>
