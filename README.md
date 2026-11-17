@@ -170,18 +170,18 @@ Solo-built private AI infra on a Beelink mini-PC. 56 containers, 36+ services, l
 
 #### <img src="https://api.iconify.design/lucide/mic.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [RAG Podcast Generator](https://github.com/jay739/PodcastAI)
 
-PDF → LLM → TTS pipeline that converts books into character-voiced podcasts. 98% OCR accuracy, 4× throughput via LoRA fine-tuning.
+PDF → LLM → TTS pipeline that turns books into character-voiced podcasts. PyMuPDF extracts the text, FAISS retrieves the passages, Llama 3.1 8B writes the script through Ollama, and Bark voices each speaker.
 <br/><br/>
-`RAG` · `LangChain` · `Ollama` · `OCR` · `TTS`
+`RAG` · `FAISS` · `Ollama` · `Bark TTS` · `Electron`
 
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
 
-#### <img src="https://api.iconify.design/lucide/landmark.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Anti-Money Laundering Detection](https://jay739.dev/projects)
+#### <img src="https://api.iconify.design/lucide/landmark.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Anti-Money Laundering Detection](https://github.com/jay739/anti-money-laundering-detection)
 
-PySpark ML pipeline on IBM's 32M-row HI-Medium AML dataset. Temporal feature engineering, severe class imbalance (0.23%), **0.998 F1**.
+PySpark ML pipeline on IBM's 32M-row HI-Medium AML dataset, with temporal feature engineering at a 0.23% laundering rate. The Random Forest baseline reaches 99.9% accuracy but only **ROC AUC 0.50**, so the repo reports it as chance-level and lists the fixes.
 <br/><br/>
 `PySpark` · `MLlib` · `Random Forest` · `Financial AI`
 
@@ -190,9 +190,9 @@ PySpark ML pipeline on IBM's 32M-row HI-Medium AML dataset. Temporal feature eng
 
 #### <img src="https://api.iconify.design/lucide/flame.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Wildfire Detection](https://github.com/jay739/forest-fire-detection)
 
-Benchmarked 8 CNN architectures on the FLAME dataset using RGB+IR dual-stream fusion. Best model: ResNet18 at **0.94 micro-F1**.
+Benchmarked 8 models on the FLAME aerial dataset in RGB, thermal IR and RGB+IR fusion. For the pretrained backbones, fusion and RGB alone finished within one test image of each other. Best: ResNet-18 on RGB at **99.8%** test accuracy, on a 1% subset (about 107 test images).
 <br/><br/>
-`CNN` · `Computer Vision` · `Satellite Imagery`
+`CNN` · `Computer Vision` · `Aerial Imagery` · `Thermal IR`
 
 </td>
 </tr>
@@ -210,9 +210,9 @@ Compared custom CNN vs ResNet18 / VGG16 / EfficientNet on 220k+ pathology patche
 
 #### <img src="https://api.iconify.design/lucide/trending-up.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Financial Crisis Analysis](https://github.com/jay739/financial-analysis)
 
-FinBERT sentiment + Monte Carlo VaR across S&P 500 sectors and historical crisis periods (2008, COVID-19).
+Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM) simulation and FinBERT news sentiment, with backtesting windows for the 2008 crash and the 2020 COVID-19 crash.
 <br/><br/>
-`FinBERT` · `Monte Carlo` · `yFinance` · `Plotly`
+`FinBERT` · `Monte Carlo` · `Streamlit` · `yFinance` · `Plotly`
 
 </td>
 </tr>
