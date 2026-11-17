@@ -42,12 +42,12 @@
 
 I'm an ML/AI Engineer & Data Scientist, and this GitHub is where my projects live: RAG pipelines, LLM systems, and self-hosted AI infrastructure. I build them end to end, from model training and LLM fine-tuning to deployment and real-time monitoring.
 
-The biggest one is **Batcave**, my solo-built, 56-container private AI server running local LLMs, RAG, and ML inference at 99.9% uptime ([live status](https://jay739.dev/api/badges/batcave)).
+The biggest one is **Batcave**, my solo-built private cloud: a Beelink mini-PC running <!--hl:batcave_containers-->63<!--/hl--> containers, linked over Tailscale to an Oracle Cloud edge server and an always-on Mac Mini M4 that serves the local LLMs ([live status](https://jay739.dev/api/badges/batcave)).
 
 ```yaml
 education: M.S. Data Science, UMBC (GPA 3.91 / 4.0)
 focus: LLMs · RAG · MLOps · Self-hosted infrastructure
-homelab: 56 containers · 36+ services · 99.9% uptime
+homelab: Batcave, self-hosted and drift-checked (live numbers below)
 based_in: Maryland, USA
 ```
 
@@ -69,15 +69,21 @@ based_in: Maryland, USA
 
 <div align="center">
 
-|        Metric        |  Value  |        Metric        |    Value    |
-| :------------------: | :-----: | :------------------: | :---------: |
-|      Containers      |  `56`   | Self-hosted Services |    `36+`    |
-|        Uptime        | `99.9%` |      Local LLMs      | `5+ models` |
-| Hybrid-cloud Latency | `−60%`  |    Multi-DB Layer    |  `177 GB`   |
+<!-- Values between hl markers are rewritten by .github/workflows/homelab-stats.yml. prettier-ignore keeps the formatter from padding every row to marker width. -->
+<!-- prettier-ignore -->
+| Metric | Value | Metric | Value |
+| :-: | :-: | :-: | :-: |
+| Containers on Batcave | <!--hl:batcave_containers-->`63`<!--/hl--> | Containers across the homelab | <!--hl:homelab_containers-->`87`<!--/hl--> |
+| Compose services | <!--hl:services_declared-->`62`<!--/hl--> in <!--hl:compose_files-->`8`<!--/hl--> stacks | HTTPS sites | <!--hl:https_sites-->`38`<!--/hl--> |
+| Health-checked | <!--hl:services_healthchecked-->`54`<!--/hl--> of <!--hl:services_declared-->`62`<!--/hl--> | Memory-capped | <!--hl:services_mem_limited-->`62`<!--/hl--> of <!--hl:services_declared-->`62`<!--/hl--> |
+| Machines on the mesh | <!--hl:hosts-->`4`<!--/hl--> | LLM inference | `Mac Mini M4` |
+| Hybrid-cloud latency | `−60%` | Multi-DB layer | `177 GB` |
+
+<sub>Counts are generated from my homelab's own docs, which an hourly drift check rebuilds from the live Docker daemon and proxy config. Last architecture change: <!--hl:docs_updated-->Nov 7, 2026<!--/hl-->.</sub>
 
 </div>
 
-Stack: `Docker` · `Ollama` · `LangChain` · `Authentik SSO` · `Tailscale` · `Netdata` · `Nginx` · `PostgreSQL` · `MariaDB` · `Redis` · `Meilisearch`
+Stack: `Docker` · `Ollama` · `Authentik SSO` · `Tailscale` · `Netdata` · `Nginx` · `PostgreSQL` · `MariaDB` · `Redis` · `Meilisearch`
 
 Proof links: [Live Batcave status](https://jay739.dev/api/badges/batcave) · [Batcave architecture series](https://jay739.dev/blog/docker-series-part5) · [OCI migration + latency notes](https://jay739.dev/blog/migrating-do-to-oci)
 
@@ -161,9 +167,9 @@ Proof links: [Live Batcave status](https://jay739.dev/api/badges/batcave) · [Ba
 
 #### <img src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Batcave: Personal AI Cloud](https://jay739.dev)
 
-Solo-built private AI infra on a Beelink mini-PC. 56 containers, 36+ services, local LLMs via Ollama, RAG pipelines, SSO, full observability.
+Solo-built private cloud on a Beelink mini-PC: <!--hl:batcave_containers-->63<!--/hl--> containers, <!--hl:https_sites-->38<!--/hl--> HTTPS sites, Authentik SSO, Netdata monitoring with Telegram alerts, and local LLMs served from a Mac Mini M4 through Ollama.
 <br/><br/>
-`Docker` · `Ollama` · `LangChain` · `Authentik` · `Tailscale`
+`Docker` · `Ollama` · `Authentik` · `Tailscale` · `Netdata`
 
 </td>
 <td width="50%" valign="top">
