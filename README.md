@@ -42,7 +42,7 @@
 
 I'm an ML/AI Engineer & Data Scientist, and this GitHub is where my projects live: RAG pipelines, LLM systems, and self-hosted AI infrastructure. I build them end to end, from model training to deployment and real-time monitoring.
 
-The biggest one is **Batcave**, my solo-built private cloud: a Beelink mini-PC running <!--hl:batcave_containers-->63<!--/hl--> containers, linked over Tailscale to an Oracle Cloud edge server and an always-on Mac Mini M4 that serves the local LLMs ([live status](https://jay739.dev/api/badges/batcave)).
+The biggest one is **Batcave**, my solo-built private cloud: a Beelink mini-PC running <!--hl:batcave_containers-->62<!--/hl--> containers, linked over Tailscale to an Oracle Cloud edge server and an always-on Mac Mini M4 that serves the local LLMs ([live status](https://jay739.dev/api/badges/batcave)).
 
 ```yaml
 education: M.S. Data Science, UMBC (GPA 3.91 / 4.0)
@@ -73,7 +73,7 @@ based_in: Maryland, USA
 <!-- prettier-ignore -->
 | Metric | Value | Metric | Value |
 | :-: | :-: | :-: | :-: |
-| Containers on Batcave | <!--hl:batcave_containers-->`63`<!--/hl--> | Containers across the homelab | <!--hl:homelab_containers-->`87`<!--/hl--> |
+| Containers on Batcave | <!--hl:batcave_containers-->`62`<!--/hl--> | Containers across the homelab | <!--hl:homelab_containers-->`86`<!--/hl--> |
 | Compose services | <!--hl:services_declared-->`62`<!--/hl--> in <!--hl:compose_files-->`8`<!--/hl--> stacks | HTTPS sites | <!--hl:https_sites-->`38`<!--/hl--> |
 | Health-checked | <!--hl:services_healthchecked-->`54`<!--/hl--> of <!--hl:services_declared-->`62`<!--/hl--> | Memory-capped | <!--hl:services_mem_limited-->`62`<!--/hl--> of <!--hl:services_declared-->`62`<!--/hl--> |
 | Machines on the mesh | <!--hl:hosts-->`4`<!--/hl--> | LLM inference | `Mac Mini M4` |
@@ -180,7 +180,7 @@ Proof links: [Live Batcave status](https://jay739.dev/api/badges/batcave) · [Ba
 
 #### <img src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Batcave: Personal AI Cloud](https://jay739.dev)
 
-Solo-built private cloud on a Beelink mini-PC: <!--hl:batcave_containers-->63<!--/hl--> containers, <!--hl:https_sites-->38<!--/hl--> HTTPS sites, Authentik SSO, Netdata monitoring with Telegram alerts, and local LLMs served from a Mac Mini M4 through Ollama.
+Solo-built private cloud on a Beelink mini-PC: <!--hl:batcave_containers-->62<!--/hl--> containers, <!--hl:https_sites-->38<!--/hl--> HTTPS sites, Authentik SSO, Netdata monitoring with Telegram alerts, and local LLMs served from a Mac Mini M4 through Ollama.
 <br/><br/>
 `Docker` · `Ollama` · `Authentik` · `Tailscale` · `Netdata`
 

@@ -1,11 +1,48 @@
 {
   "docs_updated": "2026-11-24",
-  "batcave_containers": 63,
-  "homelab_containers": 87,
+  "batcave_containers": 62,
+  "homelab_containers": 86,
   "services_declared": 62,
   "compose_files": 8,
   "services_healthchecked": 54,
   "services_mem_limited": 62,
   "https_sites": 38,
-  "hosts": 4
+  "hosts": 4,
+  "undeclared_containers": 0,
+  "missing_containers": 0,
+  "docker_networks": 5,
+  "stacks": [
+    {
+      "name": "media",
+      "services": 25
+    },
+    {
+      "name": "infra",
+      "services": 14
+    },
+    {
+      "name": "extras",
+      "services": 12
+    },
+    {
+      "name": "core",
+      "services": 4
+    },
+    {
+      "name": "immich",
+      "services": 4
+    },
+    {
+      "name": "cadence",
+      "services": 1
+    },
+    {
+      "name": "slskd",
+      "services": 1
+    },
+    {
+      "name": "ytdlp-shim",
+      "services": 1
+    }
+  ]
 }
