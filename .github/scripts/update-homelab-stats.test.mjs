@@ -12,6 +12,7 @@ import path from "node:path";
 import {
   SOURCE,
   STAT_KEYS,
+  STACKS_KEY,
   SourceMissingError,
   SourceFormatError,
   ImplausibleValueError,
@@ -19,6 +20,8 @@ import {
   StatsError,
   parseStatsFile,
   validateStats,
+  validateStacks,
+  formatStacks,
   collectStats,
   lastDocsChange,
   formatDate,
@@ -35,6 +38,14 @@ const TOTALS = {
   services_mem_limited: 2,
   https_sites: 3,
   hosts: 3,
+  undeclared_containers: 0,
+  missing_containers: 1,
+  docker_networks: 2,
+  stacks: [
+    { name: "bravo", services: 2 },
+    { name: "alpha", services: 1 },
+    { name: "charlie-2", services: 1 },
+  ],
 };
 
 const STATS = { docs_updated: "2026-11-07", ...TOTALS };
@@ -55,7 +66,12 @@ test("parseStatsFile returns exactly the contract keys", () => {
 
 test("parseStatsFile ignores keys the contract does not name yet", () => {
   const extra = JSON.stringify({ ...TOTALS, timers: 7, networks: 5 });
-  assert.deepEqual(Object.keys(parseStatsFile(extra)), STAT_KEYS);
+  assert.deepEqual(Object.keys(parseStatsFile(extra)), [...STAT_KEYS, STACKS_KEY]);
+});
+
+test("parseStatsFile requires the stack list", () => {
+  const { stacks, ...noStacks } = TOTALS;
+  assert.throws(() => parseStatsFile(JSON.stringify(noStacks)), /has no stacks/);
 });
 
 test("parseStatsFile names every missing key", () => {
@@ -99,6 +115,55 @@ test("validateStats refuses non-integers, impossible ratios and bad dates", () =
 
 test("validateStats allows a zero for counts that can honestly be zero", () => {
   assert.doesNotThrow(() => validateStats({ ...STATS, services_healthchecked: 0 }));
+  assert.doesNotThrow(() => validateStats({ ...STATS, missing_containers: 0 }));
+});
+
+test("validateStats refuses zero Docker networks", () => {
+  assertThrowsClean(() => validateStats({ ...STATS, docker_networks: 0 }), ImplausibleValueError);
+});
+
+test("validateStacks sorts largest first, ties by name, and drops extra fields", () => {
+  const shuffled = [
+    { name: "charlie-2", services: 1, path: "/private/charlie-2.yml" },
+    { name: "alpha", services: 1 },
+    { name: "bravo", services: 2 },
+  ];
+  assert.deepEqual(validateStacks(shuffled, STATS), STATS.stacks);
+});
+
+test("validateStacks must agree with compose_files and services_declared", () => {
+  const short = STATS.stacks.slice(0, 2);
+  assertThrowsClean(() => validateStacks(short, STATS), ImplausibleValueError);
+  const heavy = [...STATS.stacks.slice(0, 2), { name: "charlie-2", services: 3 }];
+  assertThrowsClean(() => validateStacks(heavy, STATS), ImplausibleValueError);
+  const twice = [...STATS.stacks.slice(0, 2), { name: "alpha", services: 1 }];
+  assertThrowsClean(() => validateStacks(twice, STATS), ImplausibleValueError);
+});
+
+test("validateStacks refuses bad entries without quoting them", () => {
+  const withName = (name) => [...STATS.stacks.slice(0, 2), { name, services: 1 }];
+  for (const name of ["PRIVATE-Stack", "a<!--b", "has space", "`tick`", "", 7]) {
+    assertThrowsClean(() => validateStacks(withName(name), STATS), ImplausibleValueError, [
+      "PRIVATE",
+      "<!--",
+    ]);
+  }
+  const zero = [...STATS.stacks.slice(0, 2), { name: "charlie-2", services: 0 }];
+  assertThrowsClean(() => validateStacks(zero, STATS), ImplausibleValueError);
+  for (const stacks of [[], {}, null, "media 25"]) {
+    assertThrowsClean(() => validateStacks(stacks, STATS), ImplausibleValueError);
+  }
+});
+
+test("formatStacks renders one README line", () => {
+  assert.equal(formatStacks(STATS.stacks), "bravo 2 · alpha 1 · charlie-2 1");
+});
+
+test("renderReadme fills a stacks marker and stays idempotent", () => {
+  const readme = "Stacks: <!--hl:stacks-->old 1<!--/hl-->\n";
+  const once = renderReadme(readme, STATS);
+  assert.equal(once, "Stacks: <!--hl:stacks-->bravo 2 · alpha 1 · charlie-2 1<!--/hl-->\n");
+  assert.equal(renderReadme(once, STATS), once);
 });
 
 test("formatDate renders the README date style in UTC", () => {
@@ -146,7 +211,8 @@ test("renderReadme fails when there are no markers at all", () => {
 test("renderStatsJson writes every key in a fixed order with a trailing newline", () => {
   const json = renderStatsJson({ ...STATS });
   assert.ok(json.endsWith("}\n"));
-  assert.deepEqual(Object.keys(JSON.parse(json)), ["docs_updated", ...STAT_KEYS]);
+  assert.deepEqual(Object.keys(JSON.parse(json)), ["docs_updated", ...STAT_KEYS, STACKS_KEY]);
+  assert.deepEqual(JSON.parse(json).stacks, STATS.stacks);
   const shuffled = Object.fromEntries(Object.entries(STATS).reverse());
   assert.equal(renderStatsJson(shuffled), json);
 });
