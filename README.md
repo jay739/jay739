@@ -24,6 +24,7 @@
 <a href="https://www.linkedin.com/in/jaya-krishna-konda/"><img src="https://img.shields.io/badge/LinkedIn-Connect-F59E0B?style=for-the-badge&logo=linkedin&logoColor=F59E0B&labelColor=0F172A" alt="LinkedIn" /></a>
 <a href="mailto:contact@jay739.dev"><img src="https://img.shields.io/badge/Email-contact%40jay739.dev-F59E0B?style=for-the-badge&logo=maildotru&logoColor=F59E0B&labelColor=0F172A" alt="Email" /></a>
 <a href="https://jay739.dev/blog"><img src="https://img.shields.io/badge/Blog-Read-F59E0B?style=for-the-badge&logo=hashnode&logoColor=F59E0B&labelColor=0F172A" alt="Blog" /></a>
+<a href="https://apps.jay739.dev"><img src="https://img.shields.io/badge/Apps-Download-F59E0B?style=for-the-badge&labelColor=0F172A" alt="Apps: apps.jay739.dev" /></a>
 <a href="https://github.com/jay739"><img src="https://komarev.com/ghpvc/?username=jay739&style=for-the-badge&color=F59E0B&label=PROFILE+VIEWS" alt="Profile views" /></a>
 
 <br/>
@@ -191,22 +192,54 @@ Solo-built private cloud on a Beelink mini-PC: <!--hl:batcave_containers-->62<!-
 </td>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/PodcastAI"><img alt="RAG Podcast Generator" src="https://api.iconify.design/lucide/mic.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [RAG Podcast Generator](https://github.com/jay739/PodcastAI)
+#### <a href="https://github.com/jay739/openhaze"><img alt="OpenHaze" src="https://api.iconify.design/lucide/sun-dim.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [OpenHaze](https://github.com/jay739/openhaze)
 
-PDF → LLM → TTS pipeline that turns books into character-voiced podcasts. PyMuPDF extracts the text, FAISS retrieves the passages, Llama 3.1 8B writes the script through Ollama, and Bark voices each speaker.
+<a href="https://apps.jay739.dev/openhaze/"><img src="https://apps.jay739.dev/img/shots/openhaze.webp" alt="Two windows side by side on Windows: the focused GitHub page at full brightness, and the Brave window beside it dimmed by openhaze" width="100%" /></a>
+
+Native window dimmer for macOS and Windows: everything but the window in focus fades into an adjustable haze. Swift + AppKit and C# + WinForms, about 2,100 lines each, built with the tools each OS ships. Releases ship a `.dmg` and a Windows installer.
 <br/><br/>
-`RAG` · `FAISS` · `Ollama` · `Bark TTS` · `Electron`
+`Swift` · `C#` · `AppKit` · `WinForms`
+<br/>
+→ [Download and docs](https://apps.jay739.dev/openhaze/)
 
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/anti-money-laundering-detection"><img alt="Anti-Money Laundering Detection" src="https://api.iconify.design/lucide/landmark.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Anti-Money Laundering Detection](https://github.com/jay739/anti-money-laundering-detection)
+#### <a href="https://github.com/jay739/omnifin"><img alt="Omnifin" src="https://api.iconify.design/lucide/users.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Omnifin](https://github.com/jay739/omnifin)
 
-PySpark ML pipeline on IBM's 32M-row HI-Medium AML dataset, with temporal feature engineering at a 0.23% laundering rate. The Random Forest baseline reaches 99.9% accuracy but only **ROC AUC 0.50**, so the repo reports it as chance-level and lists the fixes.
+<a href="https://apps.jay739.dev/omnifin/"><img src="https://apps.jay739.dev/img/shots/omnifin.webp" alt="Omnifin's Accounts page listing six Jellyfin users, with search, smart select and add user controls" width="100%" /></a>
+
+Jellyfin user management (invites, account lifecycle, password resets, notifications) in one self-hosted binary. A credited hard fork of [hrfee/jfa-go](https://github.com/hrfee/jfa-go) that adds announcement emails built from live Jellyfin library data, plus a Tauri desktop client. Ships as a Docker image, `.deb`, `.rpm`, AppImage, `.dmg` and Windows installer.
 <br/><br/>
-`PySpark` · `MLlib` · `Random Forest` · `Financial AI`
+`Go` · `Jellyfin` · `Tauri` · `Docker`
+<br/>
+→ [Download and docs](https://apps.jay739.dev/omnifin/)
+
+</td>
+<td width="50%" valign="top">
+
+#### <a href="https://github.com/jay739/claude-pop-quiz"><img alt="claude-pop-quiz" src="https://api.iconify.design/lucide/graduation-cap.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [claude-pop-quiz](https://github.com/jay739/claude-pop-quiz)
+
+<a href="https://apps.jay739.dev/claude-pop-quiz/"><img src="https://apps.jay739.dev/img/shots/claude-pop-quiz.png" alt="A five-question pop quiz in the Claude Code panel, two short answer and three multiple choice" width="100%" /></a>
+
+A Claude Code hook that pauses every 40 to 45 actions and quizzes you on your own session. Graded answers go to a learning journal that drives spaced repetition and adaptive difficulty.
+<br/><br/>
+`Python` · `Claude Code` · `Hooks` · `Spaced repetition`
+<br/>
+→ [Download and docs](https://apps.jay739.dev/claude-pop-quiz/)
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+#### <a href="https://github.com/jay739/PodcastAI"><img alt="RAG Podcast Generator" src="https://api.iconify.design/lucide/mic.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [RAG Podcast Generator](https://github.com/jay739/PodcastAI)
+
+PDF → LLM → TTS pipeline that turns books into character-voiced podcasts. PyMuPDF extracts the text, FAISS retrieves the passages, Llama 3.1 8B writes the script through Ollama, and Bark voices each speaker.
+<br/><br/>
+`RAG` · `FAISS` · `Ollama` · `Bark TTS` · `Electron`
 
 </td>
 <td width="50%" valign="top">
@@ -216,26 +249,6 @@ PySpark ML pipeline on IBM's 32M-row HI-Medium AML dataset, with temporal featur
 Benchmarked 8 models on the FLAME aerial dataset in RGB, thermal IR and RGB+IR fusion. For the pretrained backbones, fusion and RGB alone finished within one test image of each other. Best: ResNet-18 on RGB at **99.8%** test accuracy, on a 1% subset (about 107 test images).
 <br/><br/>
 `CNN` · `Computer Vision` · `Aerial Imagery` · `Thermal IR`
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-#### <a href="#featured-projects"><img alt="Histopathologic Cancer Detection" src="https://api.iconify.design/lucide/stethoscope.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; Histopathologic Cancer Detection
-
-Compared a custom CNN against ResNet18, VGG16 and EfficientNet on 220k+ pathology patches, with transfer learning and data augmentation.
-<br/><br/>
-`PyTorch` · `Transfer Learning` · `Medical AI`
-
-</td>
-<td width="50%" valign="top">
-
-#### <a href="https://github.com/jay739/financial-analysis"><img alt="Financial Crisis Analysis" src="https://api.iconify.design/lucide/trending-up.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Financial Crisis Analysis](https://github.com/jay739/financial-analysis)
-
-Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM) simulation and FinBERT news sentiment, with backtesting windows for the 2008 crash and the 2020 COVID-19 crash.
-<br/><br/>
-`FinBERT` · `Monte Carlo` · `Streamlit` · `yFinance` · `Plotly`
 
 </td>
 </tr>
@@ -258,6 +271,8 @@ Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM)
 - [**omnifin** v1.4.1](https://github.com/jay739/omnifin/releases/tag/v1.4.1) · Jellyfin user management, a redesigned hard fork of hrfee/jfa-go <sub><i>Sep 25, 2026</i></sub>
 - [**sitediff** v0.1.0](https://github.com/jay739/sitediff/releases/tag/v0.1.0) · Compare the visible content of two renderings of the same page, across environments. <sub><i>Aug 19, 2026</i></sub>
 <!-- RELEASES:END -->
+
+→ All apps, with downloads, at [apps.jay739.dev](https://apps.jay739.dev)
 
 <br/>
 
