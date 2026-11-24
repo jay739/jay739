@@ -5,20 +5,4 @@ impact if left undone, not by effort. Each item names the files it touches and
 ends with a "Done when" line. Items that need outside discussion go to GitHub
 Issues instead. Drop an item once it is done.
 
-## B-1: The header badge still hardcodes 56 containers
-
-- **Status:** open
-- **Size:** S
-- **Touches:** `jay739/portfolio-site`, not this repo:
-  `src/app/api/badges/batcave/route.ts` (`STATIC_CONTAINER_COUNT`, which falls
-  back to 56). The same 56 is typed into `src/components/sections/AboutSection.tsx`
-  and `src/data/projects.ts`.
-- **Why:** the badge at the top of the profile reads "56 containers · up" right
-  above a table whose numbers are generated, so the page contradicts itself.
-  Only the "up" half of the badge is measured (a Netdata probe).
-- **Fix:** have the route read `batcave_containers` from
-  `https://raw.githubusercontent.com/jay739/jay739/main/profile/homelab-stats.json`,
-  cached, keeping the environment variable as the fallback.
-- **Done when:** the badge and the README table show the same container count,
-  and a change to `profile/homelab-stats.json` reaches the badge within its
-  cache window.
+Nothing queued right now.
