@@ -38,11 +38,11 @@
 
 <a id="about"></a>
 
-## <img src="https://api.iconify.design/lucide/diamond.svg?color=%23f59e0b&height=22" align="center" /> About
+## <a href="#about"><img src="https://api.iconify.design/lucide/diamond.svg?color=%23f59e0b&height=22" align="center" /></a> About
 
 I'm an ML/AI Engineer & Data Scientist, and this GitHub is where my projects live: RAG pipelines, LLM systems, and self-hosted AI infrastructure. I build them end to end, from model training to deployment and real-time monitoring.
 
-The biggest one is **Batcave**, my solo-built private cloud: a Beelink mini-PC running <!--hl:batcave_containers-->62<!--/hl--> containers, linked over Tailscale to an Oracle Cloud edge server and an always-on Mac Mini M4 that serves the local LLMs ([live status](https://jay739.dev/api/badges/batcave)).
+The biggest one is **Batcave**, my solo-built private cloud: a Beelink mini-PC running <!--hl:batcave_containers-->62<!--/hl--> containers, linked over Tailscale to an Oracle Cloud edge server and an always-on Mac Mini M4 that serves the local LLMs ([live status](https://img.shields.io/endpoint?url=https%3A%2F%2Fjay739.dev%2Fapi%2Fbadges%2Fbatcave&style=for-the-badge)).
 
 ```yaml
 education: M.S. Data Science, UMBC (GPA 3.91 / 4.0)
@@ -53,7 +53,9 @@ based_in: Maryland, USA
 
 <br/>
 
-## <img src="https://api.iconify.design/lucide/handshake.svg?color=%23f59e0b&height=22" align="center" /> Open to
+<a id="open-to"></a>
+
+## <a href="#open-to"><img src="https://api.iconify.design/lucide/handshake.svg?color=%23f59e0b&height=22" align="center" /></a> Open to
 
 - Full-time ML/AI or MLOps engineering roles.
 - Contract and advisory work for production RAG/LLM systems.
@@ -63,7 +65,7 @@ based_in: Maryland, USA
 
 <a id="batcave"></a>
 
-## <img src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=22" align="center" /> Batcave: My Private AI Cloud
+## <a href="#batcave"><img src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=22" align="center" /></a> Batcave: My Private AI Cloud
 
 > A solo-managed homelab on a Beelink mini-PC. Self-hosted from scratch. Live at [**jay739.dev**](https://jay739.dev).
 
@@ -98,13 +100,15 @@ Services per stack: <!--hl:stacks-->media 25 · infra 14 · extras 12 · core 4 
 
 Stack: `Docker` · `Ollama` · `Authentik SSO` · `Tailscale` · `Netdata` · `Nginx` · `PostgreSQL` · `MariaDB` · `Redis` · `Meilisearch`
 
-Proof links: [Live Batcave status](https://jay739.dev/api/badges/batcave) · [Batcave architecture series](https://jay739.dev/blog/docker-series-part5) · [OCI migration notes](https://jay739.dev/blog/migrating-do-to-oci)
+Proof links: [Live Batcave status](https://img.shields.io/endpoint?url=https%3A%2F%2Fjay739.dev%2Fapi%2Fbadges%2Fbatcave&style=for-the-badge) · [Batcave architecture series](https://jay739.dev/blog/docker-series-part5) · [OCI migration notes](https://jay739.dev/blog/migrating-do-to-oci)
 
 → Read the full [5-part Batcave blog series](https://jay739.dev/blog)
 
 <br/>
 
-## <img src="https://api.iconify.design/lucide/cpu.svg?color=%23f59e0b&height=22" align="center" /> Tech Stack
+<a id="tech-stack"></a>
+
+## <a href="#tech-stack"><img src="https://api.iconify.design/lucide/cpu.svg?color=%23f59e0b&height=22" align="center" /></a> Tech Stack
 
 <div align="center">
 
@@ -118,51 +122,51 @@ Proof links: [Live Batcave status](https://jay739.dev/api/badges/batcave) · [Ba
 
 **ML / AI**
 
-![Python](https://img.shields.io/badge/Python-F59E0B?style=for-the-badge&logo=python&logoColor=F59E0B&labelColor=0F172A)
-![PyTorch](https://img.shields.io/badge/PyTorch-F59E0B?style=for-the-badge&logo=pytorch&logoColor=F59E0B&labelColor=0F172A)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-F59E0B?style=for-the-badge&logo=tensorflow&logoColor=F59E0B&labelColor=0F172A)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-F59E0B?style=for-the-badge&logo=scikitlearn&logoColor=F59E0B&labelColor=0F172A)
-![LangChain](https://img.shields.io/badge/LangChain-F59E0B?style=for-the-badge&logo=langchain&logoColor=F59E0B&labelColor=0F172A)
-![Ollama](https://img.shields.io/badge/Ollama-F59E0B?style=for-the-badge&logo=ollama&logoColor=F59E0B&labelColor=0F172A)
-![HuggingFace](https://img.shields.io/badge/HuggingFace-F59E0B?style=for-the-badge&logo=huggingface&logoColor=F59E0B&labelColor=0F172A)
-![PySpark](https://img.shields.io/badge/PySpark-F59E0B?style=for-the-badge&logo=apachespark&logoColor=F59E0B&labelColor=0F172A)
+[![Python](https://img.shields.io/badge/Python-F59E0B?style=for-the-badge&logo=python&logoColor=F59E0B&labelColor=0F172A)](https://www.python.org)
+[![PyTorch](https://img.shields.io/badge/PyTorch-F59E0B?style=for-the-badge&logo=pytorch&logoColor=F59E0B&labelColor=0F172A)](https://pytorch.org)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-F59E0B?style=for-the-badge&logo=tensorflow&logoColor=F59E0B&labelColor=0F172A)](https://www.tensorflow.org)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-F59E0B?style=for-the-badge&logo=scikitlearn&logoColor=F59E0B&labelColor=0F172A)](https://scikit-learn.org)
+[![LangChain](https://img.shields.io/badge/LangChain-F59E0B?style=for-the-badge&logo=langchain&logoColor=F59E0B&labelColor=0F172A)](https://www.langchain.com)
+[![Ollama](https://img.shields.io/badge/Ollama-F59E0B?style=for-the-badge&logo=ollama&logoColor=F59E0B&labelColor=0F172A)](https://ollama.com)
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-F59E0B?style=for-the-badge&logo=huggingface&logoColor=F59E0B&labelColor=0F172A)](https://huggingface.co)
+[![PySpark](https://img.shields.io/badge/PySpark-F59E0B?style=for-the-badge&logo=apachespark&logoColor=F59E0B&labelColor=0F172A)](https://spark.apache.org)
 
 **MLOps · Infra · Cloud**
 
-![Docker](https://img.shields.io/badge/Docker-F59E0B?style=for-the-badge&logo=docker&logoColor=F59E0B&labelColor=0F172A)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-F59E0B?style=for-the-badge&logo=kubernetes&logoColor=F59E0B&labelColor=0F172A)
-![AWS](https://img.shields.io/badge/AWS-F59E0B?style=for-the-badge&logo=amazonwebservices&logoColor=F59E0B&labelColor=0F172A)
-![Oracle Cloud](https://img.shields.io/badge/OCI-F59E0B?style=for-the-badge&logo=oracle&logoColor=F59E0B&labelColor=0F172A)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-F59E0B?style=for-the-badge&logo=githubactions&logoColor=F59E0B&labelColor=0F172A)
-![MLflow](https://img.shields.io/badge/MLflow-F59E0B?style=for-the-badge&logo=mlflow&logoColor=F59E0B&labelColor=0F172A)
-![Tailscale](https://img.shields.io/badge/Tailscale-F59E0B?style=for-the-badge&logo=tailscale&logoColor=F59E0B&labelColor=0F172A)
-![Nginx](https://img.shields.io/badge/Nginx-F59E0B?style=for-the-badge&logo=nginx&logoColor=F59E0B&labelColor=0F172A)
+[![Docker](https://img.shields.io/badge/Docker-F59E0B?style=for-the-badge&logo=docker&logoColor=F59E0B&labelColor=0F172A)](https://www.docker.com)
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-F59E0B?style=for-the-badge&logo=kubernetes&logoColor=F59E0B&labelColor=0F172A)](https://kubernetes.io)
+[![AWS](https://img.shields.io/badge/AWS-F59E0B?style=for-the-badge&logo=amazonwebservices&logoColor=F59E0B&labelColor=0F172A)](https://aws.amazon.com)
+[![Oracle Cloud](https://img.shields.io/badge/OCI-F59E0B?style=for-the-badge&logo=oracle&logoColor=F59E0B&labelColor=0F172A)](https://www.oracle.com/cloud/)
+[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-F59E0B?style=for-the-badge&logo=githubactions&logoColor=F59E0B&labelColor=0F172A)](https://github.com/features/actions)
+[![MLflow](https://img.shields.io/badge/MLflow-F59E0B?style=for-the-badge&logo=mlflow&logoColor=F59E0B&labelColor=0F172A)](https://mlflow.org)
+[![Tailscale](https://img.shields.io/badge/Tailscale-F59E0B?style=for-the-badge&logo=tailscale&logoColor=F59E0B&labelColor=0F172A)](https://tailscale.com)
+[![Nginx](https://img.shields.io/badge/Nginx-F59E0B?style=for-the-badge&logo=nginx&logoColor=F59E0B&labelColor=0F172A)](https://nginx.org)
 
 **Data**
 
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-F59E0B?style=for-the-badge&logo=postgresql&logoColor=F59E0B&labelColor=0F172A)
-![MariaDB](https://img.shields.io/badge/MariaDB-F59E0B?style=for-the-badge&logo=mariadb&logoColor=F59E0B&labelColor=0F172A)
-![Redis](https://img.shields.io/badge/Redis-F59E0B?style=for-the-badge&logo=redis&logoColor=F59E0B&labelColor=0F172A)
-![Pandas](https://img.shields.io/badge/Pandas-F59E0B?style=for-the-badge&logo=pandas&logoColor=F59E0B&labelColor=0F172A)
-![NumPy](https://img.shields.io/badge/NumPy-F59E0B?style=for-the-badge&logo=numpy&logoColor=F59E0B&labelColor=0F172A)
-![Plotly](https://img.shields.io/badge/Plotly-F59E0B?style=for-the-badge&logo=plotly&logoColor=F59E0B&labelColor=0F172A)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-F59E0B?style=for-the-badge&logo=postgresql&logoColor=F59E0B&labelColor=0F172A)](https://www.postgresql.org)
+[![MariaDB](https://img.shields.io/badge/MariaDB-F59E0B?style=for-the-badge&logo=mariadb&logoColor=F59E0B&labelColor=0F172A)](https://mariadb.org)
+[![Redis](https://img.shields.io/badge/Redis-F59E0B?style=for-the-badge&logo=redis&logoColor=F59E0B&labelColor=0F172A)](https://redis.io)
+[![Pandas](https://img.shields.io/badge/Pandas-F59E0B?style=for-the-badge&logo=pandas&logoColor=F59E0B&labelColor=0F172A)](https://pandas.pydata.org)
+[![NumPy](https://img.shields.io/badge/NumPy-F59E0B?style=for-the-badge&logo=numpy&logoColor=F59E0B&labelColor=0F172A)](https://numpy.org)
+[![Plotly](https://img.shields.io/badge/Plotly-F59E0B?style=for-the-badge&logo=plotly&logoColor=F59E0B&labelColor=0F172A)](https://plotly.com)
 
 **Frontend & Edge**
 
-![Next.js](https://img.shields.io/badge/Next.js-F59E0B?style=for-the-badge&logo=nextdotjs&logoColor=F59E0B&labelColor=0F172A)
-![TypeScript](https://img.shields.io/badge/TypeScript-F59E0B?style=for-the-badge&logo=typescript&logoColor=F59E0B&labelColor=0F172A)
-![Tailwind](https://img.shields.io/badge/Tailwind-F59E0B?style=for-the-badge&logo=tailwindcss&logoColor=F59E0B&labelColor=0F172A)
-![ESP32](https://img.shields.io/badge/ESP32-F59E0B?style=for-the-badge&logo=espressif&logoColor=F59E0B&labelColor=0F172A)
-![C++](https://img.shields.io/badge/C++-F59E0B?style=for-the-badge&logo=cplusplus&logoColor=F59E0B&labelColor=0F172A)
+[![Next.js](https://img.shields.io/badge/Next.js-F59E0B?style=for-the-badge&logo=nextdotjs&logoColor=F59E0B&labelColor=0F172A)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-F59E0B?style=for-the-badge&logo=typescript&logoColor=F59E0B&labelColor=0F172A)](https://www.typescriptlang.org)
+[![Tailwind](https://img.shields.io/badge/Tailwind-F59E0B?style=for-the-badge&logo=tailwindcss&logoColor=F59E0B&labelColor=0F172A)](https://tailwindcss.com)
+[![ESP32](https://img.shields.io/badge/ESP32-F59E0B?style=for-the-badge&logo=espressif&logoColor=F59E0B&labelColor=0F172A)](https://www.espressif.com)
+[![C++](https://img.shields.io/badge/C++-F59E0B?style=for-the-badge&logo=cplusplus&logoColor=F59E0B&labelColor=0F172A)](https://isocpp.org)
 
 **Native Apps & Services**
 
-![Swift](https://img.shields.io/badge/Swift-F59E0B?style=for-the-badge&logo=swift&logoColor=F59E0B&labelColor=0F172A)
-![Kotlin](https://img.shields.io/badge/Kotlin-F59E0B?style=for-the-badge&logo=kotlin&logoColor=F59E0B&labelColor=0F172A)
-![Dart](https://img.shields.io/badge/Dart-F59E0B?style=for-the-badge&logo=dart&logoColor=F59E0B&labelColor=0F172A)
-![Flutter](https://img.shields.io/badge/Flutter-F59E0B?style=for-the-badge&logo=flutter&logoColor=F59E0B&labelColor=0F172A)
-![C#](https://img.shields.io/badge/C%23-F59E0B?style=for-the-badge&logo=dotnet&logoColor=F59E0B&labelColor=0F172A)
-![Go](https://img.shields.io/badge/Go-F59E0B?style=for-the-badge&logo=go&logoColor=F59E0B&labelColor=0F172A)
+[![Swift](https://img.shields.io/badge/Swift-F59E0B?style=for-the-badge&logo=swift&logoColor=F59E0B&labelColor=0F172A)](https://www.swift.org)
+[![Kotlin](https://img.shields.io/badge/Kotlin-F59E0B?style=for-the-badge&logo=kotlin&logoColor=F59E0B&labelColor=0F172A)](https://kotlinlang.org)
+[![Dart](https://img.shields.io/badge/Dart-F59E0B?style=for-the-badge&logo=dart&logoColor=F59E0B&labelColor=0F172A)](https://dart.dev)
+[![Flutter](https://img.shields.io/badge/Flutter-F59E0B?style=for-the-badge&logo=flutter&logoColor=F59E0B&labelColor=0F172A)](https://flutter.dev)
+[![C#](https://img.shields.io/badge/C%23-F59E0B?style=for-the-badge&logo=dotnet&logoColor=F59E0B&labelColor=0F172A)](https://dotnet.microsoft.com)
+[![Go](https://img.shields.io/badge/Go-F59E0B?style=for-the-badge&logo=go&logoColor=F59E0B&labelColor=0F172A)](https://go.dev)
 
 </details>
 
@@ -172,13 +176,13 @@ Proof links: [Live Batcave status](https://jay739.dev/api/badges/batcave) · [Ba
 
 <a id="featured-projects"></a>
 
-## <img src="https://api.iconify.design/lucide/rocket.svg?color=%23f59e0b&height=22" align="center" /> Featured Projects
+## <a href="#featured-projects"><img src="https://api.iconify.design/lucide/rocket.svg?color=%23f59e0b&height=22" align="center" /></a> Featured Projects
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-#### <img src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Batcave: Personal AI Cloud](https://jay739.dev)
+#### <a href="https://jay739.dev"><img src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Batcave: Personal AI Cloud](https://jay739.dev)
 
 Solo-built private cloud on a Beelink mini-PC: <!--hl:batcave_containers-->62<!--/hl--> containers, <!--hl:https_sites-->38<!--/hl--> HTTPS sites, Authentik SSO, Netdata monitoring with Telegram alerts, and local LLMs served from a Mac Mini M4 through Ollama.
 <br/><br/>
@@ -187,7 +191,7 @@ Solo-built private cloud on a Beelink mini-PC: <!--hl:batcave_containers-->62<!-
 </td>
 <td width="50%" valign="top">
 
-#### <img src="https://api.iconify.design/lucide/mic.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [RAG Podcast Generator](https://github.com/jay739/PodcastAI)
+#### <a href="https://github.com/jay739/PodcastAI"><img src="https://api.iconify.design/lucide/mic.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [RAG Podcast Generator](https://github.com/jay739/PodcastAI)
 
 PDF → LLM → TTS pipeline that turns books into character-voiced podcasts. PyMuPDF extracts the text, FAISS retrieves the passages, Llama 3.1 8B writes the script through Ollama, and Bark voices each speaker.
 <br/><br/>
@@ -198,7 +202,7 @@ PDF → LLM → TTS pipeline that turns books into character-voiced podcasts. Py
 <tr>
 <td width="50%" valign="top">
 
-#### <img src="https://api.iconify.design/lucide/landmark.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Anti-Money Laundering Detection](https://github.com/jay739/anti-money-laundering-detection)
+#### <a href="https://github.com/jay739/anti-money-laundering-detection"><img src="https://api.iconify.design/lucide/landmark.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Anti-Money Laundering Detection](https://github.com/jay739/anti-money-laundering-detection)
 
 PySpark ML pipeline on IBM's 32M-row HI-Medium AML dataset, with temporal feature engineering at a 0.23% laundering rate. The Random Forest baseline reaches 99.9% accuracy but only **ROC AUC 0.50**, so the repo reports it as chance-level and lists the fixes.
 <br/><br/>
@@ -207,7 +211,7 @@ PySpark ML pipeline on IBM's 32M-row HI-Medium AML dataset, with temporal featur
 </td>
 <td width="50%" valign="top">
 
-#### <img src="https://api.iconify.design/lucide/flame.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Wildfire Detection](https://github.com/jay739/forest-fire-detection)
+#### <a href="https://github.com/jay739/forest-fire-detection"><img src="https://api.iconify.design/lucide/flame.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Wildfire Detection](https://github.com/jay739/forest-fire-detection)
 
 Benchmarked 8 models on the FLAME aerial dataset in RGB, thermal IR and RGB+IR fusion. For the pretrained backbones, fusion and RGB alone finished within one test image of each other. Best: ResNet-18 on RGB at **99.8%** test accuracy, on a 1% subset (about 107 test images).
 <br/><br/>
@@ -218,7 +222,7 @@ Benchmarked 8 models on the FLAME aerial dataset in RGB, thermal IR and RGB+IR f
 <tr>
 <td width="50%" valign="top">
 
-#### <img src="https://api.iconify.design/lucide/stethoscope.svg?color=%23f59e0b&height=18" align="center" />&nbsp; Histopathologic Cancer Detection
+#### <a href="#featured-projects"><img src="https://api.iconify.design/lucide/stethoscope.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; Histopathologic Cancer Detection
 
 Compared a custom CNN against ResNet18, VGG16 and EfficientNet on 220k+ pathology patches, with transfer learning and data augmentation.
 <br/><br/>
@@ -227,7 +231,7 @@ Compared a custom CNN against ResNet18, VGG16 and EfficientNet on 220k+ patholog
 </td>
 <td width="50%" valign="top">
 
-#### <img src="https://api.iconify.design/lucide/trending-up.svg?color=%23f59e0b&height=18" align="center" />&nbsp; [Financial Crisis Analysis](https://github.com/jay739/financial-analysis)
+#### <a href="https://github.com/jay739/financial-analysis"><img src="https://api.iconify.design/lucide/trending-up.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Financial Crisis Analysis](https://github.com/jay739/financial-analysis)
 
 Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM) simulation and FinBERT news sentiment, with backtesting windows for the 2008 crash and the 2020 COVID-19 crash.
 <br/><br/>
@@ -243,7 +247,7 @@ Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM)
 
 <a id="latest-releases"></a>
 
-## <img src="https://api.iconify.design/lucide/package.svg?color=%23f59e0b&height=22" align="center" /> Latest Releases
+## <a href="#latest-releases"><img src="https://api.iconify.design/lucide/package.svg?color=%23f59e0b&height=22" align="center" /></a> Latest Releases
 
 <!-- Generated by .github/workflows/releases.yml from each public repo's latest GitHub release -->
 <!-- RELEASES:START -->
@@ -259,20 +263,22 @@ Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM)
 
 <a id="github-highlights"></a>
 
-## <img src="https://api.iconify.design/lucide/activity.svg?color=%23f59e0b&height=22" align="center" /> GitHub Activity
+## <a href="#github-highlights"><img src="https://api.iconify.design/lucide/activity.svg?color=%23f59e0b&height=22" align="center" /></a> GitHub Activity
 
 <div align="center">
 
 <!-- Generated by .github/workflows/metrics.yml, committed to the `main` branch. Transparent with neutral text, so one file serves both themes -->
-<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.svg" alt="Metrics" width="600" />
+<a href="https://github.com/jay739?tab=repositories"><img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.svg" alt="Metrics" width="600" /></a>
 
 <br/><br/>
 
 <!-- Generated by .github/workflows/streak.yml, committed to the `main` branch -->
+<a href="https://github.com/jay739">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jay739/jay739/main/profile/streak-stats.svg" />
   <img src="https://raw.githubusercontent.com/jay739/jay739/main/profile/streak-stats-light.svg" alt="GitHub streak" width="600" />
 </picture>
+</a>
 
 </div>
 
@@ -311,26 +317,29 @@ Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM)
 <details>
 <summary><b>More: coding habits & topics</b></summary>
 <br/>
-<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.habits.svg" alt="Coding habits" width="600" />
+<a href="https://github.com/jay739?tab=repositories"><img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.habits.svg" alt="Coding habits" width="600" /></a>
 <br/><br/>
-<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.topics.svg" alt="Topics" width="600" />
+<a href="https://github.com/jay739?tab=repositories"><img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.topics.svg" alt="Topics" width="600" /></a>
 <br/><br/>
-<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.achievements.svg" alt="Achievements" width="600" />
+<a href="https://github.com/jay739?tab=repositories"><img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.achievements.svg" alt="Achievements" width="600" /></a>
 <br/><br/>
-<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.repositories.svg" alt="Featured repositories metrics" width="600" />
+<a href="https://github.com/jay739?tab=repositories"><img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.repositories.svg" alt="Featured repositories metrics" width="600" /></a>
 <br/><br/>
-<img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.notable.svg" alt="Notable contributions" width="600" />
+<a href="https://github.com/jay739?tab=repositories"><img src="https://raw.githubusercontent.com/jay739/jay739/main/metrics.plugin.notable.svg" alt="Notable contributions" width="600" /></a>
 </details>
 
 </div>
 
 <br/>
 
-## <img src="https://api.iconify.design/lucide/git-branch.svg?color=%23f59e0b&height=22" align="center" /> Contribution Snake
+<a id="contribution-snake"></a>
+
+## <a href="#contribution-snake"><img src="https://api.iconify.design/lucide/git-branch.svg?color=%23f59e0b&height=22" align="center" /></a> Contribution Snake
 
 <div align="center">
 
 <!-- Generated by .github/workflows/snake.yml, pushed to the `output` branch -->
+<a href="https://github.com/jay739/snk">
 <picture>
   <source media="(prefers-color-scheme: dark)"
           srcset="https://raw.githubusercontent.com/jay739/jay739/output/github-contribution-grid-snake-dark.svg" />
@@ -338,6 +347,7 @@ Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM)
           srcset="https://raw.githubusercontent.com/jay739/jay739/output/github-contribution-grid-snake-light.svg" />
   <img src="https://raw.githubusercontent.com/jay739/jay739/output/github-contribution-grid-snake.svg" alt="Contribution snake" />
 </picture>
+</a>
 
 <sub>Rendered by <a href="https://github.com/jay739/snk">my fork of Platane/snk</a>, which I extended so the snake grows as it eats.</sub>
 
@@ -347,7 +357,7 @@ Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM)
 
 <a id="latest-from-the-blog"></a>
 
-## <img src="https://api.iconify.design/lucide/rss.svg?color=%23f59e0b&height=22" align="center" /> Latest from the Blog
+## <a href="#latest-from-the-blog"><img src="https://api.iconify.design/lucide/rss.svg?color=%23f59e0b&height=22" align="center" /></a> Latest from the Blog
 
 <!-- BLOG-POST-LIST:START --><br>&bull; <a href="https://jay739.dev/blog/ollama-mlx-benchmarking-rtx-vs-mac-mini">Benchmarking Local LLMs Across an RTX 3060 Ti and an M4 Mac Mini &lpar;With a Kernel Panic Along the Way&rpar;</a> <sub><i>Jul 16, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/batcave-usb-nic-root-cause">The Freeze Wasn&#39;t Memory: Tracing a Homelab Server&#39;s Root Cause Through Three Wrong Turns</a> <sub><i>Jul 16, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/ai-quizzes-me-claude-code-hooks">I Made My AI Ambush Me With Pop Quizzes</a> <sub><i>May 29, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/lifetime-software-deals">The Quiet Math of Lifetime Software Deals</a> <sub><i>May 12, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/homelab-lessons">What Running a Homelab Actually Teaches You That Work Doesn&#39;t</a> <sub><i>Apr 24, 2026</i></sub><!-- BLOG-POST-LIST:END -->
 
@@ -365,9 +375,11 @@ Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM)
 
 <sub><i>"From model to deployment, and the homelab in between."</i></sub>
 
+<a href="https://jay739.dev">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=waving&color=0:fde68a%2C100:F59E0B&height=80&section=footer&reversal=true" />
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:F59E0B%2C100:fde68a&height=80&section=footer&reversal=true" alt="footer" />
 </picture>
+</a>
 
 </div>
