@@ -2,8 +2,9 @@
 // generates (docs/reference/stats.json, written by tools/gen_docs.py) and
 // writes those totals into README.md and profile/homelab-stats.json.
 //
-// stats.json is the one file built to leave that private repo: counts only,
-// nothing that names a service, host, port or address. This script still
+// stats.json is the one file built to leave that private repo: counts, plus
+// the names of the compose files, and nothing that names a service, host, port
+// or address. This script still
 // prints nothing but the totals, because Actions logs on a public repo are
 // readable by anyone. A missing key or an impossible count stops the run with
 // the README untouched: it never writes a zero for a number it could not read.
@@ -11,6 +12,7 @@
 // README.md marks each number that should update itself like this:
 //   <!--hl:batcave_containers-->63<!--/hl-->
 //   <!--hl:batcave_containers-->`63`<!--/hl-->   (backticks are kept)
+//   <!--hl:stacks-->media 25 · infra 14<!--/hl-->  (the stack list, one line)
 // GitHub does not render the comments, inline or inside table cells. They do
 // show inside a fenced code block, so never put a marker in one.
 
@@ -39,8 +41,19 @@ export const STAT_KEYS = [
   "services_mem_limited",
   "https_sites", // enabled proxy hosts with a live upstream, wildcards excluded
   "hosts", // machines in the topology, enumerated or not
+  "undeclared_containers", // running on batcave but defined by no compose file
+  "missing_containers", // defined in a compose file but not running
+  "docker_networks", // Docker networks on batcave
 ];
-export const README_KEYS = [...STAT_KEYS, "docs_updated"];
+
+// Not a count, so it is validated on its own: a list of
+// { name: compose file without .yml, services: how many it defines }.
+export const STACKS_KEY = "stacks";
+export const README_KEYS = [...STAT_KEYS, STACKS_KEY, "docs_updated"];
+
+// A stack name lands in the README and in a public JSON file, so it must be a
+// plain lowercase file name. This also keeps "<" and backticks out of markers.
+const STACK_NAME = /^[a-z0-9][a-z0-9._-]{0,39}$/;
 
 // A count that can never honestly be zero. Seeing one means the generator
 // went wrong, not that the homelab is empty.
@@ -51,6 +64,7 @@ const MUST_BE_POSITIVE = [
   "compose_files",
   "https_sites",
   "hosts",
+  "docker_networks",
 ];
 
 // Every failure this script expects is one of these four.
@@ -92,9 +106,10 @@ export function parseStatsFile(text) {
   if (!data || typeof data !== "object" || Array.isArray(data)) {
     throw new SourceFormatError("is not a JSON object");
   }
-  const missing = STAT_KEYS.filter((key) => !(key in data));
+  const required = [...STAT_KEYS, STACKS_KEY];
+  const missing = required.filter((key) => !(key in data));
   if (missing.length > 0) throw new SourceFormatError(`has no ${missing.join(", ")}`);
-  return Object.fromEntries(STAT_KEYS.map((key) => [key, data[key]]));
+  return Object.fromEntries(required.map((key) => [key, data[key]]));
 }
 
 export function toIsoDate(value) {
@@ -129,6 +144,44 @@ export function lastDocsChange(docsDir, env = process.env) {
   return toIsoDate(out);
 }
 
+// Returns the stacks largest first (ties by name) with only name and services,
+// so the README line is stable whatever order the generator wrote them in.
+// Messages give an entry's position, never its content.
+export function validateStacks(stacks, stats) {
+  if (!Array.isArray(stacks) || stacks.length === 0) {
+    throw new ImplausibleValueError(`${STACKS_KEY} is not a non-empty list of { name, services }`);
+  }
+  const clean = stacks.map((entry, i) => {
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) {
+      throw new ImplausibleValueError(`${STACKS_KEY}[${i}] is not an object`);
+    }
+    if (typeof entry.name !== "string" || !STACK_NAME.test(entry.name)) {
+      throw new ImplausibleValueError(
+        `${STACKS_KEY}[${i}].name is not a lowercase compose file name (letters, digits, . _ -)`,
+      );
+    }
+    if (!Number.isInteger(entry.services) || entry.services < 1) {
+      throw new ImplausibleValueError(`${STACKS_KEY}[${i}].services is not a whole number above 0`);
+    }
+    return { name: entry.name, services: entry.services };
+  });
+  if (new Set(clean.map((s) => s.name)).size !== clean.length) {
+    throw new ImplausibleValueError(`${STACKS_KEY} names the same compose file twice`);
+  }
+  if (clean.length !== stats.compose_files) {
+    throw new ImplausibleValueError(
+      `${STACKS_KEY} lists ${clean.length} stacks but compose_files is ${stats.compose_files}`,
+    );
+  }
+  const total = clean.reduce((sum, s) => sum + s.services, 0);
+  if (total !== stats.services_declared) {
+    throw new ImplausibleValueError(
+      `${STACKS_KEY} adds up to ${total} services but services_declared is ${stats.services_declared}`,
+    );
+  }
+  return clean.sort((a, b) => b.services - a.services || a.name.localeCompare(b.name));
+}
+
 export function validateStats(stats) {
   for (const key of STAT_KEYS) {
     const value = stats[key];
@@ -159,7 +212,7 @@ export function validateStats(stats) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(stats.docs_updated || "")) {
     throw new ImplausibleValueError("docs_updated is not a YYYY-MM-DD date");
   }
-  return stats;
+  return { ...stats, [STACKS_KEY]: validateStacks(stats[STACKS_KEY], stats) };
 }
 
 export async function collectStats(docsDir, docsUpdated) {
@@ -185,8 +238,14 @@ export function formatDate(isoDate) {
   });
 }
 
-const formatValue = (key, stats) =>
-  key === "docs_updated" ? formatDate(stats.docs_updated) : String(stats[key]);
+export const formatStacks = (stacks) =>
+  stacks.map((s) => `${s.name} ${s.services}`).join(" · ");
+
+const formatValue = (key, stats) => {
+  if (key === "docs_updated") return formatDate(stats.docs_updated);
+  if (key === STACKS_KEY) return formatStacks(stats[STACKS_KEY]);
+  return String(stats[key]);
+};
 
 const MARKER = /<!--hl:([a-z_]+)-->(`?)([^<`\n]*)\2<!--\/hl-->/g;
 
@@ -218,6 +277,7 @@ export function renderReadme(readme, stats) {
 export function renderStatsJson(stats) {
   const ordered = { docs_updated: stats.docs_updated };
   for (const key of STAT_KEYS) ordered[key] = stats[key];
+  ordered[STACKS_KEY] = stats[STACKS_KEY];
   return `${JSON.stringify(ordered, null, 2)}\n`;
 }
 
@@ -230,8 +290,9 @@ async function main() {
   await writeFile(STATS_PATH, renderStatsJson(stats), "utf8");
   if (updated !== readme) await writeFile(README_PATH, updated, "utf8");
 
-  // Totals and a date only: this log is public.
-  console.log(`Homelab stats: ${README_KEYS.map((k) => `${k}=${stats[k]}`).join(" ")}`);
+  // Totals, stack names and a date only: this log is public.
+  const logged = (k) => (k === STACKS_KEY ? `[${formatStacks(stats[k])}]` : stats[k]);
+  console.log(`Homelab stats: ${README_KEYS.map((k) => `${k}=${logged(k)}`).join(" ")}`);
   console.log(updated === readme ? "README unchanged" : "README updated");
 }
 
