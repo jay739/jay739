@@ -1,0 +1,92 @@
+name: Update homelab stats
+
+# Rewrites the <!--hl:KEY--> numbers in README.md, and profile/homelab-stats.json,
+# from the generated docs of the private jay739/homelab-docker-services repo.
+# An hourly drift check on batcave keeps those docs current.
+#
+# Access: secret HOMELAB_DOCS_DEPLOY_KEY is the private half of a read-only
+# deploy key on homelab-docker-services. It reaches that one repository and
+# cannot write to it. To rotate it, delete the deploy key there, generate a new
+# ed25519 pair, add the public half to that repo as read-only, and replace this
+# secret with the private half.
+#
+# The docs map ports, addresses and upstreams, and this repo's Actions logs are
+# public. So the job holding the key runs only GitHub's own checkout action and
+# the local script, and the script logs totals only.
+
+on:
+  schedule:
+    # Offset from the other README writers: blog at :00, releases at :30.
+    - cron: "15 */6 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/scripts/update-homelab-stats.mjs"
+      - ".github/workflows/homelab-stats.yml"
+      - "README.md"
+  # On a pull request, prove the markers still parse against the real docs.
+  # Nothing is committed.
+  pull_request:
+    paths:
+      - ".github/scripts/update-homelab-stats.mjs"
+      - ".github/workflows/homelab-stats.yml"
+      - "README.md"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: homelab-stats-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  update:
+    # Pull requests from forks get no secrets, so the docs checkout would fail.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require the docs deploy key
+        env:
+          KEY: ${{ secrets.HOMELAB_DOCS_DEPLOY_KEY }}
+        run: |
+          if [ -z "$KEY" ]; then
+            echo "::error::Secret HOMELAB_DOCS_DEPLOY_KEY is not set. Add the private half of the read-only deploy key on jay739/homelab-docker-services as a repository secret; the header of this workflow says how."
+            exit 1
+          fi
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Check out the generated homelab docs
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: jay739/homelab-docker-services
+          ssh-key: ${{ secrets.HOMELAB_DOCS_DEPLOY_KEY }}
+          path: .homelab-docs
+          # Full history, so the script can date the last change to the docs.
+          fetch-depth: 0
+          filter: blob:none
+          sparse-checkout: |
+            docs/diagrams
+            docs/reference
+          persist-credentials: false
+
+      - name: Update README.md and profile/homelab-stats.json
+        env:
+          HOMELAB_DOCS_DIR: .homelab-docs
+        run: node .github/scripts/update-homelab-stats.mjs
+
+      - name: Commit
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md profile/homelab-stats.json
+          git commit -m "Update homelab stats - [Skip GitHub Action]" || exit 0
+          git pull --rebase
+          git push
+
+      - name: Show what a merge would change
+        if: github.event_name == 'pull_request'
+        run: git status --short -- README.md profile/homelab-stats.json
