@@ -23,23 +23,6 @@ Issues instead. Drop an item once it is done.
   and a change to `profile/homelab-stats.json` reaches the badge within its
   cache window.
 
-## B-2: Four claims have nothing public behind them
-
-- **Status:** open
-- **Size:** XS
-- **Touches:** `README.md`
-  - Featured Projects, Histopathologic Cancer Detection: "0.94 AUC". There is no
-    public repo or notebook for this project.
-  - About: "LLM fine-tuning". No public repo contains fine-tuning code
-    (PodcastAI, the likeliest one, does not).
-  - Batcave table: "Hybrid-cloud latency −60%" and "Multi-DB layer 177 GB".
-    These are hand-typed, unlike the generated counts beside them.
-- **Why:** every other figure on the page traces to a repo or to the generated
-  homelab docs. A reviewer who checks one of these and finds nothing will
-  discount the rest.
-- **Done when:** each of the four links to its evidence (a notebook, a repo, the
-  blog post that measured it) or is removed.
-
 ## B-4: The stats parser reads Markdown instead of a contract
 
 - **Status:** open
