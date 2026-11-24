@@ -236,13 +236,13 @@ A Claude Code hook that pauses every 40 to 45 actions and quizzes you on your ow
 
 #### <a href="https://github.com/jay739/PodcastAI"><img alt="RAG Podcast Generator" src="https://api.iconify.design/lucide/mic.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [RAG Podcast Generator](https://github.com/jay739/PodcastAI)
 
-<a href="https://github.com/jay739/PodcastAI"><img src="profile/cards/podcastai.webp" alt="PodcastAI: a PDF-to-podcast pipeline that turns books into character-voiced audio with LLMs and TTS" width="100%" /></a>
+<a href="https://jay739.dev/blog/ai-pdf-to-podcast"><img src="profile/cards/podcastai.webp" alt="PodcastAI Studio, the Electron app, on its upload step: drop a PDF to start the Upload, Analyze, Voices and Results flow" width="100%" /></a>
 
 Turns a PDF book into a character-voiced podcast. PyMuPDF extracts the text, FAISS retrieves passages, Llama 3.1 8B writes the script through Ollama, and Bark voices each speaker.
 
 `RAG` · `FAISS` · `Ollama` · `Bark TTS`
 
-**[Source](https://github.com/jay739/PodcastAI)** · [Notebook](https://github.com/jay739/PodcastAI/blob/main/Presentation_final.ipynb)
+**[Write-up](https://jay739.dev/blog/ai-pdf-to-podcast)** · [Source](https://github.com/jay739/PodcastAI)
 
 </td>
 <td width="50%" valign="top">
