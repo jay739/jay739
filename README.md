@@ -82,6 +82,17 @@ based_in: Maryland, USA
 
 </div>
 
+**The machines**
+
+| Host     | Hardware                        | Job                                       |
+| -------- | ------------------------------- | ----------------------------------------- |
+| Batcave  | Beelink SER8 mini PC            | Runs the Docker stack                     |
+| Edge     | Oracle Cloud A1, 4 OCPU / 24 GB | Public edge, DNS and the off-site backups |
+| Mac Mini | Apple M4                        | Always-on LLM inference                   |
+| RTX box  | RTX 3060 Ti desktop             | CUDA work, woken on demand                |
+
+**Backups, in three tiers:** a nightly copy to a second disk, a nightly encrypted copy off-site to the Oracle edge server, and a weekly independent copy to Google Drive.
+
 Stack: `Docker` · `Ollama` · `Authentik SSO` · `Tailscale` · `Netdata` · `Nginx` · `PostgreSQL` · `MariaDB` · `Redis` · `Meilisearch`
 
 Proof links: [Live Batcave status](https://jay739.dev/api/badges/batcave) · [Batcave architecture series](https://jay739.dev/blog/docker-series-part5) · [OCI migration notes](https://jay739.dev/blog/migrating-do-to-oci)
