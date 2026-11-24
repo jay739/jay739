@@ -113,7 +113,7 @@ Proof links: [Live Batcave status](https://status.jay739.dev/status/batcave) · 
 
 <div align="center">
 
-**Core:** `Python` · `PyTorch` · `LangChain` · `Ollama` · `Docker` · `AWS` · `PostgreSQL` · `Redis` · `Next.js` · `TypeScript`
+**Core:** `Python` · `PyTorch` · `Ollama` · `Docker` · `PostgreSQL` · `Redis` · `Next.js` · `TypeScript`
 
 **Apps:** `Swift` · `Kotlin` · `Dart` · `Flutter` · `C#` · `Go`
 
@@ -125,9 +125,7 @@ Proof links: [Live Batcave status](https://status.jay739.dev/status/batcave) · 
 
 [![Python](https://img.shields.io/badge/Python-F59E0B?style=for-the-badge&logo=python&logoColor=F59E0B&labelColor=0F172A)](https://www.python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-F59E0B?style=for-the-badge&logo=pytorch&logoColor=F59E0B&labelColor=0F172A)](https://pytorch.org)
-[![TensorFlow](https://img.shields.io/badge/TensorFlow-F59E0B?style=for-the-badge&logo=tensorflow&logoColor=F59E0B&labelColor=0F172A)](https://www.tensorflow.org)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-F59E0B?style=for-the-badge&logo=scikitlearn&logoColor=F59E0B&labelColor=0F172A)](https://scikit-learn.org)
-[![LangChain](https://img.shields.io/badge/LangChain-F59E0B?style=for-the-badge&logo=langchain&logoColor=F59E0B&labelColor=0F172A)](https://www.langchain.com)
 [![Ollama](https://img.shields.io/badge/Ollama-F59E0B?style=for-the-badge&logo=ollama&logoColor=F59E0B&labelColor=0F172A)](https://ollama.com)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-F59E0B?style=for-the-badge&logo=huggingface&logoColor=F59E0B&labelColor=0F172A)](https://huggingface.co)
 [![PySpark](https://img.shields.io/badge/PySpark-F59E0B?style=for-the-badge&logo=apachespark&logoColor=F59E0B&labelColor=0F172A)](https://spark.apache.org)
@@ -135,11 +133,8 @@ Proof links: [Live Batcave status](https://status.jay739.dev/status/batcave) · 
 **MLOps · Infra · Cloud**
 
 [![Docker](https://img.shields.io/badge/Docker-F59E0B?style=for-the-badge&logo=docker&logoColor=F59E0B&labelColor=0F172A)](https://www.docker.com)
-[![Kubernetes](https://img.shields.io/badge/Kubernetes-F59E0B?style=for-the-badge&logo=kubernetes&logoColor=F59E0B&labelColor=0F172A)](https://kubernetes.io)
-[![AWS](https://img.shields.io/badge/AWS-F59E0B?style=for-the-badge&logo=amazonwebservices&logoColor=F59E0B&labelColor=0F172A)](https://aws.amazon.com)
 [![Oracle Cloud](https://img.shields.io/badge/OCI-F59E0B?style=for-the-badge&logo=oracle&logoColor=F59E0B&labelColor=0F172A)](https://www.oracle.com/cloud/)
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-F59E0B?style=for-the-badge&logo=githubactions&logoColor=F59E0B&labelColor=0F172A)](https://github.com/features/actions)
-[![MLflow](https://img.shields.io/badge/MLflow-F59E0B?style=for-the-badge&logo=mlflow&logoColor=F59E0B&labelColor=0F172A)](https://mlflow.org)
 [![Tailscale](https://img.shields.io/badge/Tailscale-F59E0B?style=for-the-badge&logo=tailscale&logoColor=F59E0B&labelColor=0F172A)](https://tailscale.com)
 [![Nginx](https://img.shields.io/badge/Nginx-F59E0B?style=for-the-badge&logo=nginx&logoColor=F59E0B&labelColor=0F172A)](https://nginx.org)
 
