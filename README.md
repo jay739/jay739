@@ -40,7 +40,7 @@
 
 ## <img src="https://api.iconify.design/lucide/diamond.svg?color=%23f59e0b&height=22" align="center" /> About
 
-I'm an ML/AI Engineer & Data Scientist, and this GitHub is where my projects live: RAG pipelines, LLM systems, and self-hosted AI infrastructure. I build them end to end, from model training and LLM fine-tuning to deployment and real-time monitoring.
+I'm an ML/AI Engineer & Data Scientist, and this GitHub is where my projects live: RAG pipelines, LLM systems, and self-hosted AI infrastructure. I build them end to end, from model training to deployment and real-time monitoring.
 
 The biggest one is **Batcave**, my solo-built private cloud: a Beelink mini-PC running <!--hl:batcave_containers-->63<!--/hl--> containers, linked over Tailscale to an Oracle Cloud edge server and an always-on Mac Mini M4 that serves the local LLMs ([live status](https://jay739.dev/api/badges/batcave)).
 
@@ -77,7 +77,6 @@ based_in: Maryland, USA
 | Compose services | <!--hl:services_declared-->`62`<!--/hl--> in <!--hl:compose_files-->`8`<!--/hl--> stacks | HTTPS sites | <!--hl:https_sites-->`38`<!--/hl--> |
 | Health-checked | <!--hl:services_healthchecked-->`54`<!--/hl--> of <!--hl:services_declared-->`62`<!--/hl--> | Memory-capped | <!--hl:services_mem_limited-->`62`<!--/hl--> of <!--hl:services_declared-->`62`<!--/hl--> |
 | Machines on the mesh | <!--hl:hosts-->`4`<!--/hl--> | LLM inference | `Mac Mini M4` |
-| Hybrid-cloud latency | `−60%` | Multi-DB layer | `177 GB` |
 
 <sub>Counts are generated from my homelab's own docs, which an hourly drift check rebuilds from the live Docker daemon and proxy config. Last architecture change: <!--hl:docs_updated-->Nov 7, 2026<!--/hl-->.</sub>
 
@@ -85,7 +84,7 @@ based_in: Maryland, USA
 
 Stack: `Docker` · `Ollama` · `Authentik SSO` · `Tailscale` · `Netdata` · `Nginx` · `PostgreSQL` · `MariaDB` · `Redis` · `Meilisearch`
 
-Proof links: [Live Batcave status](https://jay739.dev/api/badges/batcave) · [Batcave architecture series](https://jay739.dev/blog/docker-series-part5) · [OCI migration + latency notes](https://jay739.dev/blog/migrating-do-to-oci)
+Proof links: [Live Batcave status](https://jay739.dev/api/badges/batcave) · [Batcave architecture series](https://jay739.dev/blog/docker-series-part5) · [OCI migration notes](https://jay739.dev/blog/migrating-do-to-oci)
 
 → Read the full [5-part Batcave blog series](https://jay739.dev/blog)
 
@@ -207,7 +206,7 @@ Benchmarked 8 models on the FLAME aerial dataset in RGB, thermal IR and RGB+IR f
 
 #### <img src="https://api.iconify.design/lucide/stethoscope.svg?color=%23f59e0b&height=18" align="center" />&nbsp; Histopathologic Cancer Detection
 
-Compared custom CNN vs ResNet18 / VGG16 / EfficientNet on 220k+ pathology patches. Transfer learning best at **0.94 AUC**.
+Compared a custom CNN against ResNet18, VGG16 and EfficientNet on 220k+ pathology patches, with transfer learning and data augmentation.
 <br/><br/>
 `PyTorch` · `Transfer Learning` · `Medical AI`
 
