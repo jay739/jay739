@@ -30,7 +30,7 @@
 
 <!-- Live Batcave status, served by jay739.dev/api/badges/batcave -->
 
-<a href="https://jay739.dev"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fjay739.dev%2Fapi%2Fbadges%2Fbatcave&style=for-the-badge" alt="Batcave live status" /></a>
+<a href="https://status.jay739.dev/status/batcave"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fjay739.dev%2Fapi%2Fbadges%2Fbatcave&style=for-the-badge" alt="Batcave live status" /></a>
 
 </div>
 
@@ -42,7 +42,7 @@
 
 I'm an ML/AI Engineer & Data Scientist, and this GitHub is where my projects live: RAG pipelines, LLM systems, and self-hosted AI infrastructure. I build them end to end, from model training to deployment and real-time monitoring.
 
-The biggest one is **Batcave**, my solo-built private cloud: a Beelink mini-PC running <!--hl:batcave_containers-->62<!--/hl--> containers, linked over Tailscale to an Oracle Cloud edge server and an always-on Mac Mini M4 that serves the local LLMs ([live status](https://img.shields.io/endpoint?url=https%3A%2F%2Fjay739.dev%2Fapi%2Fbadges%2Fbatcave&style=for-the-badge)).
+The biggest one is **Batcave**, my solo-built private cloud: a Beelink mini-PC running <!--hl:batcave_containers-->62<!--/hl--> containers, linked over Tailscale to an Oracle Cloud edge server and an always-on Mac Mini M4 that serves the local LLMs ([live status](https://status.jay739.dev/status/batcave)).
 
 ```yaml
 education: M.S. Data Science, UMBC (GPA 3.91 / 4.0)
@@ -100,7 +100,7 @@ Services per stack: <!--hl:stacks-->media 25 · infra 14 · extras 12 · core 4 
 
 Stack: `Docker` · `Ollama` · `Authentik SSO` · `Tailscale` · `Netdata` · `Nginx` · `PostgreSQL` · `MariaDB` · `Redis` · `Meilisearch`
 
-Proof links: [Live Batcave status](https://img.shields.io/endpoint?url=https%3A%2F%2Fjay739.dev%2Fapi%2Fbadges%2Fbatcave&style=for-the-badge) · [Batcave architecture series](https://jay739.dev/blog/docker-series-part5) · [OCI migration notes](https://jay739.dev/blog/migrating-do-to-oci)
+Proof links: [Live Batcave status](https://status.jay739.dev/status/batcave) · [Batcave architecture series](https://jay739.dev/blog/docker-series-part5) · [OCI migration notes](https://jay739.dev/blog/migrating-do-to-oci)
 
 → Read the full [5-part Batcave blog series](https://jay739.dev/blog)
 
