@@ -38,7 +38,7 @@
 
 <a id="about"></a>
 
-## <a href="#about"><img src="https://api.iconify.design/lucide/diamond.svg?color=%23f59e0b&height=22" align="center" /></a> About
+## <a href="#about"><img alt="About" src="https://api.iconify.design/lucide/diamond.svg?color=%23f59e0b&height=22" align="center" /></a> About
 
 I'm an ML/AI Engineer & Data Scientist, and this GitHub is where my projects live: RAG pipelines, LLM systems, and self-hosted AI infrastructure. I build them end to end, from model training to deployment and real-time monitoring.
 
@@ -55,7 +55,7 @@ based_in: Maryland, USA
 
 <a id="open-to"></a>
 
-## <a href="#open-to"><img src="https://api.iconify.design/lucide/handshake.svg?color=%23f59e0b&height=22" align="center" /></a> Open to
+## <a href="#open-to"><img alt="Open to" src="https://api.iconify.design/lucide/handshake.svg?color=%23f59e0b&height=22" align="center" /></a> Open to
 
 - Full-time ML/AI or MLOps engineering roles.
 - Contract and advisory work for production RAG/LLM systems.
@@ -65,7 +65,7 @@ based_in: Maryland, USA
 
 <a id="batcave"></a>
 
-## <a href="#batcave"><img src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=22" align="center" /></a> Batcave: My Private AI Cloud
+## <a href="#batcave"><img alt="Batcave: My Private AI Cloud" src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=22" align="center" /></a> Batcave: My Private AI Cloud
 
 > A solo-managed homelab on a Beelink mini-PC. Self-hosted from scratch. Live at [**jay739.dev**](https://jay739.dev).
 
@@ -108,7 +108,7 @@ Proof links: [Live Batcave status](https://status.jay739.dev/status/batcave) · 
 
 <a id="tech-stack"></a>
 
-## <a href="#tech-stack"><img src="https://api.iconify.design/lucide/cpu.svg?color=%23f59e0b&height=22" align="center" /></a> Tech Stack
+## <a href="#tech-stack"><img alt="Tech Stack" src="https://api.iconify.design/lucide/cpu.svg?color=%23f59e0b&height=22" align="center" /></a> Tech Stack
 
 <div align="center">
 
@@ -176,13 +176,13 @@ Proof links: [Live Batcave status](https://status.jay739.dev/status/batcave) · 
 
 <a id="featured-projects"></a>
 
-## <a href="#featured-projects"><img src="https://api.iconify.design/lucide/rocket.svg?color=%23f59e0b&height=22" align="center" /></a> Featured Projects
+## <a href="#featured-projects"><img alt="Featured Projects" src="https://api.iconify.design/lucide/rocket.svg?color=%23f59e0b&height=22" align="center" /></a> Featured Projects
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-#### <a href="https://jay739.dev"><img src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Batcave: Personal AI Cloud](https://jay739.dev)
+#### <a href="https://jay739.dev"><img alt="Batcave: Personal AI Cloud" src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Batcave: Personal AI Cloud](https://jay739.dev)
 
 Solo-built private cloud on a Beelink mini-PC: <!--hl:batcave_containers-->62<!--/hl--> containers, <!--hl:https_sites-->38<!--/hl--> HTTPS sites, Authentik SSO, Netdata monitoring with Telegram alerts, and local LLMs served from a Mac Mini M4 through Ollama.
 <br/><br/>
@@ -191,7 +191,7 @@ Solo-built private cloud on a Beelink mini-PC: <!--hl:batcave_containers-->62<!-
 </td>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/PodcastAI"><img src="https://api.iconify.design/lucide/mic.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [RAG Podcast Generator](https://github.com/jay739/PodcastAI)
+#### <a href="https://github.com/jay739/PodcastAI"><img alt="RAG Podcast Generator" src="https://api.iconify.design/lucide/mic.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [RAG Podcast Generator](https://github.com/jay739/PodcastAI)
 
 PDF → LLM → TTS pipeline that turns books into character-voiced podcasts. PyMuPDF extracts the text, FAISS retrieves the passages, Llama 3.1 8B writes the script through Ollama, and Bark voices each speaker.
 <br/><br/>
@@ -202,7 +202,7 @@ PDF → LLM → TTS pipeline that turns books into character-voiced podcasts. Py
 <tr>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/anti-money-laundering-detection"><img src="https://api.iconify.design/lucide/landmark.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Anti-Money Laundering Detection](https://github.com/jay739/anti-money-laundering-detection)
+#### <a href="https://github.com/jay739/anti-money-laundering-detection"><img alt="Anti-Money Laundering Detection" src="https://api.iconify.design/lucide/landmark.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Anti-Money Laundering Detection](https://github.com/jay739/anti-money-laundering-detection)
 
 PySpark ML pipeline on IBM's 32M-row HI-Medium AML dataset, with temporal feature engineering at a 0.23% laundering rate. The Random Forest baseline reaches 99.9% accuracy but only **ROC AUC 0.50**, so the repo reports it as chance-level and lists the fixes.
 <br/><br/>
@@ -211,7 +211,7 @@ PySpark ML pipeline on IBM's 32M-row HI-Medium AML dataset, with temporal featur
 </td>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/forest-fire-detection"><img src="https://api.iconify.design/lucide/flame.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Wildfire Detection](https://github.com/jay739/forest-fire-detection)
+#### <a href="https://github.com/jay739/forest-fire-detection"><img alt="Wildfire Detection" src="https://api.iconify.design/lucide/flame.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Wildfire Detection](https://github.com/jay739/forest-fire-detection)
 
 Benchmarked 8 models on the FLAME aerial dataset in RGB, thermal IR and RGB+IR fusion. For the pretrained backbones, fusion and RGB alone finished within one test image of each other. Best: ResNet-18 on RGB at **99.8%** test accuracy, on a 1% subset (about 107 test images).
 <br/><br/>
@@ -222,7 +222,7 @@ Benchmarked 8 models on the FLAME aerial dataset in RGB, thermal IR and RGB+IR f
 <tr>
 <td width="50%" valign="top">
 
-#### <a href="#featured-projects"><img src="https://api.iconify.design/lucide/stethoscope.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; Histopathologic Cancer Detection
+#### <a href="#featured-projects"><img alt="Histopathologic Cancer Detection" src="https://api.iconify.design/lucide/stethoscope.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; Histopathologic Cancer Detection
 
 Compared a custom CNN against ResNet18, VGG16 and EfficientNet on 220k+ pathology patches, with transfer learning and data augmentation.
 <br/><br/>
@@ -231,7 +231,7 @@ Compared a custom CNN against ResNet18, VGG16 and EfficientNet on 220k+ patholog
 </td>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/financial-analysis"><img src="https://api.iconify.design/lucide/trending-up.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Financial Crisis Analysis](https://github.com/jay739/financial-analysis)
+#### <a href="https://github.com/jay739/financial-analysis"><img alt="Financial Crisis Analysis" src="https://api.iconify.design/lucide/trending-up.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Financial Crisis Analysis](https://github.com/jay739/financial-analysis)
 
 Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM) simulation and FinBERT news sentiment, with backtesting windows for the 2008 crash and the 2020 COVID-19 crash.
 <br/><br/>
@@ -247,7 +247,7 @@ Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM)
 
 <a id="latest-releases"></a>
 
-## <a href="#latest-releases"><img src="https://api.iconify.design/lucide/package.svg?color=%23f59e0b&height=22" align="center" /></a> Latest Releases
+## <a href="#latest-releases"><img alt="Latest Releases" src="https://api.iconify.design/lucide/package.svg?color=%23f59e0b&height=22" align="center" /></a> Latest Releases
 
 <!-- Generated by .github/workflows/releases.yml from each public repo's latest GitHub release -->
 <!-- RELEASES:START -->
@@ -263,7 +263,7 @@ Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM)
 
 <a id="github-highlights"></a>
 
-## <a href="#github-highlights"><img src="https://api.iconify.design/lucide/activity.svg?color=%23f59e0b&height=22" align="center" /></a> GitHub Activity
+## <a href="#github-highlights"><img alt="GitHub Activity" src="https://api.iconify.design/lucide/activity.svg?color=%23f59e0b&height=22" align="center" /></a> GitHub Activity
 
 <div align="center">
 
@@ -334,7 +334,7 @@ Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM)
 
 <a id="contribution-snake"></a>
 
-## <a href="#contribution-snake"><img src="https://api.iconify.design/lucide/git-branch.svg?color=%23f59e0b&height=22" align="center" /></a> Contribution Snake
+## <a href="#contribution-snake"><img alt="Contribution Snake" src="https://api.iconify.design/lucide/git-branch.svg?color=%23f59e0b&height=22" align="center" /></a> Contribution Snake
 
 <div align="center">
 
@@ -357,7 +357,7 @@ Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM)
 
 <a id="latest-from-the-blog"></a>
 
-## <a href="#latest-from-the-blog"><img src="https://api.iconify.design/lucide/rss.svg?color=%23f59e0b&height=22" align="center" /></a> Latest from the Blog
+## <a href="#latest-from-the-blog"><img alt="Latest from the Blog" src="https://api.iconify.design/lucide/rss.svg?color=%23f59e0b&height=22" align="center" /></a> Latest from the Blog
 
 <!-- BLOG-POST-LIST:START --><br>&bull; <a href="https://jay739.dev/blog/ollama-mlx-benchmarking-rtx-vs-mac-mini">Benchmarking Local LLMs Across an RTX 3060 Ti and an M4 Mac Mini &lpar;With a Kernel Panic Along the Way&rpar;</a> <sub><i>Jul 16, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/batcave-usb-nic-root-cause">The Freeze Wasn&#39;t Memory: Tracing a Homelab Server&#39;s Root Cause Through Three Wrong Turns</a> <sub><i>Jul 16, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/ai-quizzes-me-claude-code-hooks">I Made My AI Ambush Me With Pop Quizzes</a> <sub><i>May 29, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/lifetime-software-deals">The Quiet Math of Lifetime Software Deals</a> <sub><i>May 12, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/homelab-lessons">What Running a Homelab Actually Teaches You That Work Doesn&#39;t</a> <sub><i>Apr 24, 2026</i></sub><!-- BLOG-POST-LIST:END -->
 
@@ -369,9 +369,9 @@ Streamlit dashboard for crisis-period portfolio risk: 95% VaR, Monte Carlo (GBM)
 
 ### Let's build something.
 
-<a href="https://jay739.dev"><img src="https://img.shields.io/badge/Portfolio-jay739.dev-F59E0B?style=for-the-badge&labelColor=0F172A" /></a>
-<a href="mailto:contact@jay739.dev"><img src="https://img.shields.io/badge/Email-contact@jay739.dev-F59E0B?style=for-the-badge&labelColor=0F172A" /></a>
-<a href="https://www.linkedin.com/in/jaya-krishna-konda/"><img src="https://img.shields.io/badge/LinkedIn-jaya--krishna--konda-F59E0B?style=for-the-badge&labelColor=0F172A" /></a>
+<a href="https://jay739.dev"><img alt="Portfolio: jay739.dev" src="https://img.shields.io/badge/Portfolio-jay739.dev-F59E0B?style=for-the-badge&labelColor=0F172A" /></a>
+<a href="mailto:contact@jay739.dev"><img alt="Email: contact@jay739.dev" src="https://img.shields.io/badge/Email-contact@jay739.dev-F59E0B?style=for-the-badge&labelColor=0F172A" /></a>
+<a href="https://www.linkedin.com/in/jaya-krishna-konda/"><img alt="LinkedIn: jaya-krishna-konda" src="https://img.shields.io/badge/LinkedIn-jaya--krishna--konda-F59E0B?style=for-the-badge&labelColor=0F172A" /></a>
 
 <sub><i>"From model to deployment, and the homelab in between."</i></sub>
 
