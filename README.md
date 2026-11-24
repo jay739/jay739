@@ -180,22 +180,26 @@ Proof links: [Live Batcave status](https://status.jay739.dev/status/batcave) · 
 
 #### <a href="https://jay739.dev"><img alt="Batcave: Personal AI Cloud" src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Batcave: Personal AI Cloud](https://jay739.dev)
 
-Solo-built private cloud on a Beelink mini-PC: <!--hl:batcave_containers-->62<!--/hl--> containers, <!--hl:https_sites-->38<!--/hl--> HTTPS sites, Authentik SSO, Netdata monitoring with Telegram alerts, and local LLMs served from a Mac Mini M4 through Ollama.
-<br/><br/>
-`Docker` · `Ollama` · `Authentik` · `Tailscale` · `Netdata`
+<a href="https://status.jay739.dev/status/batcave"><img src="profile/cards/batcave.webp" alt="Batcave's public status page: all systems operational, with uptime bars for each service" width="100%" /></a>
+
+My self-hosted private cloud: a Beelink mini-PC running <!--hl:batcave_containers-->62<!--/hl--> containers and <!--hl:https_sites-->38<!--/hl--> HTTPS sites behind Authentik SSO. Netdata alerts go to Telegram, and a Mac Mini M4 serves the local LLMs through Ollama.
+
+`Docker` · `Ollama` · `Authentik` · `Tailscale`
+
+**[Live status](https://status.jay739.dev/status/batcave)** · [Architecture series](https://jay739.dev/blog/docker-series-part5)
 
 </td>
 <td width="50%" valign="top">
 
 #### <a href="https://github.com/jay739/openhaze"><img alt="OpenHaze" src="https://api.iconify.design/lucide/sun-dim.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [OpenHaze](https://github.com/jay739/openhaze)
 
-<a href="https://apps.jay739.dev/openhaze/"><img src="https://apps.jay739.dev/img/shots/openhaze.webp" alt="Two windows side by side on Windows: the focused GitHub page at full brightness, and the Brave window beside it dimmed by openhaze" width="100%" /></a>
+<a href="https://apps.jay739.dev/openhaze/"><img src="profile/cards/openhaze.webp" alt="OpenHaze on Windows: the window in focus stays bright while the window beside it fades into a dark haze" width="100%" /></a>
 
-Native window dimmer for macOS and Windows: everything but the window in focus fades into an adjustable haze. Swift + AppKit and C# + WinForms, about 2,100 lines each, built with the tools each OS ships. Releases ship a `.dmg` and a Windows installer.
-<br/><br/>
+A native window dimmer for macOS and Windows: everything but the window in focus fades into an adjustable haze. About 2,100 lines per platform in Swift and C#, with no dependencies.
+
 `Swift` · `C#` · `AppKit` · `WinForms`
-<br/>
-→ [Download and docs](https://apps.jay739.dev/openhaze/)
+
+**[Download](https://apps.jay739.dev/openhaze/)** · [Source](https://github.com/jay739/openhaze)
 
 </td>
 </tr>
@@ -204,26 +208,26 @@ Native window dimmer for macOS and Windows: everything but the window in focus f
 
 #### <a href="https://github.com/jay739/omnifin"><img alt="Omnifin" src="https://api.iconify.design/lucide/users.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Omnifin](https://github.com/jay739/omnifin)
 
-<a href="https://apps.jay739.dev/omnifin/"><img src="https://apps.jay739.dev/img/shots/omnifin.webp" alt="Omnifin's Accounts page listing six Jellyfin users, with search, smart select and add user controls" width="100%" /></a>
+<a href="https://apps.jay739.dev/omnifin/"><img src="profile/cards/omnifin.webp" alt="Omnifin's Accounts page listing six Jellyfin users, with search, smart select and add user controls" width="100%" /></a>
 
-Jellyfin user management (invites, account lifecycle, password resets, notifications) in one self-hosted binary. A credited hard fork of [hrfee/jfa-go](https://github.com/hrfee/jfa-go) that adds announcement emails built from live Jellyfin library data, plus a Tauri desktop client. Ships as a Docker image, `.deb`, `.rpm`, AppImage, `.dmg` and Windows installer.
-<br/><br/>
+Jellyfin user management in one self-hosted binary: invites, account lifecycle, password resets and notifications. A credited hard fork of [hrfee/jfa-go](https://github.com/hrfee/jfa-go) that adds library-driven announcement emails and a Tauri desktop client.
+
 `Go` · `Jellyfin` · `Tauri` · `Docker`
-<br/>
-→ [Download and docs](https://apps.jay739.dev/omnifin/)
+
+**[Download](https://apps.jay739.dev/omnifin/)** · [Source](https://github.com/jay739/omnifin)
 
 </td>
 <td width="50%" valign="top">
 
 #### <a href="https://github.com/jay739/claude-pop-quiz"><img alt="claude-pop-quiz" src="https://api.iconify.design/lucide/graduation-cap.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [claude-pop-quiz](https://github.com/jay739/claude-pop-quiz)
 
-<a href="https://apps.jay739.dev/claude-pop-quiz/"><img src="https://apps.jay739.dev/img/shots/claude-pop-quiz.png" alt="A five-question pop quiz in the Claude Code panel, two short answer and three multiple choice" width="100%" /></a>
+<a href="https://apps.jay739.dev/claude-pop-quiz/"><img src="profile/cards/claude-pop-quiz.webp" alt="A five-question pop quiz in the Claude Code panel, two short answer and three multiple choice" width="100%" /></a>
 
-A Claude Code hook that pauses every 40 to 45 actions and quizzes you on your own session. Graded answers go to a learning journal that drives spaced repetition and adaptive difficulty.
-<br/><br/>
+A Claude Code hook that pauses every 40 to 45 actions and quizzes you on your own session. Graded answers feed a learning journal that drives spaced repetition and adaptive difficulty.
+
 `Python` · `Claude Code` · `Hooks` · `Spaced repetition`
-<br/>
-→ [Download and docs](https://apps.jay739.dev/claude-pop-quiz/)
+
+**[Install](https://apps.jay739.dev/claude-pop-quiz/)** · [Source](https://github.com/jay739/claude-pop-quiz)
 
 </td>
 </tr>
@@ -232,18 +236,26 @@ A Claude Code hook that pauses every 40 to 45 actions and quizzes you on your ow
 
 #### <a href="https://github.com/jay739/PodcastAI"><img alt="RAG Podcast Generator" src="https://api.iconify.design/lucide/mic.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [RAG Podcast Generator](https://github.com/jay739/PodcastAI)
 
-PDF → LLM → TTS pipeline that turns books into character-voiced podcasts. PyMuPDF extracts the text, FAISS retrieves the passages, Llama 3.1 8B writes the script through Ollama, and Bark voices each speaker.
-<br/><br/>
-`RAG` · `FAISS` · `Ollama` · `Bark TTS` · `Electron`
+<a href="https://github.com/jay739/PodcastAI"><img src="profile/cards/podcastai.webp" alt="PodcastAI: a PDF-to-podcast pipeline that turns books into character-voiced audio with LLMs and TTS" width="100%" /></a>
+
+Turns a PDF book into a character-voiced podcast. PyMuPDF extracts the text, FAISS retrieves passages, Llama 3.1 8B writes the script through Ollama, and Bark voices each speaker.
+
+`RAG` · `FAISS` · `Ollama` · `Bark TTS`
+
+**[Source](https://github.com/jay739/PodcastAI)** · [Notebook](https://github.com/jay739/PodcastAI/blob/main/Presentation_final.ipynb)
 
 </td>
 <td width="50%" valign="top">
 
 #### <a href="https://github.com/jay739/forest-fire-detection"><img alt="Wildfire Detection" src="https://api.iconify.design/lucide/flame.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Wildfire Detection](https://github.com/jay739/forest-fire-detection)
 
-Benchmarked 8 models on the FLAME aerial dataset in RGB, thermal IR and RGB+IR fusion. For the pretrained backbones, fusion and RGB alone finished within one test image of each other. Best: ResNet-18 on RGB at **99.8%** test accuracy, on a 1% subset (about 107 test images).
-<br/><br/>
-`CNN` · `Computer Vision` · `Aerial Imagery` · `Thermal IR`
+<a href="https://nbviewer.org/urls/raw.githubusercontent.com/jay739/forest-fire-detection/main/eval.ipynb"><img src="profile/cards/wildfire.webp" alt="Dot chart of test accuracy for 8 models on RGB, thermal IR and fused input; ResNet-18 on RGB is best at 99.81%" width="100%" /></a>
+
+Benchmarked 8 models on the FLAME aerial dataset in RGB, thermal IR and RGB+IR fusion. Best was ResNet-18 on RGB at 99.8% test accuracy, on a 1% subset of about 107 test images.
+
+`PyTorch` · `CNN` · `Computer Vision` · `Thermal IR`
+
+**[Notebook](https://nbviewer.org/urls/raw.githubusercontent.com/jay739/forest-fire-detection/main/eval.ipynb)** · [Source](https://github.com/jay739/forest-fire-detection)
 
 </td>
 </tr>
