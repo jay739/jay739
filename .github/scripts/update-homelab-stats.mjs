@@ -1,13 +1,12 @@
-// Reads the generated homelab docs (a checkout of the private
-// jay739/homelab-docker-services repo) and writes their aggregate counts into
-// README.md and profile/homelab-stats.json.
+// Reads the totals file that the private jay739/homelab-docker-services repo
+// generates (docs/reference/stats.json, written by tools/gen_docs.py) and
+// writes those totals into README.md and profile/homelab-stats.json.
 //
-// The docs repo is private because it maps every port, bind address and
-// upstream on the network. Only the totals in STAT_KEYS leave it, and this
-// script prints nothing but those totals, because Actions logs on a public
-// repo are readable by anyone. A source that fails to parse stops the run
-// with the README untouched: it never writes a zero for a number it could not
-// read.
+// stats.json is the one file built to leave that private repo: counts only,
+// nothing that names a service, host, port or address. This script still
+// prints nothing but the totals, because Actions logs on a public repo are
+// readable by anyone. A missing key or an impossible count stops the run with
+// the README untouched: it never writes a zero for a number it could not read.
 //
 // README.md marks each number that should update itself like this:
 //   <!--hl:batcave_containers-->63<!--/hl-->
@@ -24,16 +23,13 @@ const DOCS_DIR = process.env.HOMELAB_DOCS_DIR || ".homelab-docs";
 const README_PATH = process.env.README_PATH || "README.md";
 const STATS_PATH = process.env.STATS_PATH || "profile/homelab-stats.json";
 
-// Paths inside the docs checkout. All four are written by tools/gen_docs.py.
-export const SOURCES = {
-  topology: "docs/diagrams/topology.json",
-  inventory: "docs/reference/inventory.md",
-  ingress: "docs/reference/ingress.md",
-  remoteHosts: "docs/reference/remote-hosts.md",
-};
+// Path inside the docs checkout, written by tools/gen_docs.py.
+export const SOURCE = "docs/reference/stats.json";
 
 // The public contract: profile/homelab-stats.json carries exactly these keys,
 // in this order, and README markers may name any of them or docs_updated.
+// tools/gen_docs.py must write every one of them; it may add others, which are
+// ignored here until this list names them.
 export const STAT_KEYS = [
   "batcave_containers", // running on batcave's Docker daemon
   "homelab_containers", // batcave plus every remote host the docs enumerate
@@ -46,8 +42,8 @@ export const STAT_KEYS = [
 ];
 export const README_KEYS = [...STAT_KEYS, "docs_updated"];
 
-// A count that can never honestly be zero. Seeing one means a parse went
-// wrong, not that the homelab is empty.
+// A count that can never honestly be zero. Seeing one means the generator
+// went wrong, not that the homelab is empty.
 const MUST_BE_POSITIVE = [
   "batcave_containers",
   "homelab_containers",
@@ -65,15 +61,15 @@ export class StatsError extends Error {
   }
 }
 
-/** A docs file the script needs is not in the checkout. */
+/** The totals file, or the docs history, is not in the checkout. */
 export class SourceMissingError extends StatsError {}
 
-/** A docs file no longer has the shape this script parses. */
+/** The totals file is not the JSON object this script expects. */
 export class SourceFormatError extends StatsError {
-  constructor(file, problem) {
+  constructor(problem) {
     super(
-      `${file} ${problem}. tools/gen_docs.py may have changed its output format; ` +
-        "update the matching parser in .github/scripts/update-homelab-stats.mjs.",
+      `${SOURCE} ${problem}. Check that tools/gen_docs.py still writes every key in ` +
+        "STAT_KEYS in .github/scripts/update-homelab-stats.mjs, or update the list.",
     );
   }
 }
@@ -84,117 +80,21 @@ export class ImplausibleValueError extends StatsError {}
 /** README.md has no markers, a broken marker, or a marker naming an unknown stat. */
 export class MarkerError extends StatsError {}
 
-const normalize = (text) => text.replace(/\r\n/g, "\n");
-
-export function parseTopology(text) {
-  let topo;
+export function parseStatsFile(text) {
+  let data;
   try {
-    topo = JSON.parse(text);
+    data = JSON.parse(text);
   } catch {
-    // JSON.parse quotes a slice of its input in the message, and that input
-    // is private, so report the failure without it.
-    throw new SourceFormatError(SOURCES.topology, "is not valid JSON");
+    // JSON.parse quotes a slice of its input in the message. The file should
+    // hold only counts, but keep its content out of the public log regardless.
+    throw new SourceFormatError("is not valid JSON");
   }
-  if (!topo || !Array.isArray(topo.services) || !Array.isArray(topo.hosts)) {
-    throw new SourceFormatError(SOURCES.topology, "has no services or hosts array");
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
+    throw new SourceFormatError("is not a JSON object");
   }
-  const { services, hosts } = topo;
-  return {
-    services_declared: services.length,
-    compose_files: new Set(services.map((s) => s.file).filter(Boolean)).size,
-    services_healthchecked: services.filter((s) => Boolean(s.healthcheck)).length,
-    services_mem_limited: services.filter((s) => s.memory && s.memory !== "-").length,
-    hosts: hosts.length,
-  };
-}
-
-export function parseInventory(text) {
-  const match = normalize(text).match(/^- Containers on the daemon: \*\*(\d+)\*\*$/m);
-  if (!match) {
-    throw new SourceFormatError(SOURCES.inventory, "has no 'Containers on the daemon: **N**' line");
-  }
-  return { batcave_containers: Number(match[1]) };
-}
-
-function splitRow(line) {
-  return line
-    .trim()
-    .replace(/^\||\|$/g, "")
-    .split("|")
-    .map((cell) => cell.trim().replace(/\*\*|`/g, ""));
-}
-
-// Rows of the first Markdown table in `text` whose header begins with Domain,
-// as objects keyed by header text, with backticks and bold stripped.
-function domainTable(text, file) {
-  const lines = normalize(text).split("\n");
-  const start = lines.findIndex((line) => /^\|\s*Domain\s*\|/.test(line));
-  if (start === -1) throw new SourceFormatError(file, "has no '| Domain |' table");
-  if (!/^\|\s*:?-{3,}/.test(lines[start + 1] || "")) {
-    throw new SourceFormatError(file, "has a Domain table with no separator row");
-  }
-  const header = splitRow(lines[start]);
-  for (const column of ["Domain", "Enabled", "Status"]) {
-    if (!header.includes(column)) {
-      throw new SourceFormatError(file, `has a Domain table with no ${column} column`);
-    }
-  }
-  const rows = [];
-  for (let i = start + 2; i < lines.length && lines[i].startsWith("|"); i++) {
-    const cells = splitRow(lines[i]);
-    rows.push(Object.fromEntries(header.map((name, j) => [name, cells[j] ?? ""])));
-  }
-  return rows;
-}
-
-// A site counts only if it is switched on, reaches a container that exists,
-// and is a real hostname rather than a catch-all.
-const isServed = (row) =>
-  row.Enabled === "yes" && !row.Status.includes("DANGLING") && !row.Domain.startsWith("*.");
-
-function servedSites(text, file, declared) {
-  const rows = domainTable(text, file);
-  if (rows.length !== declared) {
-    throw new SourceFormatError(
-      file,
-      `lists ${rows.length} proxy host rows but its summary line says ${declared}`,
-    );
-  }
-  return rows.filter(isServed).length;
-}
-
-export function parseIngress(text) {
-  const file = SOURCES.ingress;
-  const match = normalize(text).match(/^(\d+) proxy hosts configured/m);
-  if (!match) throw new SourceFormatError(file, "has no 'N proxy hosts configured' line");
-  return { batcave_https_sites: servedSites(text, file, Number(match[1])) };
-}
-
-export function parseRemoteHosts(text) {
-  const file = SOURCES.remoteHosts;
-  const sections = normalize(text).split(/^## /m).slice(1);
-  if (sections.length === 0) throw new SourceFormatError(file, "has no '## <host>' sections");
-
-  let containers = 0;
-  let sites = 0;
-  for (const section of sections) {
-    const host = section.slice(0, section.indexOf("\n")).trim();
-    // The line is "`user@address`, N containers." Only N is captured, so the
-    // address never reaches a variable, a message or the log.
-    const count = section.match(/^`[^`\n]*`, (\d+) containers\.$/m);
-    if (!count) throw new SourceFormatError(file, `has no 'N containers.' line for host ${host}`);
-    containers += Number(count[1]);
-
-    const ingressAt = section.search(/^### Ingress on /m);
-    if (ingressAt === -1) continue;
-    const ingress = section.slice(ingressAt);
-    const declared = ingress.match(/^(\d+) proxy hosts\./m);
-    if (!declared) {
-      throw new SourceFormatError(file, `has no 'N proxy hosts.' line for host ${host}`);
-    }
-    sites += servedSites(ingress, file, Number(declared[1]));
-  }
-  return { remote_containers: containers, remote_https_sites: sites };
+  const missing = STAT_KEYS.filter((key) => !(key in data));
+  if (missing.length > 0) throw new SourceFormatError(`has no ${missing.join(", ")}`);
+  return Object.fromEntries(STAT_KEYS.map((key) => [key, data[key]]));
 }
 
 export function toIsoDate(value) {
@@ -205,8 +105,9 @@ export function toIsoDate(value) {
   return date.toISOString().slice(0, 10);
 }
 
-// The date of the last commit that changed the generated docs. The workflow
-// checks the docs repo out with full history so this sees past HEAD.
+// The date of the last commit that changed the generated docs, not just the
+// totals: an architecture change that moves no count still counts. The
+// workflow checks the docs repo out with full history so this sees past HEAD.
 export function lastDocsChange(docsDir, env = process.env) {
   if (env.HOMELAB_DOCS_UPDATED) return toIsoDate(env.HOMELAB_DOCS_UPDATED);
   let out = "";
@@ -228,20 +129,6 @@ export function lastDocsChange(docsDir, env = process.env) {
   return toIsoDate(out);
 }
 
-export function combineStats({ topology, inventory, ingress, remote, docsUpdated }) {
-  return {
-    docs_updated: docsUpdated,
-    batcave_containers: inventory.batcave_containers,
-    homelab_containers: inventory.batcave_containers + remote.remote_containers,
-    services_declared: topology.services_declared,
-    compose_files: topology.compose_files,
-    services_healthchecked: topology.services_healthchecked,
-    services_mem_limited: topology.services_mem_limited,
-    https_sites: ingress.batcave_https_sites + remote.remote_https_sites,
-    hosts: topology.hosts,
-  };
-}
-
 export function validateStats(stats) {
   for (const key of STAT_KEYS) {
     const value = stats[key];
@@ -252,7 +139,7 @@ export function validateStats(stats) {
   for (const key of MUST_BE_POSITIVE) {
     if (stats[key] === 0) {
       throw new ImplausibleValueError(
-        `${key} is 0, which means a docs file parsed as empty. README left unchanged.`,
+        `${key} is 0, which means the generator read an empty source. README left unchanged.`,
       );
     }
   }
@@ -263,6 +150,12 @@ export function validateStats(stats) {
       );
     }
   }
+  if (stats.homelab_containers < stats.batcave_containers) {
+    throw new ImplausibleValueError(
+      `homelab_containers (${stats.homelab_containers}) is below batcave_containers ` +
+        `(${stats.batcave_containers})`,
+    );
+  }
   if (!/^\d{4}-\d{2}-\d{2}$/.test(stats.docs_updated || "")) {
     throw new ImplausibleValueError("docs_updated is not a YYYY-MM-DD date");
   }
@@ -270,29 +163,17 @@ export function validateStats(stats) {
 }
 
 export async function collectStats(docsDir, docsUpdated) {
-  const read = async (rel) => {
-    try {
-      return await readFile(path.join(docsDir, rel), "utf8");
-    } catch (err) {
-      if (err.code !== "ENOENT") throw err;
-      throw new SourceMissingError(
-        `${rel} is missing from ${docsDir}. Check that the docs checkout step ran ` +
-          "and that HOMELAB_DOCS_DIR points at it.",
-      );
-    }
-  };
-  const [topology, inventory, ingress, remote] = await Promise.all(
-    [SOURCES.topology, SOURCES.inventory, SOURCES.ingress, SOURCES.remoteHosts].map(read),
-  );
-  return validateStats(
-    combineStats({
-      topology: parseTopology(topology),
-      inventory: parseInventory(inventory),
-      ingress: parseIngress(ingress),
-      remote: parseRemoteHosts(remote),
-      docsUpdated,
-    }),
-  );
+  let text;
+  try {
+    text = await readFile(path.join(docsDir, SOURCE), "utf8");
+  } catch (err) {
+    if (err.code !== "ENOENT") throw err;
+    throw new SourceMissingError(
+      `${SOURCE} is missing from ${docsDir}. Check that the docs checkout step ran, ` +
+        "that HOMELAB_DOCS_DIR points at it, and that tools/gen_docs.py writes the file.",
+    );
+  }
+  return validateStats({ docs_updated: docsUpdated, ...parseStatsFile(text) });
 }
 
 export function formatDate(isoDate) {

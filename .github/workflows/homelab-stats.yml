@@ -64,12 +64,14 @@ jobs:
           repository: jay739/homelab-docker-services
           ssh-key: ${{ secrets.HOMELAB_DOCS_DEPLOY_KEY }}
           path: .homelab-docs
-          # Full history, so the script can date the last change to the docs.
+          # Full history (trees only, no file contents), so the script can date
+          # the last change to the docs.
           fetch-depth: 0
           filter: blob:none
-          sparse-checkout: |
-            docs/diagrams
-            docs/reference
+          # Only the totals file is ever written to the runner, so none of the
+          # private pages exist on this public repo's machines.
+          sparse-checkout: /docs/reference/stats.json
+          sparse-checkout-cone-mode: false
           persist-credentials: false
 
       - name: Update README.md and profile/homelab-stats.json
