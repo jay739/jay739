@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
       - name: Generate PodcastAI pin card
-        uses: stats-organization/github-readme-stats-action@v2
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
         with:
           card: pin
           options: username=jay739&repo=PodcastAI&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A
@@ -26,7 +26,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate PodcastAI pin card (light)
-        uses: stats-organization/github-readme-stats-action@v2
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
         with:
           card: pin
           options: username=jay739&repo=PodcastAI&theme=default&title_color=b45309&icon_color=b45309&text_color=1f2937&border_color=e2e8f0&bg_color=ffffff
@@ -34,7 +34,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate portfolio-site pin card
-        uses: stats-organization/github-readme-stats-action@v2
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
         with:
           card: pin
           options: username=jay739&repo=portfolio-site&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A
@@ -42,7 +42,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate portfolio-site pin card (light)
-        uses: stats-organization/github-readme-stats-action@v2
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
         with:
           card: pin
           options: username=jay739&repo=portfolio-site&theme=default&title_color=b45309&icon_color=b45309&text_color=1f2937&border_color=e2e8f0&bg_color=ffffff
@@ -50,7 +50,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate omnifin pin card
-        uses: stats-organization/github-readme-stats-action@v2
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
         with:
           card: pin
           options: username=jay739&repo=omnifin&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A
@@ -58,7 +58,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate omnifin pin card (light)
-        uses: stats-organization/github-readme-stats-action@v2
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
         with:
           card: pin
           options: username=jay739&repo=omnifin&theme=default&title_color=b45309&icon_color=b45309&text_color=1f2937&border_color=e2e8f0&bg_color=ffffff
@@ -66,7 +66,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate autonomous-robot-navigation-system pin card
-        uses: stats-organization/github-readme-stats-action@v2
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
         with:
           card: pin
           options: username=jay739&repo=autonomous-robot-navigation-system&theme=github_dark&title_color=F59E0B&icon_color=F59E0B&text_color=f8fafc&border_color=334155&bg_color=0F172A
@@ -74,7 +74,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate autonomous-robot-navigation-system pin card (light)
-        uses: stats-organization/github-readme-stats-action@v2
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
         with:
           card: pin
           options: username=jay739&repo=autonomous-robot-navigation-system&theme=default&title_color=b45309&icon_color=b45309&text_color=1f2937&border_color=e2e8f0&bg_color=ffffff

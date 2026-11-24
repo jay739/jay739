@@ -26,7 +26,7 @@ jobs:
             dist/github-contribution-grid-snake-light.svg?palette=github-light&color_snake=#b45309&color_dots=#fef3c7,#fde68a,#fcd34d,#f59e0b,#b45309
 
       - name: Push to output branch
-        uses: crazy-max/ghaction-github-pages@v4
+        uses: crazy-max/ghaction-github-pages@df5cc2bfa78282ded844b354faee141f06b41865 # v4.2.0
         with:
           target_branch: output
           build_dir: dist

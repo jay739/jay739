@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Generate metrics.svg
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
           token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
           filename: metrics.svg
@@ -46,7 +46,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Generate metrics.plugin.habits.svg
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
           token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
           filename: metrics.plugin.habits.svg
@@ -64,7 +64,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Generate metrics.plugin.topics.svg
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
           token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
           filename: metrics.plugin.topics.svg
@@ -81,7 +81,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Generate metrics.plugin.achievements.svg
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
           token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
           filename: metrics.plugin.achievements.svg
@@ -100,7 +100,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Generate metrics.plugin.repositories.svg
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
           token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
           filename: metrics.plugin.repositories.svg
@@ -120,7 +120,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Generate metrics.plugin.notable.svg
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
           token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
           filename: metrics.plugin.notable.svg

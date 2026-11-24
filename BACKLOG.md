@@ -40,26 +40,6 @@ Issues instead. Drop an item once it is done.
 - **Done when:** each of the four links to its evidence (a notebook, a repo, the
   blog post that measured it) or is removed.
 
-## B-3: Third-party actions run unpinned with write access
-
-- **Status:** open
-- **Size:** S
-- **Touches:** `.github/workflows/metrics.yml` (`lowlighter/metrics@latest` in
-  six jobs, which also receive `METRICS_TOKEN`), `pin-cards.yml`
-  (`stats-organization/github-readme-stats-action@v2`), `snake.yml`
-  (`crazy-max/ghaction-github-pages@v4`), `blog-post-workflow.yml`
-  (`gautamkrishnar/blog-post-workflow@v1`). The snk fork in `snake.yml` and the
-  checkout in the new workflows are already pinned by SHA.
-- **Why:** a moved tag runs new code with this repo's write token, and
-  `@latest` next to a personal token is the worst case of that.
-- **Fix:** pin every third-party `uses:` to a full commit SHA with the version
-  in a trailing comment, and add `.github/dependabot.yml` with the
-  `github-actions` ecosystem so the pins get bump PRs.
-- **Done when:** no third-party `uses:` line names a tag or branch, and
-  Dependabot opens action bumps.
-- **Risk:** pinning without the Dependabot file freezes the actions, which is
-  how pinned workflows rot. Land both together.
-
 ## B-4: The stats parser reads Markdown instead of a contract
 
 - **Status:** open
