@@ -84,7 +84,7 @@ based_in: Maryland, USA
 
 Services per stack: <!--hl:stacks-->media 25 · infra 14 · extras 12 · core 4 · immich 4 · cadence 1 · slskd 1 · ytdlp-shim 1<!--/hl-->
 
-<sub>Counts are generated from my homelab's own docs, which an hourly drift check rebuilds from the live Docker daemon and proxy config. Last architecture change: <!--hl:docs_updated-->Nov 24, 2026<!--/hl-->.</sub>
+<sub>Counts are generated from my homelab's own docs, which an hourly drift check rebuilds from the live Docker daemon and proxy config. Last architecture change: <!--hl:docs_updated-->Nov 25, 2026<!--/hl-->.</sub>
 
 </div>
 
