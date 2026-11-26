@@ -17,7 +17,15 @@ const SLUG = process.env.STATUS_SLUG || "batcave";
 const STATS_PATH = process.env.STATS_PATH || "profile/homelab-stats.json";
 const OUT_PATH = process.env.OUT_PATH || "profile/batcave-card.svg";
 const OUT_PATH_LIGHT = process.env.OUT_PATH_LIGHT || "profile/batcave-card-light.svg";
+const HISTORY_PATH = process.env.HISTORY_PATH || "profile/batcave-history.json";
 const TIMEOUT_MS = 45_000;
+
+// The public status page only exposes a 24-hour uptime, so the long view is
+// built here: one reading per UTC day, the day's last run winning. Runs every
+// six hours make each day's final reading cover roughly the 24 hours since the
+// previous day's final reading, so the readings tile into back-to-back days.
+export const HISTORY_DAYS = 30;
+export const KEEP_DAYS = 90;
 
 // Kuma heartbeat status codes.
 export const STATUS = { DOWN: 0, UP: 1, PENDING: 2, MAINTENANCE: 3 };
@@ -131,6 +139,53 @@ export function summarize(groups, containers) {
   };
 }
 
+// The UTC date a Kuma heartbeat time falls on, as YYYY-MM-DD.
+export function dayOf(time) {
+  return parseKumaTime(time).toISOString().slice(0, 10);
+}
+
+// Reads the stored history, refusing anything that is not a list of daily
+// readings, so a damaged file stops the run instead of skewing the numbers.
+export function parseHistory(text) {
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    throw new SourceFormatError("the uptime history file is not valid JSON");
+  }
+  if (!Array.isArray(data)) throw new SourceFormatError("the uptime history file is not a list");
+  for (const [i, d] of data.entries()) {
+    const ok =
+      d && /^\d{4}-\d{2}-\d{2}$/.test(d.date) && typeof d.mean === "number" && d.mean >= 0 && d.mean <= 1;
+    if (!ok) throw new SourceFormatError(`uptime history entry ${i} is not a { date, mean } reading`);
+  }
+  return data;
+}
+
+// Adds or replaces the reading for the summary's day, keeping KEEP_DAYS days.
+export function recordDay(history, s) {
+  const date = dayOf(s.checkedAt);
+  const reading = { date, mean: s.mean, lowest: s.lowest, checked: s.total - s.stale, total: s.total };
+  return [...history.filter((d) => d.date !== date), reading]
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .slice(-KEEP_DAYS);
+}
+
+// The last `days` calendar days ending on `today`, with null for a day that
+// has no reading. The mean covers measured days only, and says how many.
+export function historyWindow(history, today, days = HISTORY_DAYS) {
+  const byDate = new Map(history.map((d) => [d.date, d]));
+  const end = new Date(`${today}T00:00:00Z`).getTime();
+  const slots = [];
+  for (let i = days - 1; i >= 0; i--) {
+    const date = new Date(end - i * 86_400_000).toISOString().slice(0, 10);
+    slots.push({ date, mean: byDate.get(date)?.mean ?? null });
+  }
+  const measured = slots.filter((d) => d.mean !== null);
+  const mean = measured.length ? measured.reduce((t, d) => t + d.mean, 0) / measured.length : null;
+  return { days: slots, measured: measured.length, mean };
+}
+
 // Never rounds up: 99.996% shows as 99.99%, and only a perfect day shows 100%.
 export function formatUptime(ratio) {
   if (ratio >= 1) return "100%";
@@ -187,9 +242,24 @@ export function headlineColor(c, s) {
   return c.pending;
 }
 
-export function renderCard(s, theme = "dark") {
+// A day's bar: green from 99.9%, amber from 99%, red below, grey if unmeasured.
+function dayColor(c, mean) {
+  if (mean === null) return c.stale;
+  if (mean >= 0.999) return c.up;
+  if (mean >= 0.99) return c.pending;
+  return c.down;
+}
+
+export function historyLabel(win) {
+  if (win.mean === null) return "no days measured yet";
+  const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
+  const span = win.measured === win.days.length ? plural(win.days.length, "day") : plural(win.measured, "measured day");
+  return `${formatUptime(win.mean)} over ${span}`;
+}
+
+export function renderCard(s, theme = "dark", win = null) {
   const c = THEMES[theme];
-  const W = 600, H = 200;
+  const W = 600, H = win ? 256 : 200;
   const tone = headlineColor(c, s);
   const head = escapeXml(headline(s));
   const stats = [
@@ -216,7 +286,18 @@ export function renderCard(s, theme = "dark") {
       return out;
     })
     .join("");
-  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Batcave: ${head}, ${formatUptime(s.mean)} 24-hour uptime from Uptime Kuma, ${s.containers} containers from the homelab docs">
+  const historySvg = win
+    ? `<text x="30" y="206" class="lbl">LAST ${win.days.length} DAYS</text>` +
+      `<text x="${W - 30}" y="206" text-anchor="end" class="grp">${escapeXml(historyLabel(win))}</text>` +
+      win.days
+        .map((d, i) => {
+          const day = d.mean === null ? "not measured" : formatUptime(d.mean);
+          return `<rect x="${30 + i * 18}" y="214" width="14" height="16" rx="3" fill="${dayColor(c, d.mean)}"${d.mean === null ? ' fill-opacity="0.45"' : ""}><title>${d.date}: ${day}</title></rect>`;
+        })
+        .join("")
+    : "";
+  const historyAria = win && win.mean !== null ? `, ${historyLabel(win)}` : "";
+  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Batcave: ${head}, ${formatUptime(s.mean)} 24-hour uptime from Uptime Kuma${escapeXml(historyAria)}, ${s.containers} containers from the homelab docs">
   <style>
     text { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
     .title { fill: ${c.label}; font-size: 15px; font-weight: 700; letter-spacing: 0.5px; }
@@ -232,7 +313,8 @@ export function renderCard(s, theme = "dark") {
   <text x="${W - 184}" y="40" class="pill">${head}</text>
   ${statSvg}
   ${groupSvg}
-  <text x="${W - 30}" y="188" text-anchor="end" class="foot">Uptime Kuma checks · containers from homelab docs · ${escapeXml(formatCheckedAt(s.checkedAt))}</text>
+  ${historySvg}
+  <text x="${W - 30}" y="${H - 12}" text-anchor="end" class="foot">Uptime Kuma checks · containers from homelab docs · ${escapeXml(formatCheckedAt(s.checkedAt))}</text>
 </svg>
 `;
 }
@@ -266,19 +348,34 @@ async function readContainers(file) {
   }
 }
 
+async function readHistory(file) {
+  let text;
+  try {
+    text = await readFile(file, "utf8");
+  } catch (err) {
+    if (err.code === "ENOENT") return []; // the first run starts the record
+    throw err;
+  }
+  return parseHistory(text);
+}
+
 async function main() {
   const now = process.env.CARD_NOW ? new Date(process.env.CARD_NOW) : new Date();
   const page = await getJson(`${STATUS_BASE}/api/status-page/${SLUG}`);
   const beats = await getJson(`${STATUS_BASE}/api/status-page/heartbeat/${SLUG}`);
   const groups = parseHeartbeats(beats, parseStatusPage(page), now);
   const summary = summarize(groups, await readContainers(STATS_PATH));
+  const history = recordDay(await readHistory(HISTORY_PATH), summary);
+  const win = historyWindow(history, dayOf(summary.checkedAt));
+  await mkdir(path.dirname(HISTORY_PATH), { recursive: true });
+  await writeFile(HISTORY_PATH, `${JSON.stringify(history, null, 1)}\n`, "utf8");
   for (const [file, theme] of [[OUT_PATH, "dark"], [OUT_PATH_LIGHT, "light"]]) {
     await mkdir(path.dirname(file), { recursive: true });
-    await writeFile(file, renderCard(summary, theme), "utf8");
+    await writeFile(file, renderCard(summary, theme, win), "utf8");
   }
   console.log(
     `Batcave card: ${headline(summary)}, mean ${formatUptime(summary.mean)}, lowest ${formatUptime(summary.lowest)}, ` +
-      `${summary.containers} containers, checked ${summary.checkedAt}`,
+      `${summary.containers} containers, checked ${summary.checkedAt}; ${historyLabel(win)}`,
   );
 }
 

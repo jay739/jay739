@@ -21,6 +21,12 @@ import {
   headline,
   headlineColor,
   renderCard,
+  KEEP_DAYS,
+  dayOf,
+  parseHistory,
+  recordDay,
+  historyWindow,
+  historyLabel,
 } from "./generate-batcave-card.mjs";
 
 const NOW = new Date("2026-01-02T03:10:00Z");
@@ -166,4 +172,64 @@ test("renderCard output is identical for identical input", () => {
   assert.equal(renderCard(s, "dark"), renderCard(s, "dark"));
   assert.notEqual(renderCard(s, "dark"), renderCard(s, "light"));
   assert.equal(escapeXml(`"'`), "&quot;&apos;");
+});
+
+const reading = (checkedAt, mean, extra = {}) => ({ checkedAt, mean, lowest: mean, total: 3, stale: 0, ...extra });
+
+test("recordDay keeps one reading per UTC day, the latest run winning", () => {
+  let h = recordDay([], reading("2026-01-02 06:45:00.000", 0.99));
+  h = recordDay(h, reading("2026-01-02 18:45:00.000", 0.999));
+  h = recordDay(h, reading("2026-01-01 18:45:00.000", 1));
+  assert.deepEqual(h.map((d) => [d.date, d.mean]), [["2026-01-01", 1], ["2026-01-02", 0.999]]);
+  assert.equal(h[1].checked, 3);
+  assert.equal(dayOf("2026-01-02 23:59:59.999"), "2026-01-02");
+});
+
+test("recordDay keeps only the newest KEEP_DAYS days", () => {
+  let h = [];
+  for (let i = 0; i < KEEP_DAYS + 5; i++) {
+    const d = new Date(Date.UTC(2026, 0, 1) + i * 86_400_000).toISOString().slice(0, 10);
+    h = recordDay(h, reading(`${d} 12:00:00.000`, 1));
+  }
+  assert.equal(h.length, KEEP_DAYS);
+  assert.equal(h[0].date, new Date(Date.UTC(2026, 0, 6)).toISOString().slice(0, 10));
+});
+
+test("historyWindow shows unmeasured days as gaps and averages measured ones only", () => {
+  const h = [
+    { date: "2026-01-28", mean: 0.99 },
+    { date: "2026-01-30", mean: 1 },
+    { date: "2025-12-01", mean: 0.5 },
+  ];
+  const w = historyWindow(h, "2026-01-30", 3);
+  assert.deepEqual(w.days, [
+    { date: "2026-01-28", mean: 0.99 },
+    { date: "2026-01-29", mean: null },
+    { date: "2026-01-30", mean: 1 },
+  ]);
+  assert.equal(w.measured, 2);
+  assert.equal(w.mean, (0.99 + 1) / 2);
+  assert.equal(historyLabel(w), "99.50% over 2 measured days");
+  const full = historyWindow([{ date: "2026-01-30", mean: 0.9996 }], "2026-01-30", 1);
+  assert.equal(historyLabel(full), "99.96% over 1 day");
+  assert.equal(historyLabel(historyWindow([], "2026-01-30", 2)), "no days measured yet");
+});
+
+test("parseHistory refuses a damaged file instead of skewing the record", () => {
+  assert.deepEqual(parseHistory("[]"), []);
+  throwsClean(() => parseHistory("{oops"), SourceFormatError);
+  throwsClean(() => parseHistory('{"date":"2026-01-01"}'), SourceFormatError);
+  throwsClean(() => parseHistory('[{"date":"2026-01-01","mean":1.5}]'), SourceFormatError);
+  throwsClean(() => parseHistory('[{"date":"Jan 1","mean":1}]'), SourceFormatError);
+});
+
+test("renderCard draws the 30-day row only when given a window", () => {
+  const s = summarize(parseHeartbeats(BEATS, parseStatusPage(PAGE), NOW), 7);
+  const w = historyWindow(recordDay([], s), dayOf(s.checkedAt));
+  const withRow = renderCard(s, "dark", w);
+  assert.ok(withRow.includes('height="256"'));
+  assert.ok(withRow.includes("LAST 30 DAYS"));
+  assert.equal((withRow.match(/<title>\d{4}-\d{2}-\d{2}: /g) || []).length, 30);
+  assert.ok(withRow.includes("over 1 measured day<"));
+  assert.ok(!renderCard(s, "dark").includes("LAST 30 DAYS"));
 });
