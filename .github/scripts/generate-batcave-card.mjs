@@ -22,6 +22,13 @@ const TIMEOUT_MS = 45_000;
 // Kuma heartbeat status codes.
 export const STATUS = { DOWN: 0, UP: 1, PENDING: 2, MAINTENANCE: 3 };
 
+// A monitor whose newest check is older than this is shown as not checked and
+// left out of every number. The public endpoint keeps returning a paused
+// monitor's last 50 beats, so an empty list never signals a pause.
+export const STALE_AFTER_MS = 60 * 60 * 1000;
+
+const STATE_BY_STATUS = { 0: "down", 1: "up", 2: "pending", 3: "maintenance" };
+
 export class CardError extends Error {
   constructor(message) {
     super(message);
@@ -61,8 +68,16 @@ export function parseStatusPage(json) {
   });
 }
 
-// Per monitor: the latest status and the 24-hour uptime ratio.
-export function parseHeartbeats(json, groups) {
+// Kuma stores heartbeat times in UTC as "YYYY-MM-DD HH:mm:ss.SSS".
+export function parseKumaTime(time) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2}):(\d{2})/.exec(time || "");
+  if (!m) throw new ImplausibleValueError(`'${time}' is not a heartbeat time`);
+  return new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]));
+}
+
+// Per monitor: its state, 24-hour uptime and newest check. `now` is passed in
+// so tests do not depend on the real clock.
+export function parseHeartbeats(json, groups, now) {
   const beats = json?.heartbeatList;
   const uptimes = json?.uptimeList;
   if (!beats || typeof beats !== "object" || !uptimes || typeof uptimes !== "object") {
@@ -74,16 +89,17 @@ export function parseHeartbeats(json, groups) {
       const list = beats[String(m.id)];
       const uptime = uptimes[`${m.id}_24`];
       if (!Array.isArray(list) || list.length === 0) {
-        throw new ImplausibleValueError(`monitor ${m.id} has no heartbeats; it may be paused`);
+        throw new ImplausibleValueError(`monitor ${m.id} has no heartbeats on the status page`);
       }
       if (typeof uptime !== "number" || !(uptime >= 0 && uptime <= 1)) {
         throw new ImplausibleValueError(`monitor ${m.id} 24h uptime is ${uptime}, expected a ratio from 0 to 1`);
       }
       const latest = list.reduce((a, b) => (String(b.time) > String(a.time) ? b : a));
-      if (!Object.values(STATUS).includes(latest.status)) {
+      if (!(latest.status in STATE_BY_STATUS)) {
         throw new ImplausibleValueError(`monitor ${m.id} latest status is ${latest.status}`);
       }
-      return { ...m, status: latest.status, uptime, checkedAt: String(latest.time) };
+      const stale = now.getTime() - parseKumaTime(String(latest.time)).getTime() > STALE_AFTER_MS;
+      return { ...m, state: stale ? "stale" : STATE_BY_STATUS[latest.status], uptime, checkedAt: String(latest.time) };
     }),
   }));
 }
@@ -94,12 +110,25 @@ export function summarize(groups, containers) {
   if (!Number.isInteger(containers) || containers <= 0) {
     throw new ImplausibleValueError(`batcave_containers is ${containers}, expected a positive whole number`);
   }
-  const up = monitors.filter((m) => m.status === STATUS.UP).length;
-  const down = monitors.filter((m) => m.status === STATUS.DOWN).length;
-  const mean = monitors.reduce((s, m) => s + m.uptime, 0) / monitors.length;
-  const lowest = Math.min(...monitors.map((m) => m.uptime));
-  const checkedAt = monitors.map((m) => m.checkedAt).sort().at(-1);
-  return { groups, total: monitors.length, up, down, mean, lowest, containers, checkedAt };
+  const count = (state) => monitors.filter((m) => m.state === state).length;
+  // A monitor nobody is checking has no current uptime, so it is left out.
+  const checked = monitors.filter((m) => m.state !== "stale");
+  if (checked.length === 0) {
+    throw new ImplausibleValueError(`no monitor has been checked in the last ${STALE_AFTER_MS / 60000} minutes`);
+  }
+  return {
+    groups,
+    total: monitors.length,
+    up: count("up"),
+    down: count("down"),
+    pending: count("pending"),
+    maintenance: count("maintenance"),
+    stale: count("stale"),
+    mean: checked.reduce((s, m) => s + m.uptime, 0) / checked.length,
+    lowest: Math.min(...checked.map((m) => m.uptime)),
+    containers,
+    checkedAt: checked.map((m) => m.checkedAt).sort().at(-1),
+  };
 }
 
 // Never rounds up: 99.996% shows as 99.99%, and only a perfect day shows 100%.
@@ -108,13 +137,11 @@ export function formatUptime(ratio) {
   return `${(Math.floor(ratio * 10000) / 100).toFixed(2)}%`;
 }
 
-// Kuma stores heartbeat times in UTC as "YYYY-MM-DD HH:mm:ss.SSS".
 export function formatCheckedAt(time) {
-  const m = /^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})/.exec(time || "");
-  if (!m) throw new ImplausibleValueError(`'${time}' is not a heartbeat time`);
-  const d = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]));
+  const d = parseKumaTime(time);
   const date = d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
-  return `${date}, ${m[4]}:${m[5]} UTC`;
+  const hm = d.toISOString().slice(11, 16);
+  return `${date}, ${hm} UTC`;
 }
 
 export function escapeXml(text) {
@@ -124,30 +151,46 @@ export function escapeXml(text) {
 export const THEMES = {
   dark: {
     background: "#0F172A", border: "#334155", label: "#F59E0B", nums: "#f8fafc", text: "#cbd5e1", muted: "#94a3b8",
-    up: "#22c55e", down: "#ef4444", pending: "#f59e0b",
+    up: "#22c55e", down: "#ef4444", pending: "#f59e0b", stale: "#64748b",
   },
   light: {
     background: "#ffffff", border: "#e2e8f0", label: "#b45309", nums: "#0f172a", text: "#334155", muted: "#475569",
-    up: "#15803d", down: "#b91c1c", pending: "#b45309",
+    up: "#15803d", down: "#b91c1c", pending: "#b45309", stale: "#94a3b8",
   },
 };
 
-function statusColor(c, status) {
-  if (status === STATUS.UP) return c.up;
-  if (status === STATUS.DOWN) return c.down;
+const STATE_LABEL = { up: "up", down: "down", pending: "pending", maintenance: "in maintenance", stale: "not checked" };
+
+function stateColor(c, state) {
+  if (state === "up") return c.up;
+  if (state === "down") return c.down;
+  if (state === "stale") return c.stale;
   return c.pending;
 }
 
 export function headline(s) {
   if (s.up === s.total) return `All ${s.total} services up`;
   if (s.down > 0) return `${s.down} of ${s.total} down`;
-  return `${s.up} of ${s.total} up, ${s.total - s.up} pending`;
+  const rest = [
+    s.pending && `${s.pending} pending`,
+    s.maintenance && `${s.maintenance} in maintenance`,
+    s.stale && `${s.stale} not checked`,
+  ].filter(Boolean);
+  return `${s.up} of ${s.total} up, ${rest.join(", ")}`;
+}
+
+// Green only when everything is up, red only when something is down, amber for
+// anything in between (retrying, maintenance, not checked).
+export function headlineColor(c, s) {
+  if (s.up === s.total) return c.up;
+  if (s.down > 0) return c.down;
+  return c.pending;
 }
 
 export function renderCard(s, theme = "dark") {
   const c = THEMES[theme];
   const W = 600, H = 200;
-  const ok = s.up === s.total;
+  const tone = headlineColor(c, s);
   const head = escapeXml(headline(s));
   const stats = [
     [formatUptime(s.mean), "24h uptime"],
@@ -163,21 +206,21 @@ export function renderCard(s, theme = "dark") {
   let gx = 30;
   const groupSvg = s.groups
     .map((g) => {
-      const label = `${escapeXml(g.name)} ${g.monitors.filter((m) => m.status === STATUS.UP).length}/${g.monitors.length}`;
+      const label = `${escapeXml(g.name)} ${g.monitors.filter((m) => m.state === "up").length}/${g.monitors.length}`;
       let out = `<text x="${gx}" y="156" class="grp">${label}</text>`;
       g.monitors.forEach((m, i) => {
-        const title = `${escapeXml(m.name)}: ${m.status === STATUS.UP ? "up" : m.status === STATUS.DOWN ? "down" : "pending"}`;
-        out += `<rect x="${gx + i * 14}" y="166" width="10" height="10" rx="2" fill="${statusColor(c, m.status)}"><title>${title}</title></rect>`;
+        const title = `${escapeXml(m.name)}: ${STATE_LABEL[m.state]}`;
+        out += `<rect x="${gx + i * 14}" y="166" width="10" height="10" rx="2" fill="${stateColor(c, m.state)}"><title>${title}</title></rect>`;
       });
       gx += Math.max(label.length * 7.4, g.monitors.length * 14) + 34;
       return out;
     })
     .join("");
-  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Batcave right now: ${head}, ${formatUptime(s.mean)} 24-hour uptime, ${s.containers} containers">
+  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Batcave: ${head}, ${formatUptime(s.mean)} 24-hour uptime from Uptime Kuma, ${s.containers} containers from the homelab docs">
   <style>
     text { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
     .title { fill: ${c.label}; font-size: 15px; font-weight: 700; letter-spacing: 0.5px; }
-    .pill { fill: ${ok ? c.up : c.down}; font-size: 13px; font-weight: 600; }
+    .pill { fill: ${tone}; font-size: 13px; font-weight: 600; }
     .num { fill: ${c.nums}; font-size: 28px; font-weight: 700; }
     .lbl { fill: ${c.muted}; font-size: 12px; }
     .grp { fill: ${c.text}; font-size: 12px; }
@@ -185,11 +228,11 @@ export function renderCard(s, theme = "dark") {
   </style>
   <rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="10" fill="${c.background}" stroke="${c.border}" />
   <text x="30" y="40" class="title">BATCAVE, RIGHT NOW</text>
-  <circle cx="${W - 196}" cy="35" r="5" fill="${ok ? c.up : c.down}" />
+  <circle cx="${W - 196}" cy="35" r="5" fill="${tone}" />
   <text x="${W - 184}" y="40" class="pill">${head}</text>
   ${statSvg}
   ${groupSvg}
-  <text x="${W - 30}" y="188" text-anchor="end" class="foot">Measured by Uptime Kuma · ${escapeXml(formatCheckedAt(s.checkedAt))}</text>
+  <text x="${W - 30}" y="188" text-anchor="end" class="foot">Uptime Kuma checks · containers from homelab docs · ${escapeXml(formatCheckedAt(s.checkedAt))}</text>
 </svg>
 `;
 }
@@ -224,9 +267,10 @@ async function readContainers(file) {
 }
 
 async function main() {
+  const now = process.env.CARD_NOW ? new Date(process.env.CARD_NOW) : new Date();
   const page = await getJson(`${STATUS_BASE}/api/status-page/${SLUG}`);
   const beats = await getJson(`${STATUS_BASE}/api/status-page/heartbeat/${SLUG}`);
-  const groups = parseHeartbeats(beats, parseStatusPage(page));
+  const groups = parseHeartbeats(beats, parseStatusPage(page), now);
   const summary = summarize(groups, await readContainers(STATS_PATH));
   for (const [file, theme] of [[OUT_PATH, "dark"], [OUT_PATH_LIGHT, "light"]]) {
     await mkdir(path.dirname(file), { recursive: true });
