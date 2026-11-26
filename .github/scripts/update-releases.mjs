@@ -1,9 +1,13 @@
 import { readFile, writeFile } from "node:fs/promises";
+import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 const USERNAME = process.env.GITHUB_REPOSITORY_OWNER;
 const TOKEN = process.env.GITHUB_TOKEN;
 const README_PATH = process.env.README_PATH || "README.md";
 const LIMIT = Number(process.env.RELEASES_LIMIT || 6);
+// Below this, a download count reads as a weakness, so it is left out.
+export const DOWNLOADS_MIN = Number(process.env.DOWNLOADS_MIN || 50);
 
 const START = "<!-- RELEASES:START -->";
 const END = "<!-- RELEASES:END -->";
@@ -28,6 +32,7 @@ async function graphql(query, variables) {
 }
 
 // latestRelease is GitHub's "Latest" release: never a draft or a prerelease.
+// releases carries every release's assets, so downloads count all versions.
 async function fetchLatestReleases() {
   const query = `
     query($login: String!) {
@@ -41,6 +46,13 @@ async function fetchLatestReleases() {
               url
               publishedAt
             }
+            releases(first: 50) {
+              nodes {
+                releaseAssets(first: 30) {
+                  nodes { name downloadCount }
+                }
+              }
+            }
           }
         }
       }
@@ -53,24 +65,36 @@ async function fetchLatestReleases() {
     .slice(0, LIMIT);
 }
 
-function fmtDate(iso) {
+// Checksum files are downloaded to verify an installer, not to install
+// anything, so counting them would inflate the number.
+export function totalDownloads(repo) {
+  return (repo.releases?.nodes || [])
+    .flatMap((release) => release.releaseAssets?.nodes || [])
+    .filter((asset) => !/sha256|checksum/i.test(asset.name))
+    .reduce((sum, asset) => sum + (asset.downloadCount || 0), 0);
+}
+
+export function fmtDate(iso) {
   const d = new Date(iso);
   return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 }
 
-// Repo descriptions are free text; keep the README free of em/en dashes.
-function cleanDescription(text) {
+// Repo descriptions are free text; keep the README free of em and en dashes
+// (U+2014, U+2013). allow-dash: the pattern has to name them to remove them.
+export function cleanDescription(text) {
   return (text || "").replace(/\s*[—–]\s*/g, ", ").trim();
 }
 
-function renderList(repos) {
+export function renderList(repos, minDownloads = DOWNLOADS_MIN) {
   if (repos.length === 0) return "_No releases yet._";
   return repos
     .map((repo) => {
       const { tagName, url, publishedAt } = repo.latestRelease;
       const desc = cleanDescription(repo.description);
       const summary = desc ? ` · ${desc}` : "";
-      return `- [**${repo.name}** ${tagName}](${url})${summary} <sub><i>${fmtDate(publishedAt)}</i></sub>`;
+      const total = totalDownloads(repo);
+      const downloads = total >= minDownloads ? ` · **${total.toLocaleString("en-US")} downloads**` : "";
+      return `- [**${repo.name}** ${tagName}](${url})${summary}${downloads} <sub><i>${fmtDate(publishedAt)}</i></sub>`;
     })
     .join("\n");
 }
@@ -100,7 +124,9 @@ async function main() {
   console.log(`Wrote ${repos.length} releases to ${README_PATH}`);
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
