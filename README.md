@@ -133,6 +133,20 @@ The homelab counts, the Batcave card and the release list are written by these A
 
 **Backups, in three tiers:** a nightly copy to a second disk, a nightly encrypted copy off-site to the Oracle edge server, and a weekly independent copy to Google Drive.
 
+<div align="center">
+
+<!-- profile/llm-bench.svg and llm-bench-light.svg: the results table from the benchmarking post, drawn as a chart -->
+<a href="https://jay739.dev/blog/ollama-mlx-benchmarking-rtx-vs-mac-mini">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jay739/jay739/main/profile/llm-bench.svg" />
+    <img src="https://raw.githubusercontent.com/jay739/jay739/main/profile/llm-bench-light.svg" alt="Generation speed on my RTX 3060 Ti before and after capping the Ollama context window at 8,192 tokens, as published in my benchmarking post: llama3.1 8B 8.6 to 9.2 then about 77 tokens per second, deepseek-r1 7B 13.7 then about 77, llava 7B 27.9 on short prompts only then about 90, qwen2.5-coder 7B 61.6 then about 90" width="600" />
+  </picture>
+</a>
+
+<sub>On the M4 Mac Mini, Qwen2.5-7B ran at 17.9 tokens per second on MLX against 13.0 on Ollama. Both results are from my <a href="https://jay739.dev/blog/ollama-mlx-benchmarking-rtx-vs-mac-mini">benchmarking post</a>.</sub>
+
+</div>
+
 Stack: `Docker` · `Ollama` · `Authentik SSO` · `Tailscale` · `Netdata` · `Nginx` · `PostgreSQL` · `MariaDB` · `Redis` · `Meilisearch`
 
 Proof links: [Live Batcave status](https://status.jay739.dev/status/batcave) · [Batcave architecture series](https://jay739.dev/blog/docker-series-part5) · [OCI migration notes](https://jay739.dev/blog/migrating-do-to-oci)
