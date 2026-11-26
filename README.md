@@ -90,7 +90,7 @@ Services per stack: <!--hl:stacks-->media 25 · infra 14 · extras 12 · core 4 
 <a href="https://status.jay739.dev/status/batcave">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jay739/jay739/main/profile/batcave-card.svg" />
-    <img src="https://raw.githubusercontent.com/jay739/jay739/main/profile/batcave-card-light.svg" alt="Batcave right now: live service status, 24-hour uptime and container count, measured by Uptime Kuma" width="600" />
+    <img src="https://raw.githubusercontent.com/jay739/jay739/main/profile/batcave-card-light.svg" alt="Batcave status: service checks and 24-hour uptime from Uptime Kuma, plus the container count from my homelab docs, refreshed every 6 hours" width="600" />
   </picture>
 </a>
 
