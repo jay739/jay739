@@ -1,0 +1,29 @@
+<svg width="600" height="318" viewBox="0 0 600 318" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Generation speed on an RTX 3060 Ti before and after capping the Ollama context window at 8,192 tokens, from my benchmarking post: llama3.1 8B 8.6 to 9.2 then about 77 tokens per second, deepseek-r1 7B 13.7 then about 77, llava 7B 27.9 on short prompts only then about 90, qwen2.5-coder 7B 61.6 then about 90">
+  <style>
+    text { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .title { fill: #b45309; font-size: 15px; font-weight: 700; letter-spacing: 0.5px; }
+    .sub { fill: #334155; font-size: 12.5px; }
+    .leg { fill: #334155; font-size: 12px; }
+    .model { fill: #334155; font: 12px ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace; }
+    .val { fill: #0f172a; font-size: 12px; font-weight: 600; }
+    .arrow { fill: #475569; font-weight: 400; }
+    .note { fill: #334155; font-size: 12px; }
+    .head { fill: #475569; font-size: 10.5px; font-weight: 600; letter-spacing: 0.4px; }
+    .tick { fill: #475569; font-size: 10.5px; }
+    .foot { fill: #475569; font-size: 10.5px; }
+  </style>
+  <rect x="0.5" y="0.5" width="599" height="317" rx="10" fill="#ffffff" stroke="#e2e8f0" />
+  <text x="30" y="38" class="title">LOCAL LLMS ON AN RTX 3060 TI</text>
+  <text x="30" y="58" class="sub">Generation speed in tokens per second, before and after capping Ollama's context at 8,192</text>
+  <rect x="30" y="74" width="12" height="12" rx="3" fill="#2a78d6" /><text x="48" y="84" class="leg">Default context (32K to 128K)</text>
+  <rect x="236" y="74" width="12" height="12" rx="3" fill="#eb6834" /><text x="254" y="84" class="leg">Capped at 8,192</text>
+  <text x="388.8" y="102" class="head">TOK/S</text>
+  <text x="570" y="102" text-anchor="end" class="head">SPEEDUP</text>
+  <line x1="168" x2="168" y1="108" y2="250" stroke="#e2e8f0" /><text x="168" y="264" text-anchor="middle" class="tick">0</text><line x1="226" x2="226" y1="108" y2="250" stroke="#e2e8f0" /><text x="226" y="264" text-anchor="middle" class="tick">25</text><line x1="284" x2="284" y1="108" y2="250" stroke="#e2e8f0" /><text x="284" y="264" text-anchor="middle" class="tick">50</text><line x1="342" x2="342" y1="108" y2="250" stroke="#e2e8f0" /><text x="342" y="264" text-anchor="middle" class="tick">75</text><line x1="400" x2="400" y1="108" y2="250" stroke="#e2e8f0" /><text x="400" y="264" text-anchor="middle" class="tick">100</text>
+  <text x="154" y="127" text-anchor="end" class="model">llama3.1:8b</text><rect x="168" y="114" width="20.6" height="11" rx="3" fill="#2a78d6"><title>llama3.1:8b, default context: 8.6-9.2 tok/s</title></rect><rect x="168" y="128" width="178.6" height="11" rx="3" fill="#eb6834"><title>llama3.1:8b, context capped at 8,192: ~77 tok/s</title></rect><text x="388.8" y="130" class="val">8.6-9.2 <tspan class="arrow">to</tspan> ~77</text><text x="570" y="130" text-anchor="end" class="note">~8.5x</text>
+  <text x="154" y="161" text-anchor="end" class="model">deepseek-r1:7b</text><rect x="168" y="148" width="31.8" height="11" rx="3" fill="#2a78d6"><title>deepseek-r1:7b, default context: 13.7 tok/s</title></rect><rect x="168" y="162" width="178.6" height="11" rx="3" fill="#eb6834"><title>deepseek-r1:7b, context capped at 8,192: ~77 tok/s</title></rect><text x="388.8" y="164" class="val">13.7 <tspan class="arrow">to</tspan> ~77</text><text x="570" y="164" text-anchor="end" class="note">5.6x</text>
+  <text x="154" y="195" text-anchor="end" class="model">llava:7b</text><rect x="168" y="182" width="64.7" height="11" rx="3" fill="none" stroke="#2a78d6" stroke-width="1.5" stroke-dasharray="3 2"><title>llava:7b, default context: 27.9* tok/s</title></rect><rect x="168" y="196" width="208.8" height="11" rx="3" fill="#eb6834"><title>llava:7b, context capped at 8,192: ~90 tok/s</title></rect><text x="388.8" y="198" class="val">27.9* <tspan class="arrow">to</tspan> ~90</text><text x="570" y="198" text-anchor="end" class="note">3.2x</text>
+  <text x="154" y="229" text-anchor="end" class="model">qwen2.5-coder:7b</text><rect x="168" y="216" width="142.9" height="11" rx="3" fill="#2a78d6"><title>qwen2.5-coder:7b, default context: 61.6 tok/s</title></rect><rect x="168" y="230" width="208.8" height="11" rx="3" fill="#eb6834"><title>qwen2.5-coder:7b, context capped at 8,192: ~90 tok/s</title></rect><text x="388.8" y="232" class="val">61.6 <tspan class="arrow">to</tspan> ~90</text><text x="570" y="232" text-anchor="end" class="note">modest</text>
+  <text x="30" y="288" class="foot">* llava's default-context figure held on short prompts only; under real load it ran 28% GPU, 72% CPU.</text>
+  <text x="30" y="304" class="foot">Figures as published in my benchmarking post (Jul 16, 2026). "~" marks the post's own approximations.</text>
+</svg>
