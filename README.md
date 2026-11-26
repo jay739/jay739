@@ -295,6 +295,20 @@ Benchmarked 8 models on the FLAME aerial dataset in RGB, thermal IR and RGB+IR f
 </tr>
 </table>
 
+<a id="family"></a>
+
+<div align="center">
+
+<!-- profile/family.svg and family-light.svg: the stick family from my wall display, drawn from its own figure rig -->
+<a href="#family">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jay739/jay739/main/profile/family.svg" />
+    <img src="https://raw.githubusercontent.com/jay739/jay739/main/profile/family-light.svg" alt="The stick family from my wall display: Dad, the kid and Mom, drawn from the display's own figure rig. The kid waves and everyone blinks. Local LLMs give them memories, beliefs and moves they invent." width="600" />
+  </picture>
+</a>
+
+</div>
+
 → See [more projects on jay739.dev](https://jay739.dev/projects)
 
 <br/>
