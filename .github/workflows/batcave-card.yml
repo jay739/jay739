@@ -2,8 +2,9 @@ name: Update Batcave card
 
 # Renders profile/batcave-card.svg and profile/batcave-card-light.svg from the
 # public Uptime Kuma status page (status.jay739.dev/status/batcave) and the
-# container count in profile/homelab-stats.json. The status page endpoints are
-# public, so this job holds no secrets.
+# container count in profile/homelab-stats.json. It also keeps one uptime
+# reading per day in profile/batcave-history.json for the card's 30-day row.
+# The status page endpoints are public, so this job holds no secrets.
 
 on:
   schedule:
@@ -45,11 +46,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile/batcave-card.svg profile/batcave-card-light.svg
+          git add profile/batcave-card.svg profile/batcave-card-light.svg profile/batcave-history.json
           git commit -m "Update Batcave card - [Skip GitHub Action]" || exit 0
           git pull --rebase
           git push
 
       - name: Show what a merge would change
         if: github.event_name == 'pull_request'
-        run: git status --short -- profile/batcave-card.svg profile/batcave-card-light.svg
+        run: git status --short -- profile/batcave-card.svg profile/batcave-card-light.svg profile/batcave-history.json
