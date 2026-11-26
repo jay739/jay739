@@ -94,6 +94,32 @@ Services per stack: <!--hl:stacks-->media 25 · infra 14 · extras 12 · core 4 
   </picture>
 </a>
 
+<details>
+<summary><b>How these numbers stay live</b></summary>
+<br/>
+
+```mermaid
+flowchart LR
+  subgraph lab["My homelab"]
+    docker["Docker on Batcave"] --> drift["Hourly drift check"]
+    kuma["Uptime Kuma"]
+  end
+  drift -->|"commits"| docs[("Private docs repo<br/>stats.json")]
+  docs -->|"read-only deploy key"| hs["homelab-stats Action"]
+  kuma -->|"public status API"| bc["batcave-card Action"]
+  hs -->|"container count"| bc
+  gh["GitHub API"] --> rel["releases Action"]
+  rss["jay739.dev RSS"] --> blog["blog Action"]
+  hs --> readme["This README"]
+  bc --> readme
+  rel --> readme
+  blog --> readme
+```
+
+The homelab counts, the Batcave card and the release list are written by these Actions, never by hand. When one of them cannot read its source, the run fails and the last good value stays. The blog list comes from the RSS feed the same way.
+
+</details>
+
 </div>
 
 **The machines**
