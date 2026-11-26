@@ -1,0 +1,55 @@
+name: Update Batcave card
+
+# Renders profile/batcave-card.svg and profile/batcave-card-light.svg from the
+# public Uptime Kuma status page (status.jay739.dev/status/batcave) and the
+# container count in profile/homelab-stats.json. The status page endpoints are
+# public, so this job holds no secrets.
+
+on:
+  schedule:
+    # Offset from the other README writers: blog at :00, homelab stats at :15,
+    # releases at :30.
+    - cron: "45 */6 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/scripts/generate-batcave-card.mjs"
+      - ".github/workflows/batcave-card.yml"
+  # On a pull request, prove the card still renders from the live page.
+  # Nothing is committed.
+  pull_request:
+    paths:
+      - ".github/scripts/generate-batcave-card.mjs"
+      - ".github/workflows/batcave-card.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: batcave-card-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Render the Batcave card
+        run: node .github/scripts/generate-batcave-card.mjs
+
+      - name: Commit
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/batcave-card.svg profile/batcave-card-light.svg
+          git commit -m "Update Batcave card - [Skip GitHub Action]" || exit 0
+          git pull --rebase
+          git push
+
+      - name: Show what a merge would change
+        if: github.event_name == 'pull_request'
+        run: git status --short -- profile/batcave-card.svg profile/batcave-card-light.svg
