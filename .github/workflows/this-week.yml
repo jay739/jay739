@@ -1,0 +1,54 @@
+name: Update this week
+
+# Rewrites the "This week" line in README.md: how many of my pull requests were
+# merged in public repositories over the last 7 days, and where. It reads only
+# public data through the GitHub search API with the workflow's own token.
+
+on:
+  schedule:
+    # Daily, clear of the six-hourly writers at :00, :15, :30 and :45.
+    - cron: "50 5 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/scripts/update-this-week.mjs"
+      - ".github/workflows/this-week.yml"
+  # On a pull request, prove the line still renders. Nothing is committed.
+  pull_request:
+    paths:
+      - ".github/scripts/update-this-week.mjs"
+      - ".github/workflows/this-week.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: this-week-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Update the This week line
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/scripts/update-this-week.mjs
+
+      - name: Commit
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Update this week - [Skip GitHub Action]" || exit 0
+          git pull --rebase
+          git push
+
+      - name: Show what a merge would change
+        if: github.event_name == 'pull_request'
+        run: git diff --stat -- README.md
