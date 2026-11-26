@@ -1,0 +1,53 @@
+<svg width="1200" height="200" viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jayakrishna Konda: ML/AI engineer, data scientist and self-hosted AI builder">
+  <style>
+    .name { font: 700 50px ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace; letter-spacing: 7px; fill: #0F172A; }
+    .role { font: 600 15px ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace; letter-spacing: 3.2px; fill: #B45309; }
+    .tag  { font: 500 12px ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace; letter-spacing: 2.4px; fill: #475569; }
+    .led  { animation: pulse 3.2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+    @media (prefers-reduced-motion: reduce) { .led { animation: none; } }
+  </style>
+  <rect width="1200" height="200" rx="12" fill="#CBD5E1" />
+  <rect x="4" y="4" width="60" height="192" rx="8" fill="#E2E8F0" />
+  <rect x="1136" y="4" width="60" height="192" rx="8" fill="#E2E8F0" />
+  <rect x="19" y="40" width="26" height="12" rx="6" fill="#94A3B8" />
+  <rect x="19" y="148" width="26" height="12" rx="6" fill="#94A3B8" />
+  <rect x="1155" y="40" width="26" height="12" rx="6" fill="#94A3B8" />
+  <rect x="1155" y="148" width="26" height="12" rx="6" fill="#94A3B8" />
+  <rect x="64" y="10" width="1072" height="180" rx="6" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="2" />
+  <rect x="72" y="18" width="1056" height="164" rx="4" fill="none" stroke="#94A3B8" stroke-opacity="0.35" />
+  <rect x="104" y="62" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="104" y="106" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="115" y="62" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="115" y="106" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="126" y="62" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="126" y="106" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="137" y="62" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="137" y="106" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="148" y="62" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="148" y="106" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="159" y="62" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="159" y="106" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="170" y="62" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="170" y="106" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="181" y="62" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="181" y="106" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="192" y="62" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="192" y="106" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="203" y="62" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="203" y="106" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="214" y="62" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="214" y="106" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="225" y="62" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="225" y="106" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="236" y="62" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="236" y="106" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="247" y="62" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <rect x="247" y="106" width="5" height="34" rx="2.5" fill="#CBD5E1" />
+  <text x="294" y="96" class="name">JAYAKRISHNA KONDA</text>
+  <text x="296" y="128" class="role">ML/AI ENGINEER · DATA SCIENTIST · SELF-HOSTED AI BUILDER</text>
+  <text x="296" y="160" class="tag">jay739.dev</text>
+  <circle class="led" cx="1092" cy="100" r="7" fill="#D97706" />
+  <circle cx="1092" cy="100" r="12" fill="none" stroke="#D97706" stroke-opacity="0.35" stroke-width="2" />
+  <text x="1092" y="134" text-anchor="middle" class="tag">PWR</text>
+</svg>
