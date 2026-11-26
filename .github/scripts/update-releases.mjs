@@ -32,7 +32,6 @@ async function graphql(query, variables) {
 }
 
 // latestRelease is GitHub's "Latest" release: never a draft or a prerelease.
-// releases carries every release's assets, so downloads count all versions.
 async function fetchLatestReleases() {
   const query = `
     query($login: String!) {
@@ -46,13 +45,6 @@ async function fetchLatestReleases() {
               url
               publishedAt
             }
-            releases(first: 50) {
-              nodes {
-                releaseAssets(first: 30) {
-                  nodes { name downloadCount }
-                }
-              }
-            }
           }
         }
       }
@@ -65,13 +57,41 @@ async function fetchLatestReleases() {
     .slice(0, LIMIT);
 }
 
-// Checksum files are downloaded to verify an installer, not to install
-// anything, so counting them would inflate the number.
+// Every release of one repository, 100 per page, through the REST endpoint.
+// It returns each release with all of its assets and their download counts,
+// so totals cover every version however many releases or files there are.
+// (GraphQL was tried first and fails with RESOURCE_LIMITS_EXCEEDED once a page
+// holds roughly 800 release assets.)
+async function fetchReleaseAssets(name) {
+  const nodes = [];
+  for (let page = 1; ; page++) {
+    const url = `https://api.github.com/repos/${USERNAME}/${name}/releases?per_page=100&page=${page}`;
+    const res = await fetch(url, {
+      headers: { Authorization: `bearer ${TOKEN}`, Accept: "application/vnd.github+json" },
+    });
+    if (!res.ok) throw new Error(`GitHub API error ${res.status} listing releases of ${name}`);
+    const releases = await res.json();
+    for (const r of releases) {
+      nodes.push({
+        tagName: r.tag_name,
+        releaseAssets: { nodes: (r.assets || []).map((a) => ({ name: a.name, downloadCount: a.download_count })) },
+      });
+    }
+    if (releases.length < 100) break;
+  }
+  return { nodes };
+}
+
+// GitHub counts fetches, not people. Within hours of upload every release file
+// is fetched once by something automated (a crawler or mirror), so a release in
+// twelve formats starts at twelve "downloads" before anyone installs it. That
+// first fetch of each file is not counted, which can only undercount. Checksum
+// files are skipped too: they are fetched to verify an installer.
 export function totalDownloads(repo) {
   return (repo.releases?.nodes || [])
     .flatMap((release) => release.releaseAssets?.nodes || [])
     .filter((asset) => !/sha256|checksum/i.test(asset.name))
-    .reduce((sum, asset) => sum + (asset.downloadCount || 0), 0);
+    .reduce((sum, asset) => sum + Math.max(0, (asset.downloadCount || 0) - 1), 0);
 }
 
 export function fmtDate(iso) {
@@ -114,6 +134,7 @@ async function main() {
   }
 
   const repos = await fetchLatestReleases();
+  for (const repo of repos) repo.releases = await fetchReleaseAssets(repo.name);
   const updated = `${readme.slice(0, start + START.length)}\n${renderList(repos)}\n${readme.slice(end)}`;
 
   if (updated === readme) {

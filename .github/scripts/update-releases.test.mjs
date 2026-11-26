@@ -15,7 +15,7 @@ const repo = (name, assets, extra = {}) => ({
   ...extra,
 });
 
-test("totalDownloads sums every release's assets but skips checksum files", () => {
+test("totalDownloads skips checksum files and each file's first automated fetch", () => {
   const r = {
     releases: {
       nodes: [
@@ -24,8 +24,14 @@ test("totalDownloads sums every release's assets but skips checksum files", () =
       ],
     },
   };
-  assert.equal(totalDownloads(r), 65);
+  assert.equal(totalDownloads(r), 63);
   assert.equal(totalDownloads({}), 0);
+});
+
+test("totalDownloads gives zero for a release nobody installed yet", () => {
+  const formats = ["app.deb", "app.rpm", "app.AppImage", "app.dmg", "app-setup.exe", "app.tar.gz"];
+  const fresh = { releases: { nodes: [{ releaseAssets: { nodes: formats.map((name) => ({ name, downloadCount: 1 })) } }] } };
+  assert.equal(totalDownloads(fresh), 0);
 });
 
 test("renderList shows downloads only at or above the threshold", () => {
@@ -34,7 +40,7 @@ test("renderList shows downloads only at or above the threshold", () => {
   const lines = renderList([busy, quiet], 50).split("\n");
   assert.equal(
     lines[0],
-    "- [**busy** v1.0.0](https://example.test/busy) · A tool. · **1,234 downloads** <sub><i>Mar 4, 2026</i></sub>",
+    "- [**busy** v1.0.0](https://example.test/busy) · A tool. · **1,233 downloads** <sub><i>Mar 4, 2026</i></sub>",
   );
   assert.ok(!lines[1].includes("downloads"));
 });
