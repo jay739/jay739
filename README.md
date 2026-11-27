@@ -45,7 +45,7 @@
 
 <a id="about"></a>
 
-## <a href="#about"><img alt="About" src="https://api.iconify.design/lucide/diamond.svg?color=%23f59e0b&height=22" align="center" /></a> About
+## <a href="#about"><img alt="About" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/diamond.svg" width="22" align="absmiddle" /></a> About
 
 I'm an ML/AI Engineer & Data Scientist, and this GitHub is where my projects live: RAG pipelines, LLM systems, and self-hosted AI infrastructure. I build them end to end, from model training to deployment and real-time monitoring.
 
@@ -62,7 +62,7 @@ based_in: Maryland, USA
 
 <a id="open-to"></a>
 
-## <a href="#open-to"><img alt="Open to" src="https://api.iconify.design/lucide/handshake.svg?color=%23f59e0b&height=22" align="center" /></a> Open to
+## <a href="#open-to"><img alt="Open to" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/handshake.svg" width="22" align="absmiddle" /></a> Open to
 
 - Full-time ML/AI or MLOps engineering roles.
 - Contract and advisory work for production RAG/LLM systems.
@@ -72,7 +72,7 @@ based_in: Maryland, USA
 
 <a id="batcave"></a>
 
-## <a href="#batcave"><img alt="Batcave: My Private AI Cloud" src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=22" align="center" /></a> Batcave: My Private AI Cloud
+## <a href="#batcave"><img alt="Batcave: My Private AI Cloud" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/server-cog.svg" width="22" align="absmiddle" /></a> Batcave: My Private AI Cloud
 
 > A solo-managed homelab on a Beelink mini-PC. Self-hosted from scratch. Live at [**jay739.dev**](https://jay739.dev).
 
@@ -169,7 +169,7 @@ Proof links: [Live Batcave status](https://status.jay739.dev/status/batcave) · 
 
 <a id="tech-stack"></a>
 
-## <a href="#tech-stack"><img alt="Tech Stack" src="https://api.iconify.design/lucide/cpu.svg?color=%23f59e0b&height=22" align="center" /></a> Tech Stack
+## <a href="#tech-stack"><img alt="Tech Stack" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/cpu.svg" width="22" align="absmiddle" /></a> Tech Stack
 
 <div align="center">
 
@@ -232,7 +232,7 @@ Proof links: [Live Batcave status](https://status.jay739.dev/status/batcave) · 
 
 <a id="featured-projects"></a>
 
-## <a href="#featured-projects"><img alt="Featured Projects" src="https://api.iconify.design/lucide/rocket.svg?color=%23f59e0b&height=22" align="center" /></a> Featured Projects
+## <a href="#featured-projects"><img alt="Featured Projects" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/rocket.svg" width="22" align="absmiddle" /></a> Featured Projects
 
 <!-- Generated every 6 hours by .github/workflows/demo-status.yml from status.jay739.dev/status/demos -->
 <!-- DEMOS:START -->
@@ -243,7 +243,7 @@ Proof links: [Live Batcave status](https://status.jay739.dev/status/batcave) · 
 <tr>
 <td width="50%" valign="top">
 
-#### <a href="https://jay739.dev"><img alt="Batcave: Personal AI Cloud" src="https://api.iconify.design/lucide/server-cog.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Batcave: Personal AI Cloud](https://jay739.dev)
+#### <a href="https://jay739.dev"><img alt="Batcave: Personal AI Cloud" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/server-cog.svg" width="18" align="absmiddle" /></a>&nbsp; [Batcave: Personal AI Cloud](https://jay739.dev)
 
 <a href="https://status.jay739.dev/status/batcave"><img src="profile/cards/batcave.webp" alt="Batcave's public status page: all systems operational, with uptime bars for each service" width="100%" /></a>
 
@@ -256,7 +256,7 @@ My self-hosted private cloud: a Beelink mini-PC running <!--hl:batcave_container
 </td>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/openhaze"><img alt="OpenHaze" src="https://api.iconify.design/lucide/sun-dim.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [OpenHaze](https://github.com/jay739/openhaze)
+#### <a href="https://github.com/jay739/openhaze"><img alt="OpenHaze" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/sun-dim.svg" width="18" align="absmiddle" /></a>&nbsp; [OpenHaze](https://github.com/jay739/openhaze)
 
 <a href="https://apps.jay739.dev/openhaze/"><img src="profile/cards/openhaze.webp" alt="OpenHaze on Windows: the window in focus stays bright while the window beside it fades into a dark haze" width="100%" /></a>
 
@@ -271,7 +271,7 @@ A native window dimmer for macOS and Windows: everything but the window in focus
 <tr>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/omnifin"><img alt="Omnifin" src="https://api.iconify.design/lucide/users.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Omnifin](https://github.com/jay739/omnifin)
+#### <a href="https://github.com/jay739/omnifin"><img alt="Omnifin" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/users.svg" width="18" align="absmiddle" /></a>&nbsp; [Omnifin](https://github.com/jay739/omnifin)
 
 <a href="https://apps.jay739.dev/omnifin/"><img src="profile/cards/omnifin.webp" alt="Omnifin's Accounts page listing six Jellyfin users, with search, smart select and add user controls" width="100%" /></a>
 
@@ -284,7 +284,7 @@ Jellyfin user management in one self-hosted binary: invites, account lifecycle, 
 </td>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/claude-pop-quiz"><img alt="claude-pop-quiz" src="https://api.iconify.design/lucide/graduation-cap.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [claude-pop-quiz](https://github.com/jay739/claude-pop-quiz)
+#### <a href="https://github.com/jay739/claude-pop-quiz"><img alt="claude-pop-quiz" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/graduation-cap.svg" width="18" align="absmiddle" /></a>&nbsp; [claude-pop-quiz](https://github.com/jay739/claude-pop-quiz)
 
 <a href="https://apps.jay739.dev/claude-pop-quiz/"><img src="profile/cards/claude-pop-quiz.webp" alt="A five-question pop quiz in the Claude Code panel, two short answer and three multiple choice" width="100%" /></a>
 
@@ -299,7 +299,7 @@ A Claude Code hook that pauses every 40 to 45 actions and quizzes you on your ow
 <tr>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/PodcastAI"><img alt="RAG Podcast Generator" src="https://api.iconify.design/lucide/mic.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [RAG Podcast Generator](https://github.com/jay739/PodcastAI)
+#### <a href="https://github.com/jay739/PodcastAI"><img alt="RAG Podcast Generator" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/mic.svg" width="18" align="absmiddle" /></a>&nbsp; [RAG Podcast Generator](https://github.com/jay739/PodcastAI)
 
 <a href="https://jay739.dev/ai-tools"><img src="profile/cards/podcastai.webp" alt="PodcastAI Studio, the Electron app, on its upload step: drop a PDF to start the Upload, Analyze, Voices and Results flow" width="100%" /></a>
 
@@ -312,7 +312,7 @@ Turns a PDF book into a character-voiced podcast. PyMuPDF extracts the text, FAI
 </td>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/forest-fire-detection"><img alt="Wildfire Detection" src="https://api.iconify.design/lucide/flame.svg?color=%23f59e0b&height=18" align="center" /></a>&nbsp; [Wildfire Detection](https://github.com/jay739/forest-fire-detection)
+#### <a href="https://github.com/jay739/forest-fire-detection"><img alt="Wildfire Detection" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/flame.svg" width="18" align="absmiddle" /></a>&nbsp; [Wildfire Detection](https://github.com/jay739/forest-fire-detection)
 
 <a href="https://nbviewer.org/urls/raw.githubusercontent.com/jay739/forest-fire-detection/main/eval.ipynb"><img src="profile/cards/wildfire.webp" alt="Dot chart of test accuracy for 8 models on RGB, thermal IR and fused input; ResNet-18 on RGB is best at 99.81%" width="100%" /></a>
 
@@ -332,7 +332,7 @@ Benchmarked 8 models on the FLAME aerial dataset in RGB, thermal IR and RGB+IR f
 
 <a id="latest-releases"></a>
 
-## <a href="#latest-releases"><img alt="Latest Releases" src="https://api.iconify.design/lucide/package.svg?color=%23f59e0b&height=22" align="center" /></a> Latest Releases
+## <a href="#latest-releases"><img alt="Latest Releases" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/package.svg" width="22" align="absmiddle" /></a> Latest Releases
 
 <!-- Generated daily by .github/workflows/this-week.yml from my merged pull requests in public repos -->
 <!-- THIS-WEEK:START -->
@@ -355,7 +355,7 @@ Benchmarked 8 models on the FLAME aerial dataset in RGB, thermal IR and RGB+IR f
 
 <a id="github-highlights"></a>
 
-## <a href="#github-highlights"><img alt="GitHub Activity" src="https://api.iconify.design/lucide/activity.svg?color=%23f59e0b&height=22" align="center" /></a> GitHub Activity
+## <a href="#github-highlights"><img alt="GitHub Activity" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/activity.svg" width="22" align="absmiddle" /></a> GitHub Activity
 
 <div align="center">
 
@@ -391,7 +391,7 @@ Benchmarked 8 models on the FLAME aerial dataset in RGB, thermal IR and RGB+IR f
 
 <a id="latest-from-the-blog"></a>
 
-## <a href="#latest-from-the-blog"><img alt="Latest from the Blog" src="https://api.iconify.design/lucide/rss.svg?color=%23f59e0b&height=22" align="center" /></a> Latest from the Blog
+## <a href="#latest-from-the-blog"><img alt="Latest from the Blog" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/rss.svg" width="22" align="absmiddle" /></a> Latest from the Blog
 
 <!-- BLOG-POST-LIST:START --><br>&bull; <a href="https://jay739.dev/blog/ollama-mlx-benchmarking-rtx-vs-mac-mini">Benchmarking Local LLMs Across an RTX 3060 Ti and an M4 Mac Mini &lpar;With a Kernel Panic Along the Way&rpar;</a> <sub><i>Jul 16, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/batcave-usb-nic-root-cause">The Freeze Wasn&#39;t Memory: Tracing a Homelab Server&#39;s Root Cause Through Three Wrong Turns</a> <sub><i>Jul 16, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/ai-quizzes-me-claude-code-hooks">I Made My AI Ambush Me With Pop Quizzes</a> <sub><i>May 29, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/lifetime-software-deals">The Quiet Math of Lifetime Software Deals</a> <sub><i>May 12, 2026</i></sub><br>&bull; <a href="https://jay739.dev/blog/homelab-lessons">What Running a Homelab Actually Teaches You That Work Doesn&#39;t</a> <sub><i>Apr 24, 2026</i></sub><!-- BLOG-POST-LIST:END -->
 
