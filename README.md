@@ -243,7 +243,7 @@ Proof links: [Live Batcave status](https://status.jay739.dev/status/batcave) · 
 <tr>
 <td width="50%" valign="top">
 
-#### <a href="https://jay739.dev"><img alt="Batcave: Personal AI Cloud" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/server-cog.svg" width="18" align="absmiddle" /></a>&nbsp; [Batcave: Personal AI Cloud](https://jay739.dev)
+### <a href="https://jay739.dev"><img alt="Batcave: Personal AI Cloud" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/server-cog.svg" width="20" align="absmiddle" /></a>&nbsp; [Batcave: Personal AI Cloud](https://jay739.dev)
 
 <a href="https://status.jay739.dev/status/batcave"><img src="profile/cards/batcave.webp" alt="Batcave's public status page: all systems operational, with uptime bars for each service" width="100%" /></a>
 
@@ -256,7 +256,7 @@ My self-hosted private cloud: a Beelink mini-PC running <!--hl:batcave_container
 </td>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/openhaze"><img alt="OpenHaze" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/sun-dim.svg" width="18" align="absmiddle" /></a>&nbsp; [OpenHaze](https://github.com/jay739/openhaze)
+### <a href="https://github.com/jay739/openhaze"><img alt="OpenHaze" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/sun-dim.svg" width="20" align="absmiddle" /></a>&nbsp; [OpenHaze](https://github.com/jay739/openhaze)
 
 <a href="https://apps.jay739.dev/openhaze/"><img src="profile/cards/openhaze.webp" alt="OpenHaze on Windows: the window in focus stays bright while the window beside it fades into a dark haze" width="100%" /></a>
 
@@ -271,7 +271,7 @@ A native window dimmer for macOS and Windows: everything but the window in focus
 <tr>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/omnifin"><img alt="Omnifin" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/users.svg" width="18" align="absmiddle" /></a>&nbsp; [Omnifin](https://github.com/jay739/omnifin)
+### <a href="https://github.com/jay739/omnifin"><img alt="Omnifin" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/users.svg" width="20" align="absmiddle" /></a>&nbsp; [Omnifin](https://github.com/jay739/omnifin)
 
 <a href="https://apps.jay739.dev/omnifin/"><img src="profile/cards/omnifin.webp" alt="Omnifin's Accounts page listing six Jellyfin users, with search, smart select and add user controls" width="100%" /></a>
 
@@ -284,7 +284,7 @@ Jellyfin user management in one self-hosted binary: invites, account lifecycle, 
 </td>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/claude-pop-quiz"><img alt="claude-pop-quiz" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/graduation-cap.svg" width="18" align="absmiddle" /></a>&nbsp; [claude-pop-quiz](https://github.com/jay739/claude-pop-quiz)
+### <a href="https://github.com/jay739/claude-pop-quiz"><img alt="claude-pop-quiz" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/graduation-cap.svg" width="20" align="absmiddle" /></a>&nbsp; [claude-pop-quiz](https://github.com/jay739/claude-pop-quiz)
 
 <a href="https://apps.jay739.dev/claude-pop-quiz/"><img src="profile/cards/claude-pop-quiz.webp" alt="A five-question pop quiz in the Claude Code panel, two short answer and three multiple choice" width="100%" /></a>
 
@@ -299,7 +299,7 @@ A Claude Code hook that pauses every 40 to 45 actions and quizzes you on your ow
 <tr>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/PodcastAI"><img alt="RAG Podcast Generator" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/mic.svg" width="18" align="absmiddle" /></a>&nbsp; [RAG Podcast Generator](https://github.com/jay739/PodcastAI)
+### <a href="https://github.com/jay739/PodcastAI"><img alt="RAG Podcast Generator" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/mic.svg" width="20" align="absmiddle" /></a>&nbsp; [RAG Podcast Generator](https://github.com/jay739/PodcastAI)
 
 <a href="https://jay739.dev/ai-tools"><img src="profile/cards/podcastai.webp" alt="PodcastAI Studio, the Electron app, on its upload step: drop a PDF to start the Upload, Analyze, Voices and Results flow" width="100%" /></a>
 
@@ -312,7 +312,7 @@ Turns a PDF book into a character-voiced podcast. PyMuPDF extracts the text, FAI
 </td>
 <td width="50%" valign="top">
 
-#### <a href="https://github.com/jay739/forest-fire-detection"><img alt="Wildfire Detection" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/flame.svg" width="18" align="absmiddle" /></a>&nbsp; [Wildfire Detection](https://github.com/jay739/forest-fire-detection)
+### <a href="https://github.com/jay739/forest-fire-detection"><img alt="Wildfire Detection" src="https://raw.githubusercontent.com/jay739/jay739/main/profile/icons/flame.svg" width="20" align="absmiddle" /></a>&nbsp; [Wildfire Detection](https://github.com/jay739/forest-fire-detection)
 
 <a href="https://nbviewer.org/urls/raw.githubusercontent.com/jay739/forest-fire-detection/main/eval.ipynb"><img src="profile/cards/wildfire.webp" alt="Dot chart of test accuracy for 8 models on RGB, thermal IR and fused input; ResNet-18 on RGB is best at 99.81%" width="100%" /></a>
 
