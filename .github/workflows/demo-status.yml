@@ -1,0 +1,53 @@
+name: Update demo status
+
+# Rewrites the "Try the live demos" line in README.md from the public Uptime
+# Kuma status page status.jay739.dev/status/demos. Kuma checks each demo's
+# backend privately; the page exposes only up or down, so this job needs no
+# secrets.
+
+on:
+  schedule:
+    # Every six hours, clear of the other README writers at :00, :15, :30 and :45.
+    - cron: "55 */6 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/scripts/update-demo-status.mjs"
+      - ".github/workflows/demo-status.yml"
+  # On a pull request, prove the line still renders. Nothing is committed.
+  pull_request:
+    paths:
+      - ".github/scripts/update-demo-status.mjs"
+      - ".github/workflows/demo-status.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: demo-status-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Update the demo line
+        run: node .github/scripts/update-demo-status.mjs
+
+      - name: Commit
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Update demo status - [Skip GitHub Action]" || exit 0
+          git pull --rebase
+          git push
+
+      - name: Show what a merge would change
+        if: github.event_name == 'pull_request'
+        run: git diff --stat -- README.md
