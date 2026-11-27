@@ -234,6 +234,11 @@ Proof links: [Live Batcave status](https://status.jay739.dev/status/batcave) · 
 
 ## <a href="#featured-projects"><img alt="Featured Projects" src="https://api.iconify.design/lucide/rocket.svg?color=%23f59e0b&height=22" align="center" /></a> Featured Projects
 
+<!-- Generated every 6 hours by .github/workflows/demo-status.yml from status.jay739.dev/status/demos -->
+<!-- DEMOS:START -->
+**Try the live demos:** 🟢 [Image Generator](https://jay739.dev/ai-tools) up · 🟢 [PDF to Podcast](https://jay739.dev/ai-tools) up · 🟢 [RAG Chatbot](https://jay739.dev/ai-tools) up <sub>(checked by Uptime Kuma, refreshed every 6 hours)</sub>
+<!-- DEMOS:END -->
+
 <table>
 <tr>
 <td width="50%" valign="top">
