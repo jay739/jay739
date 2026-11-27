@@ -236,7 +236,7 @@ Proof links: [Live Batcave status](https://status.jay739.dev/status/batcave) · 
 
 <!-- Generated every 6 hours by .github/workflows/demo-status.yml from status.jay739.dev/status/demos -->
 <!-- DEMOS:START -->
-**Try the live demos:** 🟢 [Image Generator](https://jay739.dev/ai-tools) up · 🟢 [PDF to Podcast](https://jay739.dev/ai-tools) up · 🟢 [RAG Chatbot](https://jay739.dev/ai-tools) up <sub>(checked by Uptime Kuma, refreshed every 6 hours)</sub>
+**Try the live demos:** 🟢 [Image Generator](https://jay739.dev/ai-tools?tool=image-generator) up · 🟢 [PDF to Podcast](https://jay739.dev/ai-tools?tool=podcast-generator) up · 🟢 [RAG Chatbot](https://jay739.dev/ai-tools?tool=chatbot) up <sub>(checked by Uptime Kuma, refreshed every 6 hours)</sub>
 <!-- DEMOS:END -->
 
 <table>
