@@ -13,7 +13,23 @@ import { CardError, parseStatusPage, parseHeartbeats } from "./generate-batcave-
 const STATUS_BASE = process.env.STATUS_BASE || "https://status.jay739.dev";
 const SLUG = process.env.DEMOS_SLUG || "demos";
 const README_PATH = process.env.README_PATH || "README.md";
-const DEMO_URL = "https://jay739.dev/ai-tools";
+const DEMOS_PAGE = "https://jay739.dev/ai-tools";
+
+// Each link opens its demo straight away (the page reads ?tool= on load and
+// never starts a job from it). Keys are the monitor names on the Kuma page, so
+// a monitor that is renamed or added links to the AI Tools page itself.
+export const DEMO_LINKS = {
+  "PDF to Podcast": `${DEMOS_PAGE}?tool=podcast-generator`,
+  "RAG Chatbot": `${DEMOS_PAGE}?tool=chatbot`,
+  "Image Generator": `${DEMOS_PAGE}?tool=image-generator`,
+};
+
+// Object.hasOwn, so a monitor named after an Object property such as
+// "constructor" gets the page link, not a function.
+export function demoLink(name) {
+  return Object.hasOwn(DEMO_LINKS, name) ? DEMO_LINKS[name] : DEMOS_PAGE;
+}
+
 const TIMEOUT_MS = 45_000;
 
 export const START = "<!-- DEMOS:START -->";
@@ -43,7 +59,7 @@ export function renderLine(groups) {
   if (monitors.length === 0) throw new DemosUnavailableError("the demos status page lists no monitors");
   const parts = monitors.map((m) => {
     const [dot, word] = STATE_TEXT[m.state];
-    return `${dot} [${escapeMarkdown(m.name)}](${DEMO_URL}) ${word}`;
+    return `${dot} [${escapeMarkdown(m.name)}](${demoLink(m.name)}) ${word}`;
   });
   return `**Try the live demos:** ${parts.join(" · ")} <sub>(checked by Uptime Kuma, refreshed every 6 hours)</sub>`;
 }
