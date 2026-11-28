@@ -11,9 +11,3 @@ updates:
     groups:
       actions:
         patterns: ["*"]
-    ignore:
-      # The snake runs from my own fork of Platane/snk, pinned to the commit
-      # that adds the growing snake. A bump would move it to whatever release
-      # tag the fork carries, which is likely an upstream one without that
-      # change. Move it by hand when the fork changes.
-      - dependency-name: "jay739/snk*"
