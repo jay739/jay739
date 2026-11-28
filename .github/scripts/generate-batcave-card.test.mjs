@@ -33,6 +33,12 @@ import {
   dipLine,
   downtimeMinutes,
   formatDuration,
+  StaleSourceError,
+  OUTAGES_STALE_AFTER_MS,
+  parseOutages,
+  dipOutage,
+  DIP_LINE_CHARS,
+  wrapLine,
 } from "./generate-batcave-card.mjs";
 
 const NOW = new Date("2026-01-02T03:10:00Z");
@@ -283,6 +289,103 @@ test("renderCard adds the last dip under the 30-day row, and grows only then", (
   assert.match(dipped, /aria-label="[^"]*, last dip on Nov 26: the worst-hit service was down about 3 hours">/);
   const clean = renderCard(s, "dark", w, { days: 40, since: null, open: true });
   assert.ok(clean.includes('height="256"') && !clean.includes("Last dip"));
+});
+
+const OUTAGE_FILE = {
+  generated_at: "2026-01-09T12:00:00Z",
+  page: "batcave",
+  outages: [
+    { start: "2026-01-08T22:30:00Z", end: null, monitors_down: 2, monitors_total: 9 },
+    { start: "2026-01-06T09:15:40Z", end: "2026-01-06T11:45:10Z", monitors_down: 6, monitors_total: 9 },
+    { start: "2026-01-06T04:00:00Z", end: "2026-01-06T04:20:00Z", monitors_down: 9, monitors_total: 9 },
+    { start: "2026-01-03T23:10:00Z", end: "2026-01-04T00:40:00Z", monitors_down: 1, monitors_total: 9 },
+  ],
+};
+const FILE_NOW = new Date("2026-01-09T12:30:00Z");
+
+test("parseOutages reads each window, keeping a null end as still down", () => {
+  const o = parseOutages(OUTAGE_FILE, FILE_NOW);
+  assert.equal(o.generatedAt, Date.parse("2026-01-09T12:00:00Z"));
+  assert.equal(o.windows.length, 4);
+  assert.deepEqual(o.windows[1], {
+    start: Date.parse("2026-01-06T09:15:40Z"),
+    end: Date.parse("2026-01-06T11:45:10Z"),
+    down: 6,
+    total: 9,
+  });
+  assert.equal(o.windows[0].end, null);
+});
+
+test("parseOutages refuses another page, a stale file, bad times and impossible counts", () => {
+  const withOutage = (patch) => ({ ...OUTAGE_FILE, outages: [{ ...OUTAGE_FILE.outages[1], ...patch }] });
+  const later = new Date(Date.parse(OUTAGE_FILE.generated_at) + OUTAGES_STALE_AFTER_MS + 1000);
+  assert.throws(() => parseOutages({ ...OUTAGE_FILE, page: "other" }, FILE_NOW), SourceFormatError);
+  assert.throws(() => parseOutages(OUTAGE_FILE, later), StaleSourceError);
+  assert.throws(() => parseOutages({ ...OUTAGE_FILE, outages: {} }, FILE_NOW), SourceFormatError);
+  assert.throws(() => parseOutages(withOutage({ start: "2026-01-06 09:15:40" }), FILE_NOW), SourceFormatError);
+  assert.throws(() => parseOutages(withOutage({ end: undefined }), FILE_NOW), SourceFormatError);
+  assert.throws(() => parseOutages(withOutage({ monitors_down: 0 }), FILE_NOW), ImplausibleValueError);
+  assert.throws(() => parseOutages(withOutage({ monitors_down: 10 }), FILE_NOW), ImplausibleValueError);
+  assert.throws(() => parseOutages(withOutage({ end: "2026-01-06T09:00:00Z" }), FILE_NOW), ImplausibleValueError);
+  assert.ok(new StaleSourceError("x") instanceof CardError);
+});
+
+test("dipOutage takes the longest outage overlapping the dip's UTC day", () => {
+  const o = parseOutages(OUTAGE_FILE, FILE_NOW);
+  assert.deepEqual(dipOutage(o, "2026-01-06"), {
+    start: Date.parse("2026-01-06T09:15:40Z"),
+    end: Date.parse("2026-01-06T11:45:10Z"),
+    down: 6,
+    total: 9,
+    minutes: 150,
+    count: 2,
+  });
+  // One outage across midnight belongs to both days.
+  assert.equal(dipOutage(o, "2026-01-03").minutes, 90);
+  assert.equal(dipOutage(o, "2026-01-04").count, 1);
+  // An ongoing outage is measured up to when the file was written.
+  assert.equal(dipOutage(o, "2026-01-08").end, null);
+  assert.equal(dipOutage(o, "2026-01-09").minutes, 810);
+  assert.equal(dipOutage(o, "2026-01-05"), null);
+  assert.equal(dipOutage(null, "2026-01-06"), null);
+});
+
+test("dipLine gives the outage's own times, dating both ends when it crosses midnight", () => {
+  const o = parseOutages(OUTAGE_FILE, FILE_NOW);
+  const line = (day) => dipLine({ days: 1, since: day, open: false, downMinutes: 999, outage: dipOutage(o, day) });
+  assert.equal(line("2026-01-06"), "Last dip on Jan 6: 6 of 9 services down 09:15 to 11:45 UTC (2.5 hours, longest of 2 outages)");
+  assert.equal(line("2026-01-04"), "Last dip on Jan 4: 1 of 9 services down Jan 3 23:10 to Jan 4 00:40 UTC (1.5 hours)");
+  assert.equal(line("2026-01-08"), "Last dip on Jan 8: 2 of 9 services down since 22:30 UTC");
+  assert.equal(line("2026-01-09"), "Last dip on Jan 9: 2 of 9 services down since Jan 8 22:30 UTC");
+  // Nothing in the file for that day: the estimate from the readings stays.
+  assert.equal(
+    dipLine({ days: 1, since: "2026-01-05", open: false, downMinutes: 180 }),
+    "Last dip on Jan 5: the worst-hit service was down about 3 hours",
+  );
+});
+
+test("a dip line too long for the card wraps with its parenthesis whole, and the card grows", () => {
+  const long = "Last dip on Dec 22: 13 of 13 services down Dec 21 23:59 to Dec 22 00:10 UTC (11 minutes, longest of 3 outages)";
+  assert.deepEqual(wrapLine(long), [
+    "Last dip on Dec 22: 13 of 13 services down Dec 21 23:59 to Dec 22 00:10 UTC",
+    "(11 minutes, longest of 3 outages)",
+  ]);
+  assert.ok(wrapLine(long).every((l) => l.length <= DIP_LINE_CHARS));
+  const short = "Last dip on Jan 6: the worst-hit service was down about 3 hours";
+  assert.deepEqual(wrapLine(short), [short]);
+  const s = summarize(parseHeartbeats(BEATS, parseStatusPage(PAGE), NOW), 7);
+  const w = historyWindow(recordDay([], s), dayOf(s.checkedAt));
+  const outage = {
+    start: Date.parse("2025-12-21T23:59:00Z"),
+    end: Date.parse("2025-12-22T00:10:00Z"),
+    down: 13,
+    total: 13,
+    minutes: 11,
+    count: 3,
+  };
+  const card = renderCard(s, "dark", w, { days: 2, since: "2025-12-22", open: false, downMinutes: 11, outage });
+  assert.ok(card.includes('height="300"'));
+  assert.ok(card.includes('<tspan x="30" dy="16">(11 minutes, longest of 3 outages)</tspan></text>'));
 });
 
 test("renderCard draws the 30-day row only when given a window", () => {
