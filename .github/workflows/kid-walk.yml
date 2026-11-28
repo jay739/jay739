@@ -1,0 +1,55 @@
+name: Update kid walk
+
+# Redraws profile/kid-walk.svg and profile/kid-walk-light.svg from my GitHub
+# contribution calendar: the last year as a grid, with the kid from my wall
+# display walking across it. The calendar moves on a day at a time, so once a day
+# is enough. Reads public data with the workflow's own token.
+
+on:
+  schedule:
+    # Daily, after the other daily README writer at 05:50.
+    - cron: "20 6 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/scripts/generate-kid-walk.mjs"
+      - ".github/workflows/kid-walk.yml"
+  # On a pull request, prove the drawing still renders. Nothing is committed.
+  pull_request:
+    paths:
+      - ".github/scripts/generate-kid-walk.mjs"
+      - ".github/workflows/kid-walk.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kid-walk-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Draw the walk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/scripts/generate-kid-walk.mjs
+
+      - name: Commit
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/kid-walk.svg profile/kid-walk-light.svg
+          git commit -m "Update kid walk - [Skip GitHub Action]" || exit 0
+          git pull --rebase
+          git push
+
+      - name: Show what a merge would change
+        if: github.event_name == 'pull_request'
+        run: git status --short -- profile/
