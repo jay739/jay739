@@ -19,7 +19,7 @@ test("renderLine shows each demo with a dot, a link and its state in words", () 
   const groups = parseHeartbeats(beats([1, 0, 3]), parseStatusPage(page(["PDF to Podcast", "RAG Chatbot", "Image Generator"])), NOW);
   assert.equal(
     renderLine(groups),
-    "**Try the live demos:** 🟢 [PDF to Podcast](https://jay739.dev/ai-tools?tool=podcast-generator) up · 🔴 [RAG Chatbot](https://jay739.dev/ai-tools?tool=chatbot) down right now · 🟡 [Image Generator](https://jay739.dev/ai-tools?tool=image-generator) in maintenance <sub>(checked by Uptime Kuma, refreshed every 6 hours)</sub>",
+    "**Try the live demos:** 🟢 [PDF to Podcast](https://jay739.dev/ai-tools?tool=podcast-generator) up · 🔴 [RAG Chatbot](https://jay739.dev/ai-tools?tool=chatbot) down right now · 🟡 [Image Generator](https://jay739.dev/ai-tools?tool=image-generator) in maintenance",
   );
 });
 

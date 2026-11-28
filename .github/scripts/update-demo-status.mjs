@@ -61,7 +61,7 @@ export function renderLine(groups) {
     const [dot, word] = STATE_TEXT[m.state];
     return `${dot} [${escapeMarkdown(m.name)}](${demoLink(m.name)}) ${word}`;
   });
-  return `**Try the live demos:** ${parts.join(" · ")} <sub>(checked by Uptime Kuma, refreshed every 6 hours)</sub>`;
+  return `**Try the live demos:** ${parts.join(" · ")}`;
 }
 
 // The line sits on its own line between the markers: a line that starts with
