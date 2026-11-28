@@ -30,6 +30,9 @@ import {
   incidentCounter,
   incidentStat,
   lastIncident,
+  dipLine,
+  downtimeMinutes,
+  formatDuration,
 } from "./generate-batcave-card.mjs";
 
 const NOW = new Date("2026-01-02T03:10:00Z");
@@ -237,8 +240,8 @@ test("an incident is a day under 99%, and a reading that only carries yesterday'
   assert.equal(lastIncident(h.slice(0, 3), "2026-01-05"), "2026-01-05");
   assert.equal(lastIncident(h, "2026-01-09"), "2026-01-06");
   assert.equal(lastIncident([{ date: "2026-01-01", mean: 0.99 }], "2026-01-02"), null);
-  assert.deepEqual(incidentCounter(h, "2026-01-09"), { days: 3, since: "2026-01-06", open: false });
-  assert.deepEqual(incidentCounter(h, "2026-01-06"), { days: 1, since: "2026-01-05", open: false });
+  assert.deepEqual(incidentCounter(h, "2026-01-09"), { days: 3, since: "2026-01-06", open: false, downMinutes: 22 });
+  assert.deepEqual(incidentCounter(h, "2026-01-06"), { days: 1, since: "2026-01-05", open: false, downMinutes: 29 });
   const clean = [{ date: "2026-01-01", mean: 1 }, { date: "2026-01-04", mean: 0.999 }];
   assert.deepEqual(incidentCounter(clean, "2026-01-04"), { days: 4, since: null, open: true });
   assert.deepEqual(incidentStat({ days: 1, open: false }), ["1", "day since uptime", "dipped below 99%"]);
@@ -253,6 +256,33 @@ test("renderCard adds the incident counter as a fourth figure only when given on
   assert.ok(svg.includes(">days since uptime<") && svg.includes(">dipped below 99%<"));
   assert.match(svg, /aria-label="[^"]*, 12 days since uptime dipped below 99%">/);
   assert.ok(!renderCard(s, "dark").includes("dipped below"));
+});
+
+test("the last dip's downtime comes from its worst-hit service and reads in plain words", () => {
+  assert.equal(downtimeMinutes({ mean: 0.9236, lowest: 0.8751 }), 180);
+  assert.equal(downtimeMinutes({ mean: 0.985 }), 22);
+  assert.equal(downtimeMinutes(undefined), null);
+  assert.equal(formatDuration(180), "3 hours");
+  assert.equal(formatDuration(75), "1.5 hours");
+  assert.equal(formatDuration(60), "1 hour");
+  assert.equal(formatDuration(14), "14 minutes");
+  assert.equal(formatDuration(1), "1 minute");
+  assert.equal(
+    dipLine({ days: 2, since: "2026-11-26", open: false, downMinutes: 180 }),
+    "Last dip on Nov 26: the worst-hit service was down about 3 hours",
+  );
+  assert.equal(dipLine({ days: 90, since: null, open: true }), null);
+});
+
+test("renderCard adds the last dip under the 30-day row, and grows only then", () => {
+  const s = summarize(parseHeartbeats(BEATS, parseStatusPage(PAGE), NOW), 7);
+  const w = historyWindow(recordDay([], s), dayOf(s.checkedAt));
+  const dipped = renderCard(s, "dark", w, { days: 2, since: "2026-11-26", open: false, downMinutes: 180 });
+  assert.ok(dipped.includes('height="284"'));
+  assert.ok(dipped.includes(">Last dip on Nov 26: the worst-hit service was down about 3 hours<"));
+  assert.match(dipped, /aria-label="[^"]*, last dip on Nov 26: the worst-hit service was down about 3 hours">/);
+  const clean = renderCard(s, "dark", w, { days: 40, since: null, open: true });
+  assert.ok(clean.includes('height="256"') && !clean.includes("Last dip"));
 });
 
 test("renderCard draws the 30-day row only when given a window", () => {
