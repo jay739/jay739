@@ -4,7 +4,10 @@ name: Update Batcave card
 # public Uptime Kuma status page (status.jay739.dev/status/batcave) and the
 # container count in profile/homelab-stats.json. It also keeps one uptime
 # reading per day in profile/batcave-history.json for the card's 30-day row.
-# The status page endpoints are public, so this job holds no secrets.
+# The status page endpoints are public. The last dip's exact start and end come
+# from a public file of outage windows, whose address is kept in the OUTAGES_URL
+# secret only so the alert bot's hostname stays out of this repo. Without it the
+# card estimates the dip from the daily readings instead.
 
 on:
   schedule:
@@ -39,6 +42,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Render the Batcave card
+        env:
+          OUTAGES_URL: ${{ secrets.OUTAGES_URL }}
         run: node .github/scripts/generate-batcave-card.mjs
 
       - name: Commit
