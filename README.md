@@ -49,7 +49,7 @@
 
 I'm an ML/AI Engineer & Data Scientist, and this GitHub is where my projects live: RAG pipelines, LLM systems, and self-hosted AI infrastructure. I build them end to end, from model training to deployment and real-time monitoring.
 
-The biggest one is **Batcave**, my solo-built private cloud: a Beelink mini-PC running <!--hl:batcave_containers-->62<!--/hl--> containers, linked over Tailscale to an Oracle Cloud edge server and an always-on Mac Mini M4 that serves the local LLMs ([live status](https://status.jay739.dev/status/batcave)).
+The biggest one is **Batcave**, my solo-built private cloud: a Beelink mini-PC running <!--hl:batcave_containers-->63<!--/hl--> containers, linked over Tailscale to an Oracle Cloud edge server and an always-on Mac Mini M4 that serves the local LLMs ([live status](https://status.jay739.dev/status/batcave)).
 
 ```yaml
 education: M.S. Data Science, UMBC (GPA 3.91 / 4.0)
@@ -79,11 +79,11 @@ based_in: Maryland, USA
 <!-- prettier-ignore -->
 | Metric | Value | Metric | Value |
 | :-: | :-: | :-: | :-: |
-| Containers on Batcave | <!--hl:batcave_containers-->`62`<!--/hl--> | Containers across the homelab | <!--hl:homelab_containers-->`86`<!--/hl--> |
+| Containers on Batcave | <!--hl:batcave_containers-->`63`<!--/hl--> | Containers across the homelab | <!--hl:homelab_containers-->`87`<!--/hl--> |
 | Compose services | <!--hl:services_declared-->`62`<!--/hl--> in <!--hl:compose_files-->`8`<!--/hl--> stacks | HTTPS sites | <!--hl:https_sites-->`38`<!--/hl--> |
 | Health-checked | <!--hl:services_healthchecked-->`54`<!--/hl--> of <!--hl:services_declared-->`62`<!--/hl--> | Memory-capped | <!--hl:services_mem_limited-->`62`<!--/hl--> of <!--hl:services_declared-->`62`<!--/hl--> |
 | Machines on the mesh | <!--hl:hosts-->`4`<!--/hl--> | LLM inference | `Mac Mini M4` |
-| Drift: undeclared / missing | <!--hl:undeclared_containers-->`0`<!--/hl--> / <!--hl:missing_containers-->`0`<!--/hl--> | Docker networks | <!--hl:docker_networks-->`5`<!--/hl--> |
+| Drift: undeclared / missing | <!--hl:undeclared_containers-->`1`<!--/hl--> / <!--hl:missing_containers-->`0`<!--/hl--> | Docker networks | <!--hl:docker_networks-->`5`<!--/hl--> |
 
 Services per stack: <!--hl:stacks-->media 25 · infra 14 · extras 12 · core 4 · immich 4 · cadence 1 · slskd 1 · ytdlp-shim 1<!--/hl-->
 
@@ -240,7 +240,7 @@ Proof links: [Live Batcave status](https://status.jay739.dev/status/batcave) · 
 
 <a href="https://status.jay739.dev/status/batcave"><img src="profile/cards/batcave.webp" alt="Batcave's public status page: all systems operational, with uptime bars for each service" width="100%" /></a>
 
-My self-hosted private cloud: a Beelink mini-PC running <!--hl:batcave_containers-->62<!--/hl--> containers and <!--hl:https_sites-->38<!--/hl--> HTTPS sites behind Authentik SSO. Netdata alerts go to Telegram, and a Mac Mini M4 serves the local LLMs through Ollama.
+My self-hosted private cloud: a Beelink mini-PC running <!--hl:batcave_containers-->63<!--/hl--> containers and <!--hl:https_sites-->38<!--/hl--> HTTPS sites behind Authentik SSO. Netdata alerts go to Telegram, and a Mac Mini M4 serves the local LLMs through Ollama.
 
 `Docker` · `Ollama` · `Authentik` · `Tailscale`
 

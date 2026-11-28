@@ -1,14 +1,14 @@
 {
-  "docs_updated": "2026-11-25",
-  "batcave_containers": 62,
-  "homelab_containers": 86,
+  "docs_updated": "2026-11-28",
+  "batcave_containers": 63,
+  "homelab_containers": 87,
   "services_declared": 62,
   "compose_files": 8,
   "services_healthchecked": 54,
   "services_mem_limited": 62,
   "https_sites": 38,
   "hosts": 4,
-  "undeclared_containers": 0,
+  "undeclared_containers": 1,
   "missing_containers": 0,
   "docker_networks": 5,
   "stacks": [
