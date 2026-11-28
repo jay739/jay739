@@ -7,6 +7,14 @@
 // no hosts, URLs or addresses. The card shows measured numbers only. If the
 // status page cannot be read, or what comes back is not plausible, the run
 // fails and the previous card stays in place rather than showing a guess.
+//
+// The line under the 30-day row names the last dip. Its start, its end and how
+// many services it hit come from a public file of outage windows that the alert
+// bot writes from Kuma's own database every ten minutes: times and counts only,
+// never monitor names or messages. The file's address comes from the OUTAGES_URL
+// secret, which keeps the bot's hostname out of this public repo. The file is
+// optional. When it is unset, unreachable, stale or malformed, the line falls back
+// to an estimate from the daily readings, and the run says why.
 
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
@@ -18,6 +26,7 @@ const STATS_PATH = process.env.STATS_PATH || "profile/homelab-stats.json";
 const OUT_PATH = process.env.OUT_PATH || "profile/batcave-card.svg";
 const OUT_PATH_LIGHT = process.env.OUT_PATH_LIGHT || "profile/batcave-card-light.svg";
 const HISTORY_PATH = process.env.HISTORY_PATH || "profile/batcave-history.json";
+const OUTAGES_URL = process.env.OUTAGES_URL || "";
 const TIMEOUT_MS = 45_000;
 
 // The public status page only exposes a 24-hour uptime, so the long view is
@@ -52,6 +61,9 @@ export class SourceFormatError extends CardError {}
 
 /** The data parsed, but the numbers cannot be right. */
 export class ImplausibleValueError extends CardError {}
+
+/** The data parsed, but it is too old to describe the present. */
+export class StaleSourceError extends CardError {}
 
 // Monitors in group order, as the status page lists them. Group names are
 // trimmed because Kuma keeps whatever whitespace was typed into the editor.
@@ -309,17 +321,98 @@ export function formatDuration(minutes) {
   return `${hours} hour${hours === 1 ? "" : "s"}`;
 }
 
-// The line under the 30-day row, or null when no dip is on record.
+const shortDay = (date) =>
+  new Date(`${date}T00:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+
+// The outage file is rewritten every ten minutes. Once it is older than this it
+// may still call an outage ongoing after it ended, so the card stops trusting it.
+export const OUTAGES_STALE_AFTER_MS = 2 * 60 * 60 * 1000;
+
+function utcTime(value, what) {
+  const ok = typeof value === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/.test(value);
+  const t = ok ? Date.parse(value) : NaN;
+  if (Number.isNaN(t)) throw new SourceFormatError(`${what} is not a UTC time like 2026-01-05T13:20:25Z`);
+  return t;
+}
+
+// The published outage windows as { generatedAt, windows: [{ start, end, down,
+// total }] }, times in milliseconds. An end of null means still down.
+export function parseOutages(json, now, slug = SLUG) {
+  if (typeof json?.page !== "string") throw new SourceFormatError("the outage file names no status page");
+  if (json.page !== slug) throw new SourceFormatError(`the outage file covers page "${json.page}", not "${slug}"`);
+  const generatedAt = utcTime(json.generated_at, "the outage file's generated_at");
+  if (now.getTime() - generatedAt > OUTAGES_STALE_AFTER_MS) {
+    throw new StaleSourceError(`the outage file was last written at ${json.generated_at}; check that its publisher still runs`);
+  }
+  if (!Array.isArray(json.outages)) throw new SourceFormatError("the outage file has no outages list");
+  const windows = json.outages.map((o, i) => {
+    const start = utcTime(o?.start, `outage ${i}'s start`);
+    const end = o.end === null ? null : utcTime(o.end, `outage ${i}'s end`);
+    const { monitors_down: down, monitors_total: total } = o;
+    if (!Number.isInteger(down) || !Number.isInteger(total) || down < 1 || down > total) {
+      throw new ImplausibleValueError(`outage ${i} says ${down} of ${total} services were down`);
+    }
+    if (end !== null && end < start) throw new ImplausibleValueError(`outage ${i} ends before it starts`);
+    return { start, end, down, total };
+  });
+  return { generatedAt, windows };
+}
+
+// The outage behind a dip: the longest one overlapping that UTC day, and how many
+// the day had. An ongoing outage counts as lasting until the file was written.
+export function dipOutage(outages, day) {
+  if (!outages || !day) return null;
+  const from = Date.parse(`${day}T00:00:00Z`);
+  const to = from + 86_400_000;
+  const until = (w) => w.end ?? outages.generatedAt;
+  const hits = outages.windows.filter((w) => w.start < to && until(w) > from);
+  if (hits.length === 0) return null;
+  const longest = hits.reduce((a, b) => (until(b) - b.start > until(a) - a.start ? b : a));
+  return { ...longest, minutes: Math.max(1, Math.round((until(longest) - longest.start) / 60_000)), count: hits.length };
+}
+
+// "8 of 13 services down 13:20 to 16:20 UTC (3 hours)". When the outage runs past
+// either edge of the dip's day, both times carry their date.
+export function outagePhrase(day, o) {
+  const iso = (t) => new Date(t).toISOString();
+  const sameDay = iso(o.start).slice(0, 10) === day && (o.end === null || iso(o.end).slice(0, 10) === day);
+  const at = (t) => (sameDay ? "" : `${shortDay(iso(t).slice(0, 10))} `) + iso(t).slice(11, 16);
+  const who = `${o.down} of ${o.total} services`;
+  if (o.end === null) return `${who} down since ${at(o.start)} UTC`;
+  const more = o.count > 1 ? `, longest of ${o.count} outages` : "";
+  return `${who} down ${at(o.start)} to ${at(o.end)} UTC (${formatDuration(o.minutes)}${more})`;
+}
+
+// The line under the 30-day row, or null when no dip is on record: the outage's
+// own times when the outage file has it, otherwise the estimate from the readings.
 export function dipLine(counter) {
-  if (!counter || counter.open || counter.downMinutes == null) return null;
-  const day = new Date(`${counter.since}T00:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+  if (!counter || counter.open) return null;
+  const day = shortDay(counter.since);
+  if (counter.outage) return `Last dip on ${day}: ${outagePhrase(counter.since, counter.outage)}`;
+  if (counter.downMinutes == null) return null;
   return `Last dip on ${day}: the worst-hit service was down about ${formatDuration(counter.downMinutes)}`;
+}
+
+// The card's text runs about 5.4px a character at 12px in Segoe UI. 86 characters
+// leave room for fonts up to 6.2px inside the card's 540px of text width; a longer
+// line wraps, keeping a parenthesis whole.
+export const DIP_LINE_CHARS = 86;
+
+export function wrapLine(text, max = DIP_LINE_CHARS) {
+  const lines = [];
+  for (const word of text.match(/\([^)]*\)|\S+/g) ?? []) {
+    const last = lines.at(-1);
+    if (last !== undefined && `${last} ${word}`.length <= max) lines[lines.length - 1] = `${last} ${word}`;
+    else lines.push(word);
+  }
+  return lines;
 }
 
 export function renderCard(s, theme = "dark", win = null, incident = null) {
   const c = THEMES[theme];
   const dip = win ? dipLine(incident) : null;
-  const W = 600, H = win ? (dip ? 284 : 256) : 200;
+  const dipRows = dip ? wrapLine(dip) : [];
+  const W = 600, H = win ? (dip ? 284 + 16 * (dipRows.length - 1) : 256) : 200;
   const tone = headlineColor(c, s);
   const head = escapeXml(headline(s));
   const stats = [
@@ -360,9 +453,12 @@ export function renderCard(s, theme = "dark", win = null, incident = null) {
         .join("")
     : "";
   const historyAria = win && win.mean !== null ? `, ${historyLabel(win)}` : "";
+  const dipSvg = dip
+    ? `<text x="30" y="253" class="grp">${dipRows.map((r, i) => (i ? `<tspan x="30" dy="16">${escapeXml(r)}</tspan>` : escapeXml(r))).join("")}</text>`
+    : "";
   const dipAria = dip ? `, ${dip.charAt(0).toLowerCase()}${dip.slice(1)}` : "";
   const incidentAria = incident ? `, ${incidentStat(incident).join(" ")}${dipAria}` : "";
-  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Batcave: ${head}, ${formatUptime(s.mean)} 24-hour uptime from Uptime Kuma${escapeXml(historyAria)}, ${s.containers} containers from the homelab docs${incidentAria}">
+  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Batcave: ${head}, ${formatUptime(s.mean)} 24-hour uptime from Uptime Kuma${escapeXml(historyAria)}, ${s.containers} containers from the homelab docs${escapeXml(incidentAria)}">
   <style>
     text { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
     .title { fill: ${c.label}; font-size: 15px; font-weight: 700; letter-spacing: 0.5px; }
@@ -379,24 +475,41 @@ export function renderCard(s, theme = "dark", win = null, incident = null) {
   ${statSvg}
   ${groupSvg}
   ${historySvg}
-  ${dip ? `<text x="30" y="253" class="grp">${escapeXml(dip)}</text>` : ""}
+  ${dipSvg}
   <text x="${W - 30}" y="${H - 12}" text-anchor="end" class="foot">Uptime Kuma checks · containers from homelab docs · ${escapeXml(formatCheckedAt(s.checkedAt))}</text>
 </svg>
 `;
 }
 
-async function getJson(url) {
+async function getJson(url, name = url) {
   let res;
   try {
     res = await fetch(url, { signal: AbortSignal.timeout(TIMEOUT_MS), headers: { Accept: "application/json" } });
   } catch (err) {
-    throw new SourceUnavailableError(`could not reach ${url} (${err.name}). Check that the status page is up.`);
+    throw new SourceUnavailableError(`could not reach ${name} (${err.name}). Check that it is up.`);
   }
-  if (!res.ok) throw new SourceUnavailableError(`${url} answered HTTP ${res.status}. Check that the page is published.`);
+  if (!res.ok) throw new SourceUnavailableError(`${name} answered HTTP ${res.status}. Check that it is published.`);
   try {
     return await res.json();
   } catch {
-    throw new SourceFormatError(`${url} did not return JSON`);
+    throw new SourceFormatError(`${name} did not return JSON`);
+  }
+}
+
+// Optional: any failure leaves the dip line on its estimate and puts a warning on
+// the run, so a publisher that stops is visible without failing the card. Messages
+// name the file, never its address.
+async function readOutages(now) {
+  if (!OUTAGES_URL) {
+    console.log("OUTAGES_URL is not set, so the last dip is estimated from the daily readings.");
+    return null;
+  }
+  try {
+    return parseOutages(await getJson(OUTAGES_URL, "the outage file"), now);
+  } catch (err) {
+    if (!(err instanceof CardError)) throw err;
+    console.log(`::warning title=Outage windows::${err.name}: ${err.message.replace(/\.$/, "")}. The last dip is estimated instead.`);
+    return null;
   }
 }
 
@@ -434,7 +547,13 @@ async function main() {
   const history = recordDay(await readHistory(HISTORY_PATH), summary);
   const today = dayOf(summary.checkedAt);
   const win = historyWindow(history, today);
-  const incident = incidentCounter(history, today);
+  let incident = incidentCounter(history, today);
+  if (!incident.open) {
+    const outages = await readOutages(now);
+    const outage = dipOutage(outages, incident.since);
+    if (outage) incident = { ...incident, outage };
+    else if (outages) console.log(`The outage file lists nothing on ${incident.since}, so the last dip is estimated.`);
+  }
   await mkdir(path.dirname(HISTORY_PATH), { recursive: true });
   await writeFile(HISTORY_PATH, `${JSON.stringify(history, null, 1)}\n`, "utf8");
   for (const [file, theme] of [[OUT_PATH, "dark"], [OUT_PATH_LIGHT, "light"]]) {
