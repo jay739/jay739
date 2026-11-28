@@ -27,6 +27,9 @@ import {
   recordDay,
   historyWindow,
   historyLabel,
+  incidentCounter,
+  incidentStat,
+  lastIncident,
 } from "./generate-batcave-card.mjs";
 
 const NOW = new Date("2026-01-02T03:10:00Z");
@@ -221,6 +224,35 @@ test("parseHistory refuses a damaged file instead of skewing the record", () => 
   throwsClean(() => parseHistory('{"date":"2026-01-01"}'), SourceFormatError);
   throwsClean(() => parseHistory('[{"date":"2026-01-01","mean":1.5}]'), SourceFormatError);
   throwsClean(() => parseHistory('[{"date":"Jan 1","mean":1}]'), SourceFormatError);
+});
+
+test("an incident is a day under 99%, and a reading that only carries yesterday's outage keeps yesterday's date", () => {
+  const h = [
+    { date: "2026-01-01", mean: 0.95 },
+    { date: "2026-01-02", mean: 1 },
+    { date: "2026-01-05", mean: 0.98 },
+    { date: "2026-01-06", mean: 0.985 },
+  ];
+  assert.equal(lastIncident(h, "2026-01-06"), "2026-01-05");
+  assert.equal(lastIncident(h.slice(0, 3), "2026-01-05"), "2026-01-05");
+  assert.equal(lastIncident(h, "2026-01-09"), "2026-01-06");
+  assert.equal(lastIncident([{ date: "2026-01-01", mean: 0.99 }], "2026-01-02"), null);
+  assert.deepEqual(incidentCounter(h, "2026-01-09"), { days: 3, since: "2026-01-06", open: false });
+  assert.deepEqual(incidentCounter(h, "2026-01-06"), { days: 1, since: "2026-01-05", open: false });
+  const clean = [{ date: "2026-01-01", mean: 1 }, { date: "2026-01-04", mean: 0.999 }];
+  assert.deepEqual(incidentCounter(clean, "2026-01-04"), { days: 4, since: null, open: true });
+  assert.deepEqual(incidentStat({ days: 1, open: false }), ["1", "day since uptime", "dipped below 99%"]);
+  assert.deepEqual(incidentStat({ days: 0, open: false }), ["0", "days since uptime", "dipped below 99%"]);
+  assert.deepEqual(incidentStat({ days: 4, open: true }), ["4+", "days with uptime", "of 99% or more"]);
+});
+
+test("renderCard adds the incident counter as a fourth figure only when given one", () => {
+  const s = summarize(parseHeartbeats(BEATS, parseStatusPage(PAGE), NOW), 7);
+  const svg = renderCard(s, "dark", null, { days: 12, since: "2026-01-01", open: false });
+  assert.ok(svg.includes('class="num">12</text>'));
+  assert.ok(svg.includes(">days since uptime<") && svg.includes(">dipped below 99%<"));
+  assert.match(svg, /aria-label="[^"]*, 12 days since uptime dipped below 99%">/);
+  assert.ok(!renderCard(s, "dark").includes("dipped below"));
 });
 
 test("renderCard draws the 30-day row only when given a window", () => {

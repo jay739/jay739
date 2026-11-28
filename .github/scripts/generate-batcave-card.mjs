@@ -257,7 +257,42 @@ export function historyLabel(win) {
   return `${formatUptime(win.mean)} over ${span}`;
 }
 
-export function renderCard(s, theme = "dark", win = null) {
+// A day counts as an incident when its average uptime across the checks fell
+// below this: roughly a quarter of an hour with everything down, or a few hours
+// with one service down.
+export const INCIDENT_BELOW = 0.99;
+
+const dayBefore = (date) => new Date(new Date(`${date}T00:00:00Z`).getTime() - 86_400_000).toISOString().slice(0, 10);
+const daysBetween = (from, to) =>
+  Math.round((new Date(`${to}T00:00:00Z`).getTime() - new Date(`${from}T00:00:00Z`).getTime()) / 86_400_000);
+
+// The day of the latest incident on record, or null. Kuma's uptime is a rolling
+// 24 hours, so an outage still drags the next day's early readings down until the
+// window moves past it. While today and yesterday both read low, the incident
+// stays dated yesterday, so the counter does not drop back to zero the next day.
+export function lastIncident(history, today) {
+  const low = new Set(history.filter((d) => d.mean < INCIDENT_BELOW).map((d) => d.date));
+  const last = [...low].sort().at(-1);
+  if (!last) return null;
+  return last === today && low.has(dayBefore(today)) ? dayBefore(today) : last;
+}
+
+// What the counter shows. With no incident on record it counts the days the record
+// covers and marks the figure open-ended, since nothing older is known.
+export function incidentCounter(history, today) {
+  const last = lastIncident(history, today);
+  if (last) return { days: daysBetween(last, today), since: last, open: false };
+  return { days: daysBetween(history[0]?.date ?? today, today) + 1, since: null, open: true };
+}
+
+// Plain words, threshold included, so a first-time reader needs no definition:
+// "1 day since uptime dipped below 99%", read down the figure and its two lines.
+export function incidentStat(counter) {
+  if (counter.open) return [`${counter.days}+`, "days with uptime", "of 99% or more"];
+  return [String(counter.days), counter.days === 1 ? "day since uptime" : "days since uptime", "dipped below 99%"];
+}
+
+export function renderCard(s, theme = "dark", win = null, incident = null) {
   const c = THEMES[theme];
   const W = 600, H = win ? 256 : 200;
   const tone = headlineColor(c, s);
@@ -266,11 +301,14 @@ export function renderCard(s, theme = "dark", win = null) {
     [formatUptime(s.mean), "24h uptime"],
     [formatUptime(s.lowest), "lowest service"],
     [String(s.containers), "containers"],
+    ...(incident ? [incidentStat(incident)] : []),
   ];
+  const step = stats.length > 3 ? 142 : 190;
   const statSvg = stats
-    .map(([n, label], i) => {
-      const x = 30 + i * 190;
-      return `<text x="${x}" y="98" class="num">${escapeXml(n)}</text><text x="${x}" y="118" class="lbl">${escapeXml(label)}</text>`;
+    .map(([n, label, more], i) => {
+      const x = 30 + i * step;
+      const second = more ? `<text x="${x}" y="133" class="lbl">${escapeXml(more)}</text>` : "";
+      return `<text x="${x}" y="98" class="num">${escapeXml(n)}</text><text x="${x}" y="118" class="lbl">${escapeXml(label)}</text>${second}`;
     })
     .join("");
   let gx = 30;
@@ -297,7 +335,8 @@ export function renderCard(s, theme = "dark", win = null) {
         .join("")
     : "";
   const historyAria = win && win.mean !== null ? `, ${historyLabel(win)}` : "";
-  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Batcave: ${head}, ${formatUptime(s.mean)} 24-hour uptime from Uptime Kuma${escapeXml(historyAria)}, ${s.containers} containers from the homelab docs">
+  const incidentAria = incident ? `, ${incidentStat(incident).join(" ")}` : "";
+  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Batcave: ${head}, ${formatUptime(s.mean)} 24-hour uptime from Uptime Kuma${escapeXml(historyAria)}, ${s.containers} containers from the homelab docs${incidentAria}">
   <style>
     text { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
     .title { fill: ${c.label}; font-size: 15px; font-weight: 700; letter-spacing: 0.5px; }
@@ -366,16 +405,18 @@ async function main() {
   const groups = parseHeartbeats(beats, parseStatusPage(page), now);
   const summary = summarize(groups, await readContainers(STATS_PATH));
   const history = recordDay(await readHistory(HISTORY_PATH), summary);
-  const win = historyWindow(history, dayOf(summary.checkedAt));
+  const today = dayOf(summary.checkedAt);
+  const win = historyWindow(history, today);
+  const incident = incidentCounter(history, today);
   await mkdir(path.dirname(HISTORY_PATH), { recursive: true });
   await writeFile(HISTORY_PATH, `${JSON.stringify(history, null, 1)}\n`, "utf8");
   for (const [file, theme] of [[OUT_PATH, "dark"], [OUT_PATH_LIGHT, "light"]]) {
     await mkdir(path.dirname(file), { recursive: true });
-    await writeFile(file, renderCard(summary, theme, win), "utf8");
+    await writeFile(file, renderCard(summary, theme, win, incident), "utf8");
   }
   console.log(
     `Batcave card: ${headline(summary)}, mean ${formatUptime(summary.mean)}, lowest ${formatUptime(summary.lowest)}, ` +
-      `${summary.containers} containers, checked ${summary.checkedAt}; ${historyLabel(win)}`,
+      `${summary.containers} containers, checked ${summary.checkedAt}; ${historyLabel(win)}; ${incidentStat(incident).join(" ")}`,
   );
 }
 
