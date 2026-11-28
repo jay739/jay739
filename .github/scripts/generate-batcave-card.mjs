@@ -281,7 +281,10 @@ export function lastIncident(history, today) {
 // covers and marks the figure open-ended, since nothing older is known.
 export function incidentCounter(history, today) {
   const last = lastIncident(history, today);
-  if (last) return { days: daysBetween(last, today), since: last, open: false };
+  if (last) {
+    const day = history.find((d) => d.date === last);
+    return { days: daysBetween(last, today), since: last, open: false, downMinutes: downtimeMinutes(day) };
+  }
   return { days: daysBetween(history[0]?.date ?? today, today) + 1, since: null, open: true };
 }
 
@@ -292,9 +295,31 @@ export function incidentStat(counter) {
   return [String(counter.days), counter.days === 1 ? "day since uptime" : "days since uptime", "dipped below 99%"];
 }
 
+// Roughly how long the worst-hit service was down that day: its 24-hour uptime is
+// the share of the day it was up. Older records without a per-service reading fall
+// back to the day's average.
+export function downtimeMinutes(day) {
+  const ratio = typeof day?.lowest === "number" ? day.lowest : day?.mean;
+  return typeof ratio === "number" ? Math.round((1 - ratio) * 24 * 60) : null;
+}
+
+export function formatDuration(minutes) {
+  if (minutes < 60) return `${minutes} minute${minutes === 1 ? "" : "s"}`;
+  const hours = Math.round(minutes / 30) / 2;
+  return `${hours} hour${hours === 1 ? "" : "s"}`;
+}
+
+// The line under the 30-day row, or null when no dip is on record.
+export function dipLine(counter) {
+  if (!counter || counter.open || counter.downMinutes == null) return null;
+  const day = new Date(`${counter.since}T00:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+  return `Last dip on ${day}: the worst-hit service was down about ${formatDuration(counter.downMinutes)}`;
+}
+
 export function renderCard(s, theme = "dark", win = null, incident = null) {
   const c = THEMES[theme];
-  const W = 600, H = win ? 256 : 200;
+  const dip = win ? dipLine(incident) : null;
+  const W = 600, H = win ? (dip ? 284 : 256) : 200;
   const tone = headlineColor(c, s);
   const head = escapeXml(headline(s));
   const stats = [
@@ -335,7 +360,8 @@ export function renderCard(s, theme = "dark", win = null, incident = null) {
         .join("")
     : "";
   const historyAria = win && win.mean !== null ? `, ${historyLabel(win)}` : "";
-  const incidentAria = incident ? `, ${incidentStat(incident).join(" ")}` : "";
+  const dipAria = dip ? `, ${dip.charAt(0).toLowerCase()}${dip.slice(1)}` : "";
+  const incidentAria = incident ? `, ${incidentStat(incident).join(" ")}${dipAria}` : "";
   return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Batcave: ${head}, ${formatUptime(s.mean)} 24-hour uptime from Uptime Kuma${escapeXml(historyAria)}, ${s.containers} containers from the homelab docs${incidentAria}">
   <style>
     text { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
@@ -353,6 +379,7 @@ export function renderCard(s, theme = "dark", win = null, incident = null) {
   ${statSvg}
   ${groupSvg}
   ${historySvg}
+  ${dip ? `<text x="30" y="253" class="grp">${escapeXml(dip)}</text>` : ""}
   <text x="${W - 30}" y="${H - 12}" text-anchor="end" class="foot">Uptime Kuma checks · containers from homelab docs · ${escapeXml(formatCheckedAt(s.checkedAt))}</text>
 </svg>
 `;
@@ -416,7 +443,7 @@ async function main() {
   }
   console.log(
     `Batcave card: ${headline(summary)}, mean ${formatUptime(summary.mean)}, lowest ${formatUptime(summary.lowest)}, ` +
-      `${summary.containers} containers, checked ${summary.checkedAt}; ${historyLabel(win)}; ${incidentStat(incident).join(" ")}`,
+      `${summary.containers} containers, checked ${summary.checkedAt}; ${historyLabel(win)}; ${incidentStat(incident).join(" ")}${dipLine(incident) ? `; ${dipLine(incident)}` : ""}`,
   );
 }
 
